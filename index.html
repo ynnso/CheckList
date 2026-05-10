@@ -256,9 +256,9 @@
     top: 0;
     height: 100vh;
     overflow-y: auto;
-    background: #0D0D0D;
-    background-image: radial-gradient(circle at 85% 10%, rgba(200,16,46,0.18) 0%, transparent 55%),
-                      radial-gradient(circle at 15% 90%, rgba(200,16,46,0.08) 0%, transparent 50%);
+    background: #000000;
+    background-image: radial-gradient(circle at 90% 8%, rgba(200,16,46,0.28) 0%, transparent 50%),
+                      radial-gradient(circle at 10% 85%, rgba(200,16,46,0.14) 0%, transparent 45%);
     border-right: none;
     padding: 48px 40px 48px 48px;
     display: flex;
@@ -366,7 +366,7 @@
   }
 
   .sidebar-nav-item.section-complete .sidebar-nav-progress {
-    color: var(--red);
+    color: rgba(255,255,255,0.9);
     font-weight: 600;
   }
 
@@ -1055,18 +1055,18 @@
   /* ─── CONFETTI ──────────────────────────────────────────────── */
   .confetti-piece {
     position: fixed;
-    width: 8px;
-    height: 8px;
-    top: -10px;
-    border-radius: 2px;
+    top: -20px;
     pointer-events: none;
     z-index: 999;
     animation: confettiFall linear forwards;
+    will-change: transform, opacity;
   }
 
   @keyframes confettiFall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity: 1; }
+    20%  { opacity: 1; }
+    80%  { opacity: 0.8; }
+    100% { transform: translateY(105vh) rotate(var(--spin)) translateX(var(--drift)); opacity: 0; }
   }
 
   /* ─── MICRO-ANIMATION: item check ───────────────────────────── */
@@ -1358,13 +1358,9 @@
 <div id="download-bar" role="complementary" aria-label="Download options">
   <span class="download-label">Prefer a printable version?</span>
   <div class="download-links">
-    <a href="https://cdn.sanity.io/files/pqq2n64j/dev/85bb37c73b2beb19517c9a1fee2dc2ec561b68f2.pdf" class="dl-btn" target="_blank" rel="noopener" aria-label="Download black and white PDF checklist">
+    <a href="https://cdn.sanity.io/files/pqq2n64j/dev/56206cb04c8bf2f8509ca9b45cb20ad1c01b93bd.pdf" class="dl-btn" target="_blank" rel="noopener" aria-label="Download the checklist as a PDF">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 10v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2"/><polyline points="5 7 8 10 11 7"/><line x1="8" y1="1" x2="8" y2="10"/></svg>
-      B&amp;W Checklist PDF
-    </a>
-    <a href="https://cdn.sanity.io/files/pqq2n64j/dev/56206cb04c8bf2f8509ca9b45cb20ad1c01b93bd.pdf" class="dl-btn" target="_blank" rel="noopener" aria-label="Download full color PDF checklist">
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 10v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2"/><polyline points="5 7 8 10 11 7"/><line x1="8" y1="1" x2="8" y2="10"/></svg>
-      Color Checklist PDF
+      Download Checklist PDF
     </a>
   </div>
   <button class="reset-btn" id="reset-btn" aria-label="Reset all checklist items">Reset checklist</button>
@@ -1414,7 +1410,7 @@
       <span class="sidebar-nav-progress" id="nav-motion-count">0/2</span>
     </a>
     <a class="sidebar-nav-item" href="#section-curb" id="nav-curb">
-      <span class="sidebar-nav-icon"><svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M41.733 160.134v-59.2H21.999L96 31.865l74 69.067h-19.733v59.201H110.8v-44.4H81.2v44.4z"/></svg></span>
+      <span class="sidebar-nav-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1H5a1 1 0 01-1-1V10.5z"/><path d="M9 22V12h6v10"/></svg></span>
       <span class="sidebar-nav-text">Curb Appeal</span>
       <span class="sidebar-nav-progress" id="nav-curb-count">0/5</span>
     </a>
@@ -1645,7 +1641,7 @@
       <div class="section-header">
         <div class="section-header-left">
           <div class="section-icon-title">
-            <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M41.733 160.134v-59.2H21.999L96 31.865l74 69.067h-19.733v59.201H110.8v-44.4H81.2v44.4z"/></svg></div>
+            <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1H5a1 1 0 01-1-1V10.5z"/><path d="M9 22V12h6v10"/></svg></div>
             <h2 class="section-h2" id="section-curb-heading">Curb Appeal</h2>
           </div>
           <p class="section-desc">The exterior is usually the first photo a buyer sees. Don't let a car, a yard sign, or a pile of leaves steal the frame from the house.</p>
@@ -1982,21 +1978,62 @@
     }
 
     function launchConfetti() {
-      const colors = ['#C8102E', '#0D0D0D', '#9A9A9A', '#D4D4D4', '#F7F6F4'];
-      for (let i = 0; i < 60; i++) {
+      const colors = [
+        '#C8102E','#C8102E','#C8102E',  // red weighted 3x
+        '#ffffff','#ffffff',             // white 2x
+        '#000000',                       // black 1x
+        '#E8A0A0',                       // light red 1x
+        '#FF6B6B'                        // bright red 1x
+      ];
+      const total = 180;
+      const shapes = ['circle','rect','strip'];
+
+      for (let i = 0; i < total; i++) {
+        // First 80 pieces burst immediately (0-200ms), rest stagger (0-600ms)
+        const delay = i < 80
+          ? Math.random() * 200
+          : 200 + Math.random() * 600;
+
         setTimeout(() => {
           const el = document.createElement('div');
           el.className = 'confetti-piece';
-          el.style.left = Math.random() * 100 + 'vw';
-          el.style.background = colors[Math.floor(Math.random() * colors.length)];
-          el.style.width = (Math.random() * 8 + 4) + 'px';
-          el.style.height = (Math.random() * 8 + 4) + 'px';
-          el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-          el.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
-          el.style.animationDelay = (Math.random() * 0.5) + 's';
+
+          const shape = shapes[Math.floor(Math.random() * shapes.length)];
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          const spin = (Math.random() * 1440 - 720) + 'deg';
+          const drift = (Math.random() * 120 - 60) + 'px';
+
+          // Varied sizes by shape
+          let w, h, br;
+          if (shape === 'circle') {
+            const s = Math.random() * 8 + 4;
+            w = s + 'px'; h = s + 'px'; br = '50%';
+          } else if (shape === 'strip') {
+            w = (Math.random() * 3 + 2) + 'px';
+            h = (Math.random() * 14 + 8) + 'px';
+            br = '1px';
+          } else {
+            w = (Math.random() * 9 + 5) + 'px';
+            h = (Math.random() * 9 + 5) + 'px';
+            br = '2px';
+          }
+
+          el.style.cssText = `
+            left: ${Math.random() * 110 - 5}vw;
+            width: ${w};
+            height: ${h};
+            border-radius: ${br};
+            background: ${color};
+            opacity: ${0.7 + Math.random() * 0.3};
+            animation-duration: ${Math.random() * 1.8 + 1.4}s;
+            animation-delay: 0s;
+            --spin: ${spin};
+            --drift: ${drift};
+          `;
+
           document.body.appendChild(el);
           el.addEventListener('animationend', () => el.remove());
-        }, i * 30);
+        }, delay);
       }
     }
 
