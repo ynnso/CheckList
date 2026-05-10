@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photoshoot Checklist | Shoot2Sell Real Estate Photography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0C23;
+    --red-light: #F5E6E9;
+    --black: #0D0D0D;
+    --charcoal: #1A1A1A;
+    --ink: #2D2D2D;
+    --ash: #5A5A5A;
+    --silver: #9A9A9A;
+    --smoke: #D4D4D4;
+    --pearl: #ECECEC;
+    --off-white: #F7F6F4;
+    --white: #FFFFFF;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius: 4px;
+    --radius-lg: 10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── PROGRESS RAIL ─────────────────────────────────────────── */
+  #progress-rail {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--pearl);
+    padding: 0 32px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+    transition: box-shadow var(--transition);
+  }
+
+  #progress-rail.scrolled {
+    box-shadow: 0 2px 24px rgba(0,0,0,0.1);
+  }
+
+  .rail-logo {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--black);
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .rail-logo span {
+    color: var(--red);
+  }
+
+  .rail-progress-wrap {
+    flex: 1;
+    max-width: 480px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .rail-bar-track {
+    flex: 1;
+    height: 3px;
+    background: var(--pearl);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  #rail-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--red-dark), var(--red));
+    border-radius: 100px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #rail-count {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ash);
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+    min-width: 72px;
+    text-align: right;
+  }
+
+  .rail-book-btn {
+    background: var(--red);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background var(--transition), transform var(--transition);
+  }
+
+  .rail-book-btn:hover {
+    background: var(--red-dark);
+    transform: translateY(-1px);
+  }
+
+  /* ─── HERO ──────────────────────────────────────────────────── */
+  #hero {
+    padding-top: 56px;
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 420px;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    padding: 72px 64px 64px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .hero-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 5vw, 64px);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: var(--black);
+    margin-bottom: 20px;
+  }
+
+  .hero-h1 em {
+    font-style: italic;
+    color: var(--red);
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--ash);
+    max-width: 380px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-top: 3px;
+  }
+
+  .hero-stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--smoke);
+  }
+
+  .hero-visual {
+    position: relative;
+    background: var(--charcoal);
+    overflow: hidden;
+  }
+
+  .hero-visual-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+  }
+
+  .hero-visual-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(13,13,13,0.4) 0%, rgba(200,16,46,0.15) 100%);
+  }
+
+  .hero-visual-caption {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  /* ─── DOWNLOAD BAR ──────────────────────────────────────────── */
+  #download-bar {
+    background: var(--off-white);
+    border-top: 1px solid var(--pearl);
+    border-bottom: 1px solid var(--pearl);
+    padding: 16px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .download-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+
+  .download-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .dl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--smoke);
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: border-color var(--transition), color var(--transition), box-shadow var(--transition);
+  }
+
+  .dl-btn:hover {
+    border-color: var(--red);
+    color: var(--red);
+    box-shadow: 0 0 0 3px var(--red-light);
+  }
+
+  .dl-btn svg {
+    flex-shrink: 0;
+  }
+
+  .reset-btn {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--silver);
+    background: none;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--transition);
+    padding: 0;
+  }
+
+  .reset-btn:hover { color: var(--red); }
+
+  /* ─── MAIN LAYOUT ───────────────────────────────────────────── */
+  #main-layout {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    max-width: 1280px;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  /* ─── SIDEBAR ───────────────────────────────────────────────── */
+  #sidebar {
+    position: sticky;
+    top: 56px;
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+    border-right: 1px solid var(--pearl);
+    padding: 48px 40px 48px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    scrollbar-width: none;
+  }
+
+  #sidebar::-webkit-scrollbar { display: none; }
+
+  .sidebar-section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-bottom: 4px;
+    margin-top: 20px;
+    padding-left: 12px;
+  }
+
+  .sidebar-section-label:first-child { margin-top: 0; }
+
+  .sidebar-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: background var(--transition), color var(--transition);
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  .sidebar-nav-item:hover {
+    background: var(--off-white);
+  }
+
+  .sidebar-nav-item.active {
+    background: var(--off-white);
+  }
+
+  .sidebar-nav-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--pearl);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    transition: background var(--transition);
+  }
+
+  .sidebar-nav-item.section-complete .sidebar-nav-icon {
+    background: #E8F5E9;
+  }
+
+  .sidebar-nav-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .sidebar-nav-progress {
+    font-size: 11px;
+    color: var(--silver);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  .sidebar-nav-item.section-complete .sidebar-nav-progress {
+    color: #4CAF50;
+  }
+
+  /* Overall progress circle in sidebar */
+  .sidebar-circle-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 0 24px;
+    gap: 10px;
+  }
+
+  .progress-circle {
+    position: relative;
+    width: 88px;
+    height: 88px;
+  }
+
+  .progress-circle svg {
+    transform: rotate(-90deg);
+  }
+
+  .progress-circle-track {
+    fill: none;
+    stroke: var(--pearl);
+    stroke-width: 5;
+  }
+
+  #sidebar-circle-fill {
+    fill: none;
+    stroke: var(--red);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-dasharray: 251.2;
+    stroke-dashoffset: 251.2;
+    transition: stroke-dashoffset 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .progress-circle-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .progress-circle-pct {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1;
+  }
+
+  .progress-circle-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-top: 2px;
+  }
+
+  .sidebar-ready-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ash);
+    text-align: center;
+  }
+
+  /* ─── CONTENT ───────────────────────────────────────────────── */
+  #content {
+    padding: 0 64px 96px 72px;
+  }
+
+  /* ─── WHY IT MATTERS — BENTO ───────────────────────────────── */
+  #why-matters {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid var(--pearl);
+    margin-bottom: 0;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 240px 160px;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  /* Large image tile — spans full left column, 2 rows */
+  .bento-hero {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    background: var(--charcoal);
+  }
+
+  .bento-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .bento-hero svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .bento-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(13,13,13,0.1) 0%, rgba(13,13,13,0.72) 100%);
+  }
+
+  .bento-hero-text {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 28px;
+  }
+
+  .bento-hero-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .bento-hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .bento-hero h3 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+
+  .bento-hero p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.55;
+    max-width: 280px;
+  }
+
+  /* Top-right info card */
+  .bento-card-dark {
+    grid-column: 2;
+    grid-row: 1;
+    background: var(--black);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .bento-card-dark::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 140px; height: 140px;
+    background: radial-gradient(circle, rgba(200,16,46,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .bento-card-dark .bento-card-icon {
+    position: absolute;
+    top: 24px; right: 24px;
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(200,16,46,0.15);
+    border: 1px solid rgba(200,16,46,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bento-card-dark .bento-card-icon svg {
+    stroke: var(--red);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .bento-card-dark h3 {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .bento-card-dark p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.55;
+  }
+
+  /* Bottom-right stat card */
+  .bento-card-light {
+    grid-column: 2;
+    grid-row: 2;
+    background: var(--off-white);
+    border: 1px solid var(--pearl);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .bento-stat-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    border-right: 1px solid var(--smoke);
+    padding-right: 20px;
+  }
+
+  .bento-stat-block:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .bento-stat-num {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1;
+  }
+
+  .bento-stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .why-h2 {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  /* ─── CHECKLIST SECTION ─────────────────────────────────────── */
+  .checklist-section {
+    padding: 56px 0 20px;
+    border-bottom: 1px solid var(--pearl);
+  }
+
+  .checklist-section:last-of-type {
+    border-bottom: none;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    gap: 20px;
+  }
+
+  .section-header-left {}
+
+  .section-icon-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+
+  .section-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: var(--black);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .section-icon svg {
+    fill: none;
+    stroke: var(--white);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .section-h2 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: var(--ash);
+    margin-top: 4px;
+    line-height: 1.6;
+    max-width: 560px;
+    padding-left: 54px;
+  }
+
+  .section-badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--silver);
+    background: var(--off-white);
+    border: 1px solid var(--pearl);
+    padding: 5px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 4px;
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+  }
+
+  .section-badge.complete {
+    background: #E8F5E9;
+    color: #2E7D32;
+    border-color: #A5D6A7;
+  }
+
+  /* ─── CHECKLIST ITEM ────────────────────────────────────────── */
+  .checklist-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0;
+    padding: 18px 0;
+    border-top: 1px solid var(--pearl);
+    align-items: start;
+    transition: background var(--transition);
+    border-radius: var(--radius);
+  }
+
+  .checklist-item:first-of-type {
+    border-top: none;
+  }
+
+  .item-check-col {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 3px;
+    justify-content: center;
+  }
+
+  /* Custom checkbox */
+  .item-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid var(--smoke);
+    border-radius: 4px;
+    background: var(--white);
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .item-checkbox:hover {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px var(--red-light);
+  }
+
+  .item-checkbox:checked {
+    background: var(--red);
+    border-color: var(--red);
+  }
+
+  .item-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='1.5,6 4.5,9 10.5,3' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .item-checkbox:focus-visible {
+    outline: 2px solid var(--red);
+    outline-offset: 2px;
+  }
+
+  .item-body {
+    padding-right: 0;
+  }
+
+  .item-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.4;
+    margin-bottom: 4px;
+    transition: color var(--transition), text-decoration var(--transition);
+  }
+
+  .item-desc {
+    font-size: 13px;
+    color: var(--ash);
+    line-height: 1.6;
+    transition: color var(--transition);
+  }
+
+  /* Checked state */
+  .checklist-item.is-checked .item-title {
+    color: var(--silver);
+    text-decoration: line-through;
+    text-decoration-color: var(--smoke);
+  }
+
+  .checklist-item.is-checked .item-desc {
+    color: var(--smoke);
+  }
+
+  /* ─── QUICK SUMMARY ─────────────────────────────────────────── */
+  #quick-summary {
+    margin: 48px 0 0;
+    background: var(--black);
+    border-radius: var(--radius-lg);
+    padding: 36px 40px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #quick-summary::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(200,16,46,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .summary-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .summary-eyebrow::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .summary-title {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .summary-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 32px;
+  }
+
+  .summary-list li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .summary-list li::before {
+    content: '—';
+    color: var(--red);
+    flex-shrink: 0;
+    font-size: 11px;
+  }
+
+  /* ─── COMPLETION STATE ──────────────────────────────────────── */
+  #completion-banner {
+    display: none;
+    margin: 48px 0 0;
+    background: linear-gradient(135deg, var(--black) 0%, #2D0D13 100%);
+    border: 1px solid rgba(200,16,46,0.3);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #completion-banner.visible {
+    display: block;
+    animation: bannerIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes bannerIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  #completion-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(200,16,46,0.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .completion-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(200,16,46,0.15);
+    border: 1px solid rgba(200,16,46,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+
+  .completion-icon svg {
+    stroke: var(--red);
+  }
+
+  .completion-title {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+
+  .completion-title em {
+    font-style: italic;
+    color: var(--red);
+  }
+
+  .completion-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .completion-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--red);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: background var(--transition), transform var(--transition);
+  }
+
+  .completion-cta:hover {
+    background: var(--red-dark);
+    transform: translateY(-1px);
+  }
+
+  /* ─── CONFETTI ──────────────────────────────────────────────── */
+  .confetti-piece {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    top: -10px;
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 999;
+    animation: confettiFall linear forwards;
+  }
+
+  @keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ─── MICRO-ANIMATION: item check ───────────────────────────── */
+  @keyframes itemCheck {
+    0% { transform: scale(1); }
+    40% { transform: scale(0.96); }
+    70% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+  }
+
+  .checklist-item.just-checked {
+    animation: itemCheck 0.3s ease;
+  }
+
+  /* ─── SECTION COMPLETE FLASH ────────────────────────────────── */
+  @keyframes sectionFlash {
+    0% { background: transparent; }
+    30% { background: rgba(200,16,46,0.04); }
+    100% { background: transparent; }
+  }
+
+  .section-complete-flash {
+    animation: sectionFlash 0.8s ease;
+  }
+
+  /* ─── MOBILE BOTTOM NAV ─────────────────────────────────────── */
+  #mobile-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 200;
+    height: 60px;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--pearl);
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.07);
+  }
+
+  .mobile-nav-inner {
+    display: flex;
+    height: 100%;
+    align-items: stretch;
+  }
+
+  .mobile-nav-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 6px 4px 4px;
+    transition: background var(--transition);
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-nav-tab:active { background: var(--off-white); }
+
+  .mobile-nav-tab.tab-active .mobile-nav-icon { color: var(--red); }
+  .mobile-nav-tab.tab-active .mobile-nav-label { color: var(--red); }
+
+  .mobile-nav-tab.tab-active::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 32px; height: 2px;
+    background: var(--red);
+    border-radius: 0 0 2px 2px;
+  }
+
+  .mobile-nav-icon {
+    color: var(--silver);
+    transition: color var(--transition);
+    line-height: 1;
+  }
+
+  .mobile-nav-icon svg {
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .mobile-nav-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--silver);
+    transition: color var(--transition);
+    white-space: nowrap;
+  }
+
+  .mobile-progress-ring {
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+
+  .mobile-progress-ring svg {
+    transform: rotate(-90deg);
+    display: block;
+  }
+
+  .mobile-ring-track {
+    fill: none;
+    stroke: var(--smoke);
+    stroke-width: 2.5;
+  }
+
+  #mobile-ring-fill {
+    fill: none;
+    stroke: var(--red);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 62.8;
+    stroke-dashoffset: 62.8;
+    transition: stroke-dashoffset 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .mobile-ring-pct {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  /* ─── RESPONSIVE ────────────────────────────────────────────── */
+  @media (max-width: 1100px) {
+    #main-layout {
+      grid-template-columns: 280px 1fr;
+    }
+    .hero-content { padding: 56px 40px 56px 40px; }
+    #content { padding: 0 40px 80px 48px; }
+    #sidebar { padding: 40px 28px 40px 40px; }
+  }
+
+  @media (max-width: 860px) {
+    body { padding-bottom: 60px; }
+    #mobile-bottom-nav { display: block; }
+    #hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-visual { height: 220px; }
+    .hero-content { padding: 48px 32px 40px; }
+    #download-bar { padding: 14px 32px; }
+    #main-layout { grid-template-columns: 1fr; }
+    #sidebar {
+      position: static; height: auto; border-right: none;
+      border-bottom: 1px solid var(--pearl);
+      padding: 32px 32px 24px;
+      flex-direction: row; flex-wrap: wrap; gap: 6px;
+    }
+    .sidebar-circle-wrap { display: none; }
+    .sidebar-section-label { width: 100%; }
+    #content { padding: 0 32px 64px; }
+    .summary-list { grid-template-columns: 1fr; }
+    .bento-grid { grid-template-columns: 1fr; grid-template-rows: 260px auto auto; }
+    .bento-hero { grid-column: 1; grid-row: 1; min-height: 260px; }
+    .bento-card-dark { grid-column: 1; grid-row: 2; }
+    .bento-card-light { grid-column: 1; grid-row: 3; }
+    #progress-rail { padding: 0 20px; }
+    .rail-progress-wrap { max-width: 160px; }
+  }
+
+  @media (max-width: 560px) {
+    #hero { padding-top: 56px; }
+    .hero-content { padding: 36px 20px 32px; }
+    #download-bar { padding: 14px 20px; flex-direction: column; align-items: flex-start; }
+    #content { padding: 0 20px 64px; }
+    .section-desc { padding-left: 0; }
+    #quick-summary { padding: 28px 24px; }
+    .summary-list { grid-template-columns: 1fr; }
+  }
+
+  /* Print styles */
+  @media print {
+    #progress-rail, #download-bar .reset-btn { display: none; }
+    #sidebar { display: none; }
+    #main-layout { grid-template-columns: 1fr; }
+    body { font-size: 12pt; }
+    .checklist-item { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PROGRESS RAIL -->
+<header id="progress-rail" role="banner">
+  <a href="https://shoot2sell.com" class="rail-logo">shoot<span>2</span>sell</a>
+  <div class="rail-progress-wrap">
+    <div class="rail-bar-track">
+      <div id="rail-bar-fill"></div>
+    </div>
+    <span id="rail-count">0 of 19</span>
+  </div>
+  <a href="https://shoot2sell.vercel.app/book" class="rail-book-btn">Book a Shoot</a>
+</header>
+
+<!-- HERO -->
+<section id="hero" aria-labelledby="hero-heading">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Photoshoot Checklist</p>
+    <h1 class="hero-h1" id="hero-heading">Get your home<br><em>camera&#8209;ready.</em></h1>
+    <p class="hero-sub">19 items across 5 categories. Most take under 5 minutes. Complete these before your photographer arrives and your listing photos will look significantly better.</p>
+    <div class="hero-meta">
+      <div class="hero-stat">
+        <span class="hero-stat-num">19</span>
+        <span class="hero-stat-label">Checklist Items</span>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">~90</span>
+        <span class="hero-stat-label">Minutes to Prep</span>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">5</span>
+        <span class="hero-stat-label">Categories</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual" role="img" aria-label="Beautifully staged living room ready for real estate photography">
+    <!-- SVG placeholder simulating a clean interior scene -->
+    <svg width="100%" height="100%" viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
+      <defs>
+        <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e8e4de"/>
+          <stop offset="100%" stop-color="#d8d2c9"/>
+        </linearGradient>
+        <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#c4a882"/>
+          <stop offset="100%" stop-color="#a8906c"/>
+        </linearGradient>
+        <linearGradient id="lightBeam" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#fff9f0" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#fff9f0" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="sofaGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f2ede6"/>
+          <stop offset="100%" stop-color="#ddd7ce"/>
+        </linearGradient>
+      </defs>
+      <!-- Wall -->
+      <rect width="600" height="300" fill="url(#wallGrad)"/>
+      <!-- Floor -->
+      <rect y="300" width="600" height="120" fill="url(#floorGrad)"/>
+      <!-- Floor highlight -->
+      <rect y="298" width="600" height="4" fill="rgba(0,0,0,0.08)"/>
+      <!-- Window left -->
+      <rect x="40" y="40" width="120" height="200" rx="2" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <line x1="100" y1="40" x2="100" y2="240" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <line x1="40" y1="140" x2="160" y2="140" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <!-- Light beam from window -->
+      <polygon points="40,40 160,40 220,300 -20,300" fill="url(#lightBeam)"/>
+      <!-- Window right -->
+      <rect x="420" y="40" width="140" height="200" rx="2" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <line x1="490" y1="40" x2="490" y2="240" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <line x1="420" y1="140" x2="560" y2="140" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <!-- Sofa -->
+      <rect x="120" y="240" width="360" height="90" rx="6" fill="url(#sofaGrad)"/>
+      <rect x="120" y="240" width="360" height="24" rx="5" fill="rgba(255,255,255,0.3)"/>
+      <rect x="120" y="240" width="18" height="90" rx="4" fill="#e5e0d8"/>
+      <rect x="462" y="240" width="18" height="90" rx="4" fill="#e5e0d8"/>
+      <!-- Cushion lines -->
+      <line x1="218" y1="264" x2="218" y2="330" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+      <line x1="316" y1="264" x2="316" y2="330" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+      <!-- Coffee table -->
+      <rect x="200" y="340" width="200" height="48" rx="4" fill="#b8a48a"/>
+      <rect x="200" y="338" width="200" height="6" rx="2" fill="#c4b09a"/>
+      <!-- Rug -->
+      <ellipse cx="300" cy="355" rx="180" ry="40" fill="rgba(100,80,60,0.1)"/>
+      <!-- Art on wall -->
+      <rect x="240" y="50" width="120" height="80" rx="2" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+      <rect x="250" y="58" width="100" height="64" fill="rgba(200,16,46,0.12)"/>
+      <!-- Plant -->
+      <rect x="530" y="260" width="14" height="40" rx="2" fill="#8B7355"/>
+      <ellipse cx="537" cy="256" rx="22" ry="30" fill="#6B7F5B" opacity="0.7"/>
+      <ellipse cx="522" cy="270" rx="14" ry="18" fill="#5A6E4A" opacity="0.7"/>
+      <!-- Overhead darkness (vignette feel) -->
+      <rect width="600" height="420" fill="rgba(0,0,0,0.18)"/>
+    </svg>
+    <div class="hero-visual-overlay"></div>
+    <p class="hero-visual-caption">Staged &amp; ready.<br>Let's capture it.</p>
+  </div>
+</section>
+
+<!-- DOWNLOAD BAR -->
+<div id="download-bar" role="complementary" aria-label="Download options">
+  <span class="download-label">Prefer a printable version?</span>
+  <div class="download-links">
+    <a href="https://cdn.sanity.io/files/pqq2n64j/dev/85bb37c73b2beb19517c9a1fee2dc2ec561b68f2.pdf" class="dl-btn" target="_blank" rel="noopener" aria-label="Download black and white PDF checklist">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 10v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2"/><polyline points="5 7 8 10 11 7"/><line x1="8" y1="1" x2="8" y2="10"/></svg>
+      B&amp;W Checklist PDF
+    </a>
+    <a href="https://cdn.sanity.io/files/pqq2n64j/dev/56206cb04c8bf2f8509ca9b45cb20ad1c01b93bd.pdf" class="dl-btn" target="_blank" rel="noopener" aria-label="Download full color PDF checklist">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 10v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2"/><polyline points="5 7 8 10 11 7"/><line x1="8" y1="1" x2="8" y2="10"/></svg>
+      Color Checklist PDF
+    </a>
+  </div>
+  <button class="reset-btn" id="reset-btn" aria-label="Reset all checklist items">Reset checklist</button>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div id="main-layout">
+
+  <!-- SIDEBAR -->
+  <nav id="sidebar" aria-label="Checklist section navigation">
+    <div class="sidebar-circle-wrap">
+      <div class="progress-circle" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="sidebar-circle-wrap" aria-label="Overall checklist completion">
+        <svg width="88" height="88" viewBox="0 0 88 88">
+          <circle class="progress-circle-track" cx="44" cy="44" r="40"/>
+          <circle id="sidebar-circle-fill" cx="44" cy="44" r="40"/>
+        </svg>
+        <div class="progress-circle-text">
+          <span class="progress-circle-pct" id="sidebar-pct">0%</span>
+          <span class="progress-circle-label">done</span>
+        </div>
+      </div>
+      <p class="sidebar-ready-label" id="sidebar-ready-label">Complete all 19 items</p>
+    </div>
+
+    <p class="sidebar-section-label">Sections</p>
+
+    <a class="sidebar-nav-item" href="#section-lights" id="nav-lights">
+      <span class="sidebar-nav-icon"><svg viewBox="-4 0 19 19" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M10.328 6.83a5.903 5.903 0 0 1-1.439 3.64 2.874 2.874 0 0 0-.584 1v1.037a.95.95 0 0 1-.95.95h-3.71a.95.95 0 0 1-.95-.95V11.47a2.876 2.876 0 0 0-.584-1A5.903 5.903 0 0 1 .67 6.83a4.83 4.83 0 0 1 9.28-1.878 4.796 4.796 0 0 1 .38 1.88zm-.95 0a3.878 3.878 0 0 0-7.756 0c0 2.363 2.023 3.409 2.023 4.64v1.037h3.71V11.47c0-1.231 2.023-2.277 2.023-4.64zM7.83 14.572a.475.475 0 0 1-.475.476h-3.71a.475.475 0 0 1 0-.95h3.71a.475.475 0 0 1 .475.474zm-.64 1.262a.238.238 0 0 1-.078.265 2.669 2.669 0 0 1-3.274 0 .237.237 0 0 1 .145-.425h2.983a.238.238 0 0 1 .225.16z"/></svg></span>
+      <span class="sidebar-nav-text">Lights &amp; Screens</span>
+      <span class="sidebar-nav-progress" id="nav-lights-count">0/4</span>
+    </a>
+    <a class="sidebar-nav-item" href="#section-clutter" id="nav-clutter">
+      <span class="sidebar-nav-icon"><svg viewBox="0 0 57.042 57.042" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M49.48 55.758l-8.571-29a1 1 0 0 0-.43-.554c-.433-6.226-5.623-11.162-11.958-11.162s-11.524 4.936-11.958 11.162a1 1 0 0 0-.43.554l-8.571 29a1 1 0 0 0 .959 1.283h40a1 1 0 0 0 .959-1.283zM28.521 17.042c5.177 0 9.447 3.954 9.95 9h-19.9c.502-5.046 4.773-9 9.95-9zm11.926 38H16.6l3.894-16.774a1 1 0 0 0-1.947-.452L14.548 55.042H9.859l7.981-27h21.363l7.98 27h-4.636l-4-17.226a1 1 0 0 0-1.947.452z"/><rect x="27.521" width="2" height="14.042"/></svg></span>
+      <span class="sidebar-nav-text">De-clutter</span>
+      <span class="sidebar-nav-progress" id="nav-clutter-count">0/4</span>
+    </a>
+    <a class="sidebar-nav-item" href="#section-motion" id="nav-motion">
+      <span class="sidebar-nav-icon"><svg viewBox="0 0 228.804 228.804" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M184.475 161.189c-2.368-3.731-19.724-30.767-34.558-45.068-12.376-11.883-30.9-12.227-33-12.227-.191.001-.383.008-.571.023h-4.491c-1.984 0-19.761.338-32.763 12.042C63.05 130.416 45.3 159.575 44.058 161.63c-9.403 14.867-15.166 24.536-15.166 35.286 0 19.371 14.193 31.888 36.158 31.888h98.711c21.959 0 36.148-12.529 36.148-31.92 0-10.845-5.777-20.5-15.205-35.353-.074-.116-.15-.231-.229-.342zm-20.714 52.615H65.05c-7.902 0-21.158-2.194-21.158-16.888 0-6.279 4.126-13.489 12.885-27.334.029-.046.058-.093.087-.14.175-.29 17.631-29.146 32.267-42.336 8.925-8.034 22.597-8.187 22.73-8.188h5.08c.143 0 .284-.004.426-.012 2.441.092 14.739.907 22.152 8.024 14.283 13.772 32.324 42.347 32.505 42.634.081.129.165.254.253.376 9.316 14.698 12.633 21.018 12.633 26.942 0 10.054-11.501 12.922-21.148 12.922zM78.198 85.731c16.929 0 30.189-18.831 30.189-42.87C108.388 18.827 95.127 0 78.198 0 61.271 0 48.011 18.827 48.011 42.861c0 24.04 13.26 42.87 30.187 42.87zm0-70.731c7.184 0 15.189 11.442 15.189 27.861 0 16.424-8.006 27.87-15.189 27.87s-15.188-11.446-15.188-27.87C63.011 26.442 71.015 15 78.198 15zM38.664 137.296c2.951 0 5.77-.607 8.413-1.82 13.162-6.12 16.827-25.327 8.34-43.731C48.832 77.493 36.65 67.918 25.101 67.918c-2.954 0-5.777.609-8.401 1.817C3.52 75.834-.157 95.045 8.332 113.481c6.585 14.244 18.774 23.814 30.33 23.815zm-16.712-30.099c-5.076-11.024-3.635-21.683 1.033-23.842.639-.294 1.33-.437 2.115-.437 4.71 0 12.162 5.298 16.697 15.113 5.076 11.008 3.635 21.668-1.011 23.828-.642.294-1.336.438-2.123.438-4.716 0-12.177-5.296-16.711-15.1zM150.591 85.731c16.923 0 30.18-18.831 30.18-42.87C180.771 18.827 167.514 0 150.591 0c-16.939 0-30.207 18.827-30.207 42.861 0 24.04 13.268 42.87 30.207 42.87zm0-70.731c7.18 0 15.18 11.442 15.18 27.861 0 16.424-8 27.87-15.18 27.87-7.192 0-15.207-11.446-15.207-27.87C135.384 26.442 143.399 15 150.591 15zM212.104 69.737c-2.617-1.212-5.447-1.827-8.411-1.827-11.532 0-23.71 9.578-30.299 23.827-8.525 18.396-4.863 37.61 8.368 43.756 2.609 1.197 5.429 1.804 8.38 1.804 11.559 0 23.745-9.572 30.324-23.822 8.496-18.423 4.821-37.636-8.362-43.738zm-5.258 37.453c-4.53 9.812-11.987 15.106-16.704 15.106-.788 0-1.482-.143-2.093-.423-4.696-2.181-6.141-12.835-1.043-23.835 4.544-9.827 11.988-15.129 16.687-15.129.781 0 1.47.143 2.107.438 4.684 2.179 6.126 12.837 1.046 23.843z"/></svg></span>
+      <span class="sidebar-nav-text">Pets &amp; Fans</span>
+      <span class="sidebar-nav-progress" id="nav-motion-count">0/2</span>
+    </a>
+    <a class="sidebar-nav-item" href="#section-curb" id="nav-curb">
+      <span class="sidebar-nav-icon"><svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M41.733 160.134v-59.2H21.999L96 31.865l74 69.067h-19.733v59.201H110.8v-44.4H81.2v44.4z"/></svg></span>
+      <span class="sidebar-nav-text">Curb Appeal</span>
+      <span class="sidebar-nav-progress" id="nav-curb-count">0/5</span>
+    </a>
+    <a class="sidebar-nav-item" href="#section-outdoor" id="nav-outdoor">
+      <span class="sidebar-nav-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 17.75A5.75 5.75 0 1 0 12 6.25a5.75 5.75 0 0 0 0 11.5zm0-10a4.25 4.25 0 1 1 0 8.5 4.25 4.25 0 0 1 0-8.5zM12 5a.75.75 0 0 0 .75-.75v-1.5a.75.75 0 0 0-1.5 0v1.5A.75.75 0 0 0 12 5zm0 14a.75.75 0 0 0-.75.75v1.5a.75.75 0 0 0 1.5 0v-1.5A.75.75 0 0 0 12 19zm7.25-7.75a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5zm-15.5 0a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5zM6.5 7.25A.75.75 0 0 0 7 7L6 6a.75.75 0 0 0-1.06 1.06L6 8a.75.75 0 0 0 .5.25zm12.06 9.69L17.5 16a.75.75 0 0 0-1.06 1.06l1.06 1.06a.75.75 0 1 0 1.06-1.06zM17.5 7a.75.75 0 0 0 .56-.25l1-1.06A.75.75 0 0 0 18 4.63l-1 1.06a.75.75 0 0 0 .5 1.31zm-12.06 9.69a.75.75 0 0 0-1.06 1.06l1.06 1.06a.75.75 0 0 0 1.06-1.06z"/></svg></span>
+      <span class="sidebar-nav-text">Backyard &amp; Outdoor</span>
+      <span class="sidebar-nav-progress" id="nav-outdoor-count">0/4</span>
+    </a>
+  </nav>
+
+  <!-- CONTENT -->
+  <main id="content" role="main">
+
+    <!-- WHY IT MATTERS — BENTO -->
+    <section id="why-matters" aria-labelledby="why-heading">
+      <p class="section-eyebrow">Before you begin</p>
+      <h2 class="why-h2" id="why-heading">Less is more.<br>Way less is way more.</h2>
+      <div class="bento-grid" role="list">
+
+        <!-- Large image tile — left column, full height -->
+        <div class="bento-hero" role="listitem">
+          <svg width="100%" height="100%" viewBox="0 0 420 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="bw1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8e4de"/><stop offset="100%" stop-color="#d5cfc6"/></linearGradient>
+              <linearGradient id="bfloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c9ab85"/><stop offset="100%" stop-color="#b09268"/></linearGradient>
+              <linearGradient id="beam2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff8ee" stop-opacity="0.55"/><stop offset="100%" stop-color="#fff8ee" stop-opacity="0"/></linearGradient>
+            </defs>
+            <rect width="420" height="300" fill="url(#bw1)"/>
+            <rect y="300" width="420" height="120" fill="url(#bfloor)"/>
+            <rect y="298" width="420" height="4" fill="rgba(0,0,0,0.1)"/>
+            <!-- window left -->
+            <rect x="30" y="30" width="110" height="200" rx="2" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+            <line x1="85" y1="30" x2="85" y2="230" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <line x1="30" y1="130" x2="140" y2="130" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <polygon points="30,30 140,30 180,300 -10,300" fill="url(#beam2)"/>
+            <!-- window right -->
+            <rect x="300" y="30" width="100" height="200" rx="2" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+            <line x1="350" y1="30" x2="350" y2="230" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <line x1="300" y1="130" x2="400" y2="130" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <!-- counter -->
+            <rect x="0" y="270" width="420" height="38" fill="#ddd5c8"/>
+            <rect x="0" y="268" width="420" height="5" fill="rgba(0,0,0,0.07)"/>
+            <!-- clean countertop — completely bare -->
+            <rect x="10" y="248" width="80" height="22" rx="3" fill="rgba(255,255,255,0.18)"/>
+            <!-- red accent line -->
+            <rect x="0" y="420" width="420" height="3" fill="#C8102E"/>
+            <!-- vignette -->
+            <rect width="420" height="420" fill="rgba(0,0,0,0.22)"/>
+          </svg>
+          <div class="bento-hero-overlay"></div>
+          <div class="bento-hero-text">
+            <p class="bento-hero-eyebrow">The strategy</p>
+            <h3>Staging vs. Photography</h3>
+            <p>There's a 90% overlap between staging and photography prep. The other 10% is where photography requires a completely different approach.</p>
+          </div>
+        </div>
+
+        <!-- Dark info card — top right -->
+        <div class="bento-card-dark" role="listitem">
+          <div class="bento-card-icon" aria-hidden="true"><svg viewBox="-4 0 19 19" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M10.328 6.83a5.903 5.903 0 0 1-1.439 3.64 2.874 2.874 0 0 0-.584 1v1.037a.95.95 0 0 1-.95.95h-3.71a.95.95 0 0 1-.95-.95V11.47a2.876 2.876 0 0 0-.584-1A5.903 5.903 0 0 1 .67 6.83a4.83 4.83 0 0 1 9.28-1.878 4.796 4.796 0 0 1 .38 1.88zm-.95 0a3.878 3.878 0 0 0-7.756 0c0 2.363 2.023 3.409 2.023 4.64v1.037h3.71V11.47c0-1.231 2.023-2.277 2.023-4.64zM7.83 14.572a.475.475 0 0 1-.475.476h-3.71a.475.475 0 0 1 0-.95h3.71a.475.475 0 0 1 .475.474zm-.64 1.262a.238.238 0 0 1-.078.265 2.669 2.669 0 0 1-3.274 0 .237.237 0 0 1 .145-.425h2.983a.238.238 0 0 1 .225.16z"/></svg></div>
+          <h3>The camera sees differently</h3>
+          <p>What feels warm and inviting in person reads as clutter on camera. Decorative items that stagers love are exactly what the lens reveals as noise.</p>
+        </div>
+
+        <!-- Light stat card — bottom right -->
+        <div class="bento-card-light" role="listitem">
+          <div class="bento-stat-block">
+            <span class="bento-stat-num">~90</span>
+            <span class="bento-stat-label">Min to prep</span>
+          </div>
+          <div class="bento-stat-block">
+            <span class="bento-stat-num">19</span>
+            <span class="bento-stat-label">Checklist items</span>
+          </div>
+          <div class="bento-stat-block">
+            <span class="bento-stat-num">5</span>
+            <span class="bento-stat-label">Categories</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 1: LIGHTS -->
+    <section class="checklist-section" id="section-lights" aria-labelledby="section-lights-heading">
+      <div class="section-header">
+        <div class="section-header-left">
+          <div class="section-icon-title">
+            <div class="section-icon" aria-hidden="true"><svg viewBox="-4 0 19 19" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M10.328 6.83a5.903 5.903 0 0 1-1.439 3.64 2.874 2.874 0 0 0-.584 1v1.037a.95.95 0 0 1-.95.95h-3.71a.95.95 0 0 1-.95-.95V11.47a2.876 2.876 0 0 0-.584-1A5.903 5.903 0 0 1 .67 6.83a4.83 4.83 0 0 1 9.28-1.878 4.796 4.796 0 0 1 .38 1.88zm-.95 0a3.878 3.878 0 0 0-7.756 0c0 2.363 2.023 3.409 2.023 4.64v1.037h3.71V11.47c0-1.231 2.023-2.277 2.023-4.64zM7.83 14.572a.475.475 0 0 1-.475.476h-3.71a.475.475 0 0 1 0-.95h3.71a.475.475 0 0 1 .475.474zm-.64 1.262a.238.238 0 0 1-.078.265 2.669 2.669 0 0 1-3.274 0 .237.237 0 0 1 .145-.425h2.983a.238.238 0 0 1 .225.16z"/></svg></div>
+            <h2 class="section-h2" id="section-lights-heading">Lights, Bulbs &amp; Screens</h2>
+          </div>
+          <p class="section-desc">The camera reveals every lighting mistake. Get these right first — they affect every shot in the house.</p>
+        </div>
+        <span class="section-badge" id="badge-lights">0 of 4 done</span>
+      </div>
+
+      <div class="checklist-item" data-section="lights">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-1" data-id="item-1" aria-describedby="desc-1">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-1">Turn on every light in the house</label>
+          <p class="item-desc" id="desc-1">Every overhead, every lamp, every under-cabinet light. Mixed natural and artificial light warms interiors on camera — don't skip small lamps.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="lights">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-2" data-id="item-2" aria-describedby="desc-2">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-2">Raise or open all blinds and shutters</label>
+          <p class="item-desc" id="desc-2">Let natural light flood in. Only keep blinds closed if there's something distracting or unflattering outside the window.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="lights">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-3" data-id="item-3" aria-describedby="desc-3">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-3">Replace mismatched or broken bulbs</label>
+          <p class="item-desc" id="desc-3">A mix of cool-blue and warm-yellow bulbs in the same room is visible on camera even when your eye ignores it. Consistency matters.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="lights">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-4" data-id="item-4" aria-describedby="desc-4">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-4">Turn off all TVs, screens, and projectors</label>
+          <p class="item-desc" id="desc-4">Black screens photograph far better than a frozen mid-frame. Same applies to computer monitors and any projector displays.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: DE-CLUTTER -->
+    <section class="checklist-section" id="section-clutter" aria-labelledby="section-clutter-heading">
+      <div class="section-header">
+        <div class="section-header-left">
+          <div class="section-icon-title">
+            <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 57.042 57.042" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M49.48 55.758l-8.571-29a1 1 0 0 0-.43-.554c-.433-6.226-5.623-11.162-11.958-11.162s-11.524 4.936-11.958 11.162a1 1 0 0 0-.43.554l-8.571 29a1 1 0 0 0 .959 1.283h40a1 1 0 0 0 .959-1.283zM28.521 17.042c5.177 0 9.447 3.954 9.95 9h-19.9c.502-5.046 4.773-9 9.95-9zm11.926 38H16.6l3.894-16.774a1 1 0 0 0-1.947-.452L14.548 55.042H9.859l7.981-27h21.363l7.98 27h-4.636l-4-17.226a1 1 0 0 0-1.947.452z"/><rect x="27.521" width="2" height="14.042"/></svg></div>
+            <h2 class="section-h2" id="section-clutter-heading">De-clutter Personal Items</h2>
+          </div>
+          <p class="section-desc">Anything on a flat surface that isn't part of the house should disappear. Start with the kitchen — it's the highest-impact room.</p>
+        </div>
+        <span class="section-badge" id="badge-clutter">0 of 4 done</span>
+      </div>
+
+      <div class="checklist-item" data-section="clutter">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-5" data-id="item-5" aria-describedby="desc-5">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-5">Clear all kitchen countertops and islands</label>
+          <p class="item-desc" id="desc-5">Appliances, utensils, towels, trash cans, dog bowls, fridge magnets — all of it. Bare counters read as spacious and clean on camera.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="clutter">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-6" data-id="item-6" aria-describedby="desc-6">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-6">Remove personal items from all surfaces</label>
+          <p class="item-desc" id="desc-6">Photo frames, faux plants, clocks, and small decor from tables, mantles, dressers, and desks. Buyers want to picture their own life here.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="clutter">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-7" data-id="item-7" aria-describedby="desc-7">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-7">Clear all bathroom counters, tubs, and showers</label>
+          <p class="item-desc" id="desc-7">Toiletries, appliances, tissue boxes, soap dispensers — completely clear. The master bathroom carries as much weight as the kitchen.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="clutter">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-8" data-id="item-8" aria-describedby="desc-8">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-8">Remove throw rugs, bath mats, and doormats</label>
+          <p class="item-desc" id="desc-8">Small rugs break up the visual continuity of flooring. Rooms read larger and more cohesive without them interrupting the sightlines.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: MOTION -->
+    <section class="checklist-section" id="section-motion" aria-labelledby="section-motion-heading">
+      <div class="section-header">
+        <div class="section-header-left">
+          <div class="section-icon-title">
+            <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" aria-hidden="true"><path d="M3.5 39.773L24.052 4.21 44.5 39.79z"/><circle cx="24.06" cy="33.073" r="1.5"/><path d="M24.058 14.677v13.26"/></svg></div>
+            <h2 class="section-h2" id="section-motion-heading">Stop the Motion</h2>
+          </div>
+          <p class="section-desc">Anything that moves causes blur or distraction. Two quick items handle most of it — don't overlook either.</p>
+        </div>
+        <span class="section-badge" id="badge-motion">0 of 2 done</span>
+      </div>
+
+      <div class="checklist-item" data-section="motion">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-9" data-id="item-9" aria-describedby="desc-9">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-9">Send pets away for the duration of the shoot</label>
+          <p class="item-desc" id="desc-9">As cute as they are — garage, kennel, or offsite. Wagging tails and moving bodies blur the frame and require retakes.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="motion">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-10" data-id="item-10" aria-describedby="desc-10">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-10">Turn off all ceiling fans now</label>
+          <p class="item-desc" id="desc-10">Some fans take 5 minutes to fully stop spinning. Turn them off well before the photographer arrives so blades are completely still.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: CURB APPEAL -->
+    <section class="checklist-section" id="section-curb" aria-labelledby="section-curb-heading">
+      <div class="section-header">
+        <div class="section-header-left">
+          <div class="section-icon-title">
+            <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M41.733 160.134v-59.2H21.999L96 31.865l74 69.067h-19.733v59.201H110.8v-44.4H81.2v44.4z"/></svg></div>
+            <h2 class="section-h2" id="section-curb-heading">Curb Appeal</h2>
+          </div>
+          <p class="section-desc">The exterior is usually the first photo a buyer sees. Don't let a car, a yard sign, or a pile of leaves steal the frame from the house.</p>
+        </div>
+        <span class="section-badge" id="badge-curb">0 of 5 done</span>
+      </div>
+
+      <div class="checklist-item" data-section="curb">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-11" data-id="item-11" aria-describedby="desc-11">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-11">Move all vehicles out of sight</label>
+          <p class="item-desc" id="desc-11">Into the garage, onto a side street, or around the block. Anywhere but the driveway or directly in front of the house.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="curb">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-12" data-id="item-12" aria-describedby="desc-12">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-12">Mow, edge, and tidy the lawn and landscaping</label>
+          <p class="item-desc" id="desc-12">A fresh cut dramatically changes how the exterior reads on camera. Confirm beds look tidy and hedges are shaped.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="curb">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-13" data-id="item-13" aria-describedby="desc-13">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-13">Clear leaves, debris, and swept surfaces</label>
+          <p class="item-desc" id="desc-13">Rake the lawn, sweep patios, walkways, and driveways. Nothing ages a photo faster than a pile of leaves or scattered debris.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="curb">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-14" data-id="item-14" aria-describedby="desc-14">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-14">Remove all yard signs</label>
+          <p class="item-desc" id="desc-14">For Sale, security, school spirit, seasonal — all of them. Signs date a photo and add visual clutter the eye can't ignore.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="curb">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-15" data-id="item-15" aria-describedby="desc-15">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-15">Clean driveways and paths (power wash if possible)</label>
+          <p class="item-desc" id="desc-15">A power-washed driveway can transform an exterior shot. At minimum, sweep all paved surfaces clean of dirt and stains.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: OUTDOOR -->
+    <section class="checklist-section" id="section-outdoor" aria-labelledby="section-outdoor-heading">
+      <div class="section-header">
+        <div class="section-header-left">
+          <div class="section-icon-title">
+            <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 17.75A5.75 5.75 0 1 0 12 6.25a5.75 5.75 0 0 0 0 11.5zm0-10a4.25 4.25 0 1 1 0 8.5 4.25 4.25 0 0 1 0-8.5zM12 5a.75.75 0 0 0 .75-.75v-1.5a.75.75 0 0 0-1.5 0v1.5A.75.75 0 0 0 12 5zm0 14a.75.75 0 0 0-.75.75v1.5a.75.75 0 0 0 1.5 0v-1.5A.75.75 0 0 0 12 19zm7.25-7.75a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5zm-15.5 0a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5zM6.5 7.25A.75.75 0 0 0 7 7L6 6a.75.75 0 0 0-1.06 1.06L6 8a.75.75 0 0 0 .5.25zm12.06 9.69L17.5 16a.75.75 0 0 0-1.06 1.06l1.06 1.06a.75.75 0 1 0 1.06-1.06zM17.5 7a.75.75 0 0 0 .56-.25l1-1.06A.75.75 0 0 0 18 4.63l-1 1.06a.75.75 0 0 0 .5 1.31zm-12.06 9.69a.75.75 0 0 0-1.06 1.06l1.06 1.06a.75.75 0 0 0 1.06-1.06z"/></svg></div>
+            <h2 class="section-h2" id="section-outdoor-heading">Backyard &amp; Outdoor</h2>
+          </div>
+          <p class="section-desc">The backyard is where buyers imagine their next weekend. Stage it like you're about to entertain — open, clean, aspirational.</p>
+        </div>
+        <span class="section-badge" id="badge-outdoor">0 of 4 done</span>
+      </div>
+
+      <div class="checklist-item" data-section="outdoor">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-16" data-id="item-16" aria-describedby="desc-16">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-16">Clean the pool and remove all toys and equipment</label>
+          <p class="item-desc" id="desc-16">Vacuum, skim, and pull every float, toy, and cleaning pole off the water. A clean, still pool is a calm and aspirational shot.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="outdoor">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-17" data-id="item-17" aria-describedby="desc-17">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-17">Arrange outdoor furniture and open patio umbrellas</label>
+          <p class="item-desc" id="desc-17">Stage it how you'd want it photographed. Open umbrellas read as usable and inviting. Arrange chairs to create a natural gathering feel.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="outdoor">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-18" data-id="item-18" aria-describedby="desc-18">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-18">Put away hoses, cleaning supplies, and recycle bins</label>
+          <p class="item-desc" id="desc-18">Garden hoses, brooms, chemical bottles, trash and recycle bins — all out of frame. If you'd put it away for a dinner party, put it away for this.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="outdoor">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-19" data-id="item-19" aria-describedby="desc-19">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-19">Remove or minimize window screens and pool screens</label>
+          <p class="item-desc" id="desc-19">Screens reduce light transmission and can distort window frames in photos. Remove or minimize where possible without compromising the shoot setup.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK SUMMARY -->
+    <aside id="quick-summary" aria-labelledby="summary-heading">
+      <p class="summary-eyebrow">Quick reminder</p>
+      <h2 class="summary-title" id="summary-heading">Treat it like<br>the in-laws are coming.</h2>
+      <ul class="summary-list">
+        <li>Don't just tidy up — thoroughly clean</li>
+        <li>Hide items in places that won't be photographed</li>
+        <li>Less = more. Way less = way more</li>
+        <li>Kitchen and master bath are the top priority</li>
+        <li>Closets, cabinets, drawers — use them</li>
+        <li>Review images with your photographer on-site</li>
+      </ul>
+    </aside>
+
+    <!-- COMPLETION BANNER -->
+    <div id="completion-banner" role="status" aria-live="polite">
+      <div class="completion-icon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h2 class="completion-title">You're <em>camera&#8209;ready.</em></h2>
+      <p class="completion-sub">All 19 items complete. Your home is set up for the best possible listing photos.<br>Your photographer is on their way — see you at the shoot.</p>
+      <a href="https://shoot2sell.vercel.app/book" class="completion-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book Your Next Shoot
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  (function() {
+    const TOTAL = 19;
+    const STORAGE_KEY = 's2s_checklist_v2';
+    const STORAGE_DATE_KEY = 's2s_checklist_date_v2';
+    const TTL_DAYS = 7;
+
+    const sectionMap = {
+      lights: { total: 4, badgeId: 'badge-lights', navId: 'nav-lights', countId: 'nav-lights-count' },
+      clutter: { total: 4, badgeId: 'badge-clutter', navId: 'nav-clutter', countId: 'nav-clutter-count' },
+      motion: { total: 2, badgeId: 'badge-motion', navId: 'nav-motion', countId: 'nav-motion-count' },
+      curb: { total: 5, badgeId: 'badge-curb', navId: 'nav-curb', countId: 'nav-curb-count' },
+      outdoor: { total: 4, badgeId: 'badge-outdoor', navId: 'nav-outdoor', countId: 'nav-outdoor-count' }
+    };
+
+    // Load state from localStorage
+    function loadState() {
+      try {
+        const dateStr = localStorage.getItem(STORAGE_DATE_KEY);
+        if (dateStr) {
+          const saved = new Date(dateStr);
+          const now = new Date();
+          const diff = (now - saved) / (1000 * 60 * 60 * 24);
+          if (diff > TTL_DAYS) {
+            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem(STORAGE_DATE_KEY);
+            return {};
+          }
+        }
+        const data = localStorage.getItem(STORAGE_KEY);
+        return data ? JSON.parse(data) : {};
+      } catch(e) { return {}; }
+    }
+
+    function saveState(state) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        if (!localStorage.getItem(STORAGE_DATE_KEY)) {
+          localStorage.setItem(STORAGE_DATE_KEY, new Date().toISOString());
+        }
+      } catch(e) {}
+    }
+
+    function clearState() {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem(STORAGE_DATE_KEY);
+      } catch(e) {}
+    }
+
+    let state = loadState();
+    let prevCompleted = false;
+
+    // Apply saved state to checkboxes
+    document.querySelectorAll('.item-checkbox').forEach(cb => {
+      if (state[cb.dataset.id]) {
+        cb.checked = true;
+        cb.closest('.checklist-item').classList.add('is-checked');
+      }
+    });
+
+    updateAll(false);
+
+    // Checkbox change handler
+    document.querySelectorAll('.item-checkbox').forEach(cb => {
+      cb.addEventListener('change', function() {
+        const item = this.closest('.checklist-item');
+        if (this.checked) {
+          item.classList.add('is-checked', 'just-checked');
+          setTimeout(() => item.classList.remove('just-checked'), 350);
+          state[this.dataset.id] = true;
+        } else {
+          item.classList.remove('is-checked');
+          delete state[this.dataset.id];
+        }
+        saveState(state);
+        updateAll(true);
+      });
+    });
+
+    // Reset button
+    document.getElementById('reset-btn').addEventListener('click', function() {
+      if (confirm('Reset all checklist items? Your progress will be cleared.')) {
+        clearState();
+        state = {};
+        document.querySelectorAll('.item-checkbox').forEach(cb => {
+          cb.checked = false;
+          cb.closest('.checklist-item').classList.remove('is-checked');
+        });
+        prevCompleted = false;
+        updateAll(false);
+        document.getElementById('completion-banner').classList.remove('visible');
+      }
+    });
+
+    // Scroll effect on rail
+    window.addEventListener('scroll', function() {
+      document.getElementById('progress-rail').classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    function updateAll(animate) {
+      const checkboxes = document.querySelectorAll('.item-checkbox');
+      let totalChecked = 0;
+      checkboxes.forEach(cb => { if (cb.checked) totalChecked++; });
+
+      const pct = Math.round((totalChecked / TOTAL) * 100);
+
+      // Rail bar
+      document.getElementById('rail-bar-fill').style.width = pct + '%';
+      document.getElementById('rail-count').textContent = totalChecked + ' of ' + TOTAL;
+
+      // Sidebar circle
+      const circumference = 251.2;
+      const offset = circumference - (pct / 100) * circumference;
+      document.getElementById('sidebar-circle-fill').style.strokeDashoffset = offset;
+      document.querySelector('#sidebar-circle-wrap').setAttribute('aria-valuenow', pct);
+      document.getElementById('sidebar-pct').textContent = pct + '%';
+
+      // Mobile progress ring (r=10, circumference=62.8)
+      const mobileRingEl = document.getElementById('mobile-ring-fill');
+      const mobilePctEl = document.getElementById('mobile-ring-pct');
+      if (mobileRingEl) {
+        const mobileOffset = 62.8 - (pct / 100) * 62.8;
+        mobileRingEl.style.strokeDashoffset = mobileOffset;
+      }
+      if (mobilePctEl) {
+        mobilePctEl.textContent = pct + '%';
+      }
+
+      const readyLabel = document.getElementById('sidebar-ready-label');
+      if (totalChecked === TOTAL) {
+        readyLabel.textContent = '✔ Camera-ready!';
+        readyLabel.style.color = 'var(--red)';
+        readyLabel.style.fontWeight = '600';
+      } else {
+        readyLabel.textContent = (TOTAL - totalChecked) + ' item' + (TOTAL - totalChecked !== 1 ? 's' : '') + ' remaining';
+        readyLabel.style.color = '';
+        readyLabel.style.fontWeight = '';
+      }
+
+      // Per-section counts
+      Object.entries(sectionMap).forEach(([section, cfg]) => {
+        const items = document.querySelectorAll('[data-section="' + section + '"] .item-checkbox');
+        let count = 0;
+        items.forEach(cb => { if (cb.checked) count++; });
+        const badge = document.getElementById(cfg.badgeId);
+        const navCount = document.getElementById(cfg.countId);
+        const navItem = document.getElementById(cfg.navId);
+
+        badge.textContent = count + ' of ' + cfg.total + ' done';
+        navCount.textContent = count + '/' + cfg.total;
+
+        const complete = count === cfg.total;
+        badge.classList.toggle('complete', complete);
+        navItem.classList.toggle('section-complete', complete);
+
+        if (complete) {
+          navCount.textContent = '✓';
+        }
+      });
+
+      // Completion banner
+      const banner = document.getElementById('completion-banner');
+      if (totalChecked === TOTAL && !prevCompleted) {
+        banner.classList.add('visible');
+        banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        if (animate) launchConfetti();
+        prevCompleted = true;
+      } else if (totalChecked < TOTAL) {
+        banner.classList.remove('visible');
+        prevCompleted = false;
+      }
+    }
+
+    function launchConfetti() {
+      const colors = ['#C8102E', '#0D0D0D', '#9A9A9A', '#D4D4D4', '#F7F6F4'];
+      for (let i = 0; i < 60; i++) {
+        setTimeout(() => {
+          const el = document.createElement('div');
+          el.className = 'confetti-piece';
+          el.style.left = Math.random() * 100 + 'vw';
+          el.style.background = colors[Math.floor(Math.random() * colors.length)];
+          el.style.width = (Math.random() * 8 + 4) + 'px';
+          el.style.height = (Math.random() * 8 + 4) + 'px';
+          el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+          el.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+          el.style.animationDelay = (Math.random() * 0.5) + 's';
+          document.body.appendChild(el);
+          el.addEventListener('animationend', () => el.remove());
+        }, i * 30);
+      }
+    }
+
+    // Active section highlight in sidebar on scroll
+    const sections = document.querySelectorAll('.checklist-section');
+    const navItems = document.querySelectorAll('.sidebar-nav-item');
+
+    // Mobile tab active state — sync with scroll
+    function setMobileTab(activeHref) {
+      document.querySelectorAll('.mobile-nav-tab').forEach(t => {
+        if (t.tagName === 'A') {
+          t.classList.toggle('tab-active', t.getAttribute('href') === activeHref);
+        }
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navItems.forEach(ni => {
+            ni.classList.toggle('active', ni.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+
+  })();
+</script>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav id="mobile-bottom-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav-inner">
+    <a class="mobile-nav-tab" href="#why-matters" aria-label="Before you begin">
+      <span class="mobile-nav-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z"/><line x1="9" y1="21" x2="15" y2="21"/></svg>
+      </span>
+      <span class="mobile-nav-label">Prep</span>
+    </a>
+    <a class="mobile-nav-tab tab-active" href="#section-lights" aria-label="Go to checklist">
+      <span class="mobile-nav-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="9" y="3" width="13" height="2" rx="1"/><rect x="9" y="11" width="13" height="2" rx="1"/><rect x="9" y="19" width="13" height="2" rx="1"/><polyline points="4 3 5 4 7 2"/><polyline points="4 11 5 12 7 10"/><polyline points="4 19 5 20 7 18"/></svg>
+      </span>
+      <span class="mobile-nav-label">Checklist</span>
+    </a>
+    <button class="mobile-nav-tab" id="mob-tab-progress" aria-label="View progress" onclick="document.getElementById('sidebar').scrollIntoView({behavior:'smooth'})">
+      <span class="mobile-nav-icon">
+        <div class="mobile-progress-ring" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <circle class="mobile-ring-track" cx="12" cy="12" r="10"/>
+            <circle id="mobile-ring-fill" cx="12" cy="12" r="10"/>
+          </svg>
+          <span class="mobile-ring-pct" id="mobile-ring-pct">0%</span>
+        </div>
+      </span>
+      <span class="mobile-nav-label">Progress</span>
+    </button>
+    <a class="mobile-nav-tab" href="https://shoot2sell.vercel.app/book" aria-label="Book a shoot">
+      <span class="mobile-nav-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </span>
+      <span class="mobile-nav-label">Book</span>
+    </a>
+  </div>
+</nav>
+
+</body>
+</html>
