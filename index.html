@@ -41,102 +41,8 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ─── PROGRESS RAIL ─────────────────────────────────────────── */
-  #progress-rail {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: var(--white);
-    border-bottom: 1px solid var(--pearl);
-    padding: 0 32px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    box-shadow: 0 1px 12px rgba(0,0,0,0.06);
-    transition: box-shadow var(--transition);
-  }
-
-  #progress-rail.scrolled {
-    box-shadow: 0 2px 24px rgba(0,0,0,0.1);
-  }
-
-  .rail-logo {
-    font-family: var(--font-display);
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--black);
-    letter-spacing: -0.02em;
-    text-decoration: none;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .rail-logo span {
-    color: var(--red);
-  }
-
-  .rail-progress-wrap {
-    flex: 1;
-    max-width: 480px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .rail-bar-track {
-    flex: 1;
-    height: 3px;
-    background: var(--pearl);
-    border-radius: 100px;
-    overflow: hidden;
-  }
-
-  #rail-bar-fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, var(--red-dark), var(--red));
-    border-radius: 100px;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  #rail-count {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--ash);
-    white-space: nowrap;
-    letter-spacing: 0.02em;
-    min-width: 72px;
-    text-align: right;
-  }
-
-  .rail-book-btn {
-    background: var(--red);
-    color: var(--white);
-    font-family: var(--font-body);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 8px 20px;
-    border: none;
-    border-radius: var(--radius);
-    cursor: pointer;
-    text-decoration: none;
-    white-space: nowrap;
-    flex-shrink: 0;
-    transition: background var(--transition), transform var(--transition);
-  }
-
-  .rail-book-btn:hover {
-    background: var(--red-dark);
-    transform: translateY(-1px);
-  }
-
   /* ─── HERO ──────────────────────────────────────────────────── */
   #hero {
-    padding-top: 56px;
     background: var(--white);
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -189,7 +95,7 @@
 
   .hero-sub {
     font-size: 15px;
-    color: var(--ash);
+    color: var(--ink);
     max-width: 380px;
     line-height: 1.7;
     margin-bottom: 36px;
@@ -258,7 +164,7 @@
     font-family: var(--font-display);
     font-style: italic;
     font-size: 15px;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.85);
     text-align: right;
     line-height: 1.5;
   }
@@ -281,7 +187,7 @@
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--silver);
+    color: var(--ash);
   }
 
   .download-links {
@@ -346,8 +252,8 @@
   /* ─── SIDEBAR ───────────────────────────────────────────────── */
   #sidebar {
     position: sticky;
-    top: 56px;
-    height: calc(100vh - 56px);
+    top: 0;
+    height: 100vh;
     overflow-y: auto;
     border-right: 1px solid var(--pearl);
     padding: 48px 40px 48px 64px;
@@ -410,7 +316,7 @@
   }
 
   .sidebar-nav-item.section-complete .sidebar-nav-icon {
-    background: #E8F5E9;
+    background: var(--off-white);
   }
 
   .sidebar-nav-text {
@@ -429,7 +335,7 @@
   }
 
   .sidebar-nav-item.section-complete .sidebar-nav-progress {
-    color: #4CAF50;
+    color: var(--red);
   }
 
   /* Overall progress circle in sidebar */
@@ -496,7 +402,7 @@
   .sidebar-ready-label {
     font-size: 12px;
     font-weight: 500;
-    color: var(--ash);
+    color: var(--ink);
     text-align: center;
   }
 
@@ -587,7 +493,7 @@
 
   .bento-hero p {
     font-size: 13px;
-    color: rgba(255,255,255,0.65);
+    color: rgba(255,255,255,0.85);
     line-height: 1.55;
     max-width: 280px;
   }
@@ -647,7 +553,7 @@
 
   .bento-card-dark p {
     font-size: 12px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.75);
     line-height: 1.55;
   }
 
@@ -781,7 +687,7 @@
 
   .section-desc {
     font-size: 14px;
-    color: var(--ash);
+    color: var(--ink);
     margin-top: 4px;
     line-height: 1.6;
     max-width: 560px;
@@ -792,7 +698,7 @@
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.04em;
-    color: var(--silver);
+    color: var(--ink);
     background: var(--off-white);
     border: 1px solid var(--pearl);
     padding: 5px 12px;
@@ -804,9 +710,9 @@
   }
 
   .section-badge.complete {
-    background: #E8F5E9;
-    color: #2E7D32;
-    border-color: #A5D6A7;
+    background: var(--off-white);
+    color: var(--red);
+    border-color: var(--smoke);
   }
 
   /* ─── CHECKLIST ITEM ────────────────────────────────────────── */
@@ -891,7 +797,7 @@
 
   .item-desc {
     font-size: 13px;
-    color: var(--ash);
+    color: var(--ink);
     line-height: 1.6;
     transition: color var(--transition);
   }
@@ -968,7 +874,7 @@
 
   .summary-list li {
     font-size: 13px;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.85);
     display: flex;
     align-items: baseline;
     gap: 8px;
@@ -1046,7 +952,7 @@
 
   .completion-sub {
     font-size: 14px;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.75);
     margin-bottom: 28px;
     line-height: 1.6;
   }
@@ -1261,12 +1167,10 @@
     .bento-hero { grid-column: 1; grid-row: 1; min-height: 260px; }
     .bento-card-dark { grid-column: 1; grid-row: 2; }
     .bento-card-light { grid-column: 1; grid-row: 3; }
-    #progress-rail { padding: 0 20px; }
-    .rail-progress-wrap { max-width: 160px; }
   }
 
   @media (max-width: 560px) {
-    #hero { padding-top: 56px; }
+
     .hero-content { padding: 36px 20px 32px; }
     #download-bar { padding: 14px 20px; flex-direction: column; align-items: flex-start; }
     #content { padding: 0 20px 64px; }
@@ -1277,7 +1181,7 @@
 
   /* Print styles */
   @media print {
-    #progress-rail, #download-bar .reset-btn { display: none; }
+    #download-bar .reset-btn { display: none; }
     #sidebar { display: none; }
     #main-layout { grid-template-columns: 1fr; }
     body { font-size: 12pt; }
@@ -1287,17 +1191,7 @@
 </head>
 <body>
 
-<!-- PROGRESS RAIL -->
-<header id="progress-rail" role="banner">
-  <a href="https://shoot2sell.com" class="rail-logo">shoot<span>2</span>sell</a>
-  <div class="rail-progress-wrap">
-    <div class="rail-bar-track">
-      <div id="rail-bar-fill"></div>
-    </div>
-    <span id="rail-count">0 of 19</span>
-  </div>
-  <a href="https://shoot2sell.vercel.app/book" class="rail-book-btn">Book a Shoot</a>
-</header>
+
 
 <!-- HERO -->
 <section id="hero" aria-labelledby="hero-heading">
@@ -1440,7 +1334,7 @@
       <span class="sidebar-nav-progress" id="nav-motion-count">0/2</span>
     </a>
     <a class="sidebar-nav-item" href="#section-curb" id="nav-curb">
-      <span class="sidebar-nav-icon"><svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M41.733 160.134v-59.2H21.999L96 31.865l74 69.067h-19.733v59.201H110.8v-44.4H81.2v44.4z"/></svg></span>
+      <span class="sidebar-nav-icon"><svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M41.733 160.134v-59.2H21.999L96 31.865l74 69.067h-19.733v59.201H110.8v-44.4H81.2v44.4z"/></svg></span>
       <span class="sidebar-nav-text">Curb Appeal</span>
       <span class="sidebar-nav-progress" id="nav-curb-count">0/5</span>
     </a>
@@ -1671,7 +1565,7 @@
       <div class="section-header">
         <div class="section-header-left">
           <div class="section-icon-title">
-            <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M41.733 160.134v-59.2H21.999L96 31.865l74 69.067h-19.733v59.201H110.8v-44.4H81.2v44.4z"/></svg></div>
+            <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M41.733 160.134v-59.2H21.999L96 31.865l74 69.067h-19.733v59.201H110.8v-44.4H81.2v44.4z"/></svg></div>
             <h2 class="section-h2" id="section-curb-heading">Curb Appeal</h2>
           </div>
           <p class="section-desc">The exterior is usually the first photo a buyer sees. Don't let a car, a yard sign, or a pile of leaves steal the frame from the house.</p>
@@ -1912,9 +1806,7 @@
     });
 
     // Scroll effect on rail
-    window.addEventListener('scroll', function() {
-      document.getElementById('progress-rail').classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
+
 
     function updateAll(animate) {
       const checkboxes = document.querySelectorAll('.item-checkbox');
@@ -1923,9 +1815,7 @@
 
       const pct = Math.round((totalChecked / TOTAL) * 100);
 
-      // Rail bar
-      document.getElementById('rail-bar-fill').style.width = pct + '%';
-      document.getElementById('rail-count').textContent = totalChecked + ' of ' + TOTAL;
+
 
       // Sidebar circle
       const circumference = 251.2;
