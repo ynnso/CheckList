@@ -36,9 +36,8 @@
     font-family: var(--font-body);
     background: var(--white);
     color: #000000;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
   }
 
   /* ─── HERO ──────────────────────────────────────────────────── */
@@ -59,9 +58,9 @@
 
   .hero-eyebrow {
     font-family: var(--font-body);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--red);
     margin-bottom: 20px;
@@ -80,8 +79,8 @@
 
   .hero-h1 {
     font-family: var(--font-display);
-    font-size: clamp(42px, 5vw, 64px);
-    font-weight: 500;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 700;
     line-height: 1.08;
     letter-spacing: -0.025em;
     color: #000000;
@@ -89,7 +88,8 @@
   }
 
   .hero-h1 em {
-    font-style: italic;
+    font-style: normal;
+    font-weight: 700;
     color: var(--red);
   }
 
@@ -162,8 +162,8 @@
     bottom: 32px;
     right: 32px;
     font-family: var(--font-display);
-    font-style: italic;
-    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
     color: rgba(255,255,255,0.85);
     text-align: right;
     line-height: 1.5;
@@ -628,8 +628,8 @@
 
   .bento-hero h3 {
     font-family: var(--font-display);
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 600;
     color: var(--white);
     line-height: 1.2;
     letter-spacing: -0.01em;
@@ -688,8 +688,8 @@
 
   .bento-card-dark h3 {
     font-family: var(--font-display);
-    font-size: 19px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 600;
     color: var(--white);
     line-height: 1.2;
     margin-bottom: 6px;
@@ -746,9 +746,9 @@
   }
 
   .section-eyebrow {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--red);
     display: flex;
@@ -767,8 +767,8 @@
 
   .why-h2 {
     font-family: var(--font-display);
-    font-size: 32px;
-    font-weight: 500;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 600;
     color: #000000;
     line-height: 1.15;
     letter-spacing: -0.02em;
@@ -786,11 +786,7 @@
   }
 
   .section-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
     margin-bottom: 32px;
-    gap: 20px;
   }
 
   .section-header-left {}
@@ -798,14 +794,15 @@
   .section-icon-title {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     margin-bottom: 8px;
+    flex-wrap: wrap;
   }
 
   .section-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
     background: #000000;
     color: var(--white);
     display: flex;
@@ -818,9 +815,9 @@
 
   .section-h2 {
     font-family: var(--font-display);
-    font-size: 28px;
-    font-weight: 500;
-    color: #000000;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 600;
+    color: #1A1A1A;
     line-height: 1.15;
     letter-spacing: -0.02em;
   }
@@ -830,8 +827,8 @@
     color: #000000;
     margin-top: 4px;
     line-height: 1.6;
-    max-width: 560px;
-    padding-left: 54px;
+    max-width: 80%;
+    padding-left: 46px;
   }
 
   .section-badge {
@@ -841,11 +838,9 @@
     color: #000000;
     background: var(--off-white);
     border: 1px solid var(--pearl);
-    padding: 5px 12px;
+    padding: 3px 10px;
     border-radius: 100px;
     white-space: nowrap;
-    flex-shrink: 0;
-    margin-top: 4px;
     transition: background var(--transition), color var(--transition), border-color var(--transition);
   }
 
@@ -979,9 +974,9 @@
   }
 
   .summary-eyebrow {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--red);
     margin-bottom: 12px;
@@ -1000,8 +995,8 @@
 
   .summary-title {
     font-family: var(--font-display);
-    font-size: 26px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 600;
     color: var(--white);
     line-height: 1.2;
     margin-bottom: 20px;
@@ -1081,7 +1076,7 @@
   .completion-title {
     font-family: var(--font-display);
     font-size: 36px;
-    font-weight: 500;
+    font-weight: 700;
     color: var(--white);
     line-height: 1.1;
     margin-bottom: 10px;
@@ -1089,7 +1084,8 @@
   }
 
   .completion-title em {
-    font-style: italic;
+    font-style: normal;
+    font-weight: 700;
     color: var(--red);
   }
 
@@ -1580,10 +1576,10 @@
           <div class="section-icon-title">
             <div class="section-icon" aria-hidden="true"><svg viewBox="-4 0 19 19" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M10.328 6.83a5.903 5.903 0 0 1-1.439 3.64 2.874 2.874 0 0 0-.584 1v1.037a.95.95 0 0 1-.95.95h-3.71a.95.95 0 0 1-.95-.95V11.47a2.876 2.876 0 0 0-.584-1A5.903 5.903 0 0 1 .67 6.83a4.83 4.83 0 0 1 9.28-1.878 4.796 4.796 0 0 1 .38 1.88zm-.95 0a3.878 3.878 0 0 0-7.756 0c0 2.363 2.023 3.409 2.023 4.64v1.037h3.71V11.47c0-1.231 2.023-2.277 2.023-4.64zM7.83 14.572a.475.475 0 0 1-.475.476h-3.71a.475.475 0 0 1 0-.95h3.71a.475.475 0 0 1 .475.474zm-.64 1.262a.238.238 0 0 1-.078.265 2.669 2.669 0 0 1-3.274 0 .237.237 0 0 1 .145-.425h2.983a.238.238 0 0 1 .225.16z"/></svg></div>
             <h2 class="section-h2" id="section-lights-heading">Light &amp; Visibility</h2>
+            <span class="section-badge" id="badge-lights">0 of 5 done</span>
           </div>
           <p class="section-desc">Light is the first thing buyers feel — before they read a single word.</p>
         </div>
-        <span class="section-badge" id="badge-lights">0 of 5 done</span>
       </div>
 
       <div class="checklist-item" data-section="lights">
@@ -1644,10 +1640,10 @@
           <div class="section-icon-title">
             <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 57.042 57.042" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M49.48 55.758l-8.571-29a1 1 0 0 0-.43-.554c-.433-6.226-5.623-11.162-11.958-11.162s-11.524 4.936-11.958 11.162a1 1 0 0 0-.43.554l-8.571 29a1 1 0 0 0 .959 1.283h40a1 1 0 0 0 .959-1.283zM28.521 17.042c5.177 0 9.447 3.954 9.95 9h-19.9c.502-5.046 4.773-9 9.95-9zm11.926 38H16.6l3.894-16.774a1 1 0 0 0-1.947-.452L14.548 55.042H9.859l7.981-27h21.363l7.98 27h-4.636l-4-17.226a1 1 0 0 0-1.947.452z"/><rect x="27.521" width="2" height="14.042"/></svg></div>
             <h2 class="section-h2" id="section-clutter-heading">Clear the Space</h2>
+            <span class="section-badge" id="badge-clutter">0 of 5 done</span>
           </div>
           <p class="section-desc">Buyers are purchasing your square footage, not your belongings.</p>
         </div>
-        <span class="section-badge" id="badge-clutter">0 of 5 done</span>
       </div>
 
       <div class="checklist-item" data-section="clutter">
@@ -1708,10 +1704,10 @@
           <div class="section-icon-title">
             <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1H5a1 1 0 01-1-1V10.5z"/><path d="M9 22V12h6v10"/></svg></div>
             <h2 class="section-h2" id="section-curb-heading">Curb Appeal</h2>
+            <span class="section-badge" id="badge-curb">0 of 4 done</span>
           </div>
           <p class="section-desc">The exterior is the first photo every buyer sees. Make them stop scrolling.</p>
         </div>
-        <span class="section-badge" id="badge-curb">0 of 4 done</span>
       </div>
 
       <div class="checklist-item" data-section="curb">
@@ -1762,10 +1758,10 @@
           <div class="section-icon-title">
             <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 17.75A5.75 5.75 0 1 0 12 6.25a5.75 5.75 0 0 0 0 11.5zm0-10a4.25 4.25 0 1 1 0 8.5 4.25 4.25 0 0 1 0-8.5zM12 5a.75.75 0 0 0 .75-.75v-1.5a.75.75 0 0 0-1.5 0v1.5A.75.75 0 0 0 12 5zm0 14a.75.75 0 0 0-.75.75v1.5a.75.75 0 0 0 1.5 0v-1.5A.75.75 0 0 0 12 19zm7.25-7.75a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5zm-15.5 0a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5zM6.5 7.25A.75.75 0 0 0 7 7L6 6a.75.75 0 0 0-1.06 1.06L6 8a.75.75 0 0 0 .5.25zm12.06 9.69L17.5 16a.75.75 0 0 0-1.06 1.06l1.06 1.06a.75.75 0 1 0 1.06-1.06zM17.5 7a.75.75 0 0 0 .56-.25l1-1.06A.75.75 0 0 0 18 4.63l-1 1.06a.75.75 0 0 0 .5 1.31zm-12.06 9.69a.75.75 0 0 0-1.06 1.06l1.06 1.06a.75.75 0 0 0 1.06-1.06z"/></svg></div>
             <h2 class="section-h2" id="section-outdoor-heading">Outdoor &amp; Backyard</h2>
+            <span class="section-badge" id="badge-outdoor">0 of 4 done</span>
           </div>
           <p class="section-desc">Buyers are buying a lifestyle. Show them the one they want.</p>
         </div>
-        <span class="section-badge" id="badge-outdoor">0 of 4 done</span>
       </div>
 
       <div class="checklist-item" data-section="outdoor">
