@@ -50,7 +50,7 @@
   }
 
   .hero-content {
-    padding: 72px 64px 64px 64px;
+    padding: 72px 80px 64px 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -168,7 +168,7 @@
     background: var(--off-white);
     border-top: 1px solid var(--pearl);
     border-bottom: 1px solid var(--pearl);
-    padding: 16px 64px;
+    padding: 16px 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -543,7 +543,7 @@
 
   /* ─── CONTENT ───────────────────────────────────────────────── */
   #content {
-    padding: 0 64px 96px 72px;
+    padding: 0 80px 96px 88px;
   }
 
   /* ─── WHY IT MATTERS — FULL WIDTH ─────────────────────────── */
@@ -1267,23 +1267,26 @@
   }
 
   /* ─── RESPONSIVE ────────────────────────────────────────────── */
-  @media (max-width: 1100px) {
-    #main-layout {
-      grid-template-columns: 280px 1fr;
-    }
-    .hero-content { padding: 56px 40px 56px 40px; }
-    #content { padding: 0 40px 80px 48px; }
+  /* Desktop L: 1000–1200px → 64px padding, sidebar 280px */
+  @media (max-width: 1200px) {
+    #main-layout { grid-template-columns: 280px 1fr; }
+    .hero-content { padding: 56px 64px 56px 64px; }
+    #content { padding: 0 64px 80px 72px; }
     #sidebar { padding: 40px 28px 40px 40px; }
   }
 
-  @media (max-width: 800px) {
-    #main-layout { grid-template-columns: 220px 1fr; }
-    #sidebar { padding: 28px 16px 28px 20px; }
+  /* Tablet: 768–1000px → 40px padding, sidebar 240px */
+  @media (max-width: 1000px) {
+    #main-layout { grid-template-columns: 240px 1fr; }
+    #sidebar { padding: 32px 16px 32px 24px; }
     .sidebar-circle-wrap { display: none; }
-    #content { padding: 0 32px 80px 36px; }
+    #content { padding: 0 40px 80px 48px; }
+    .hero-content { padding: 48px 40px; }
+    #download-bar { padding: 14px 40px; }
   }
 
-  @media (max-width: 860px) {
+  /* Mobile L: collapse sidebar, 32px padding */
+  @media (max-width: 768px) {
     body { font-size: 15px; padding-bottom: 60px; }
     #mobile-bottom-nav { display: block; }
     #hero { grid-template-columns: 1fr; min-height: auto; }
@@ -1294,7 +1297,7 @@
     #sidebar {
       position: static; height: auto; border-right: none;
       border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 24px 20px 20px;
+      padding: 24px 32px 20px;
       flex-direction: row; flex-wrap: wrap; gap: 6px;
     }
     .sidebar-circle-wrap { display: none; }
@@ -1307,11 +1310,11 @@
     .bento-card-light { grid-column: 1; grid-row: 3; }
   }
 
+  /* Mobile S: <560px → 24px padding */
   @media (max-width: 560px) {
-
-    .hero-content { padding: 36px 20px 32px; }
-    #download-bar { padding: 14px 20px; flex-direction: column; align-items: flex-start; }
-    #content { padding: 0 20px 64px; }
+    .hero-content { padding: 36px 24px 32px; }
+    #download-bar { padding: 14px 24px; flex-direction: column; align-items: flex-start; }
+    #content { padding: 0 24px 64px; }
     .section-desc { padding-left: 0; }
     #quick-summary { padding: 28px 24px; }
     .summary-list { grid-template-columns: 1fr; }
@@ -1433,7 +1436,7 @@
 
 <!-- WHY IT MATTERS — FULL WIDTH -->
 <section id="why-matters-wrap">
-  <div style="max-width:1280px; margin:0 auto; padding:0 64px;">
+  <div style="max-width:1280px; margin:0 auto; padding:0 80px;">
 <!-- WHY IT MATTERS — BENTO -->
     <section id="why-matters" aria-labelledby="why-heading">
       <p class="section-eyebrow">Before you begin</p>
