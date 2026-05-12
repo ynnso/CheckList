@@ -31,6 +31,10 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
 
   body {
     font-family: var(--font-body);
@@ -247,7 +251,7 @@
   #sidebar {
     position: sticky;
     top: 0;
-    height: 100vh;
+    max-height: 100vh;
     overflow-y: auto;
     background: linear-gradient(175deg, #0a0002 0%, #150004 30%, #200008 65%, #0d0002 100%);
     border-right: none;
@@ -1171,6 +1175,7 @@
     bottom: 0; left: 0; right: 0;
     z-index: 200;
     height: 60px;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
     background: rgba(255,255,255,0.96);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -2088,7 +2093,6 @@
       const banner = document.getElementById('completion-banner');
       if (totalChecked === TOTAL && !prevCompleted) {
         banner.classList.add('visible');
-        banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         if (animate) launchConfetti();
         prevCompleted = true;
       } else if (totalChecked < TOTAL) {
