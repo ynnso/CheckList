@@ -478,6 +478,7 @@
     background: var(--red);
     transform: scale(1.5);
     box-shadow: 0 0 10px rgba(200,16,46,0.9);
+    transition-delay: 0.15s;
   }
 
   /* Ring pulse */
@@ -495,8 +496,8 @@
   /* Icon complete bounce */
   @keyframes iconComplete {
     0%   { transform: scale(1); }
-    35%  { transform: scale(1.2); }
-    65%  { transform: scale(0.94); }
+    35%  { transform: scale(1.08); }
+    65%  { transform: scale(0.97); }
     100% { transform: scale(1.05); }
   }
 
@@ -1334,6 +1335,36 @@
     .summary-list { grid-template-columns: 1fr; }
   }
 
+  /* ─── SECTION COMPLETE TOAST ───────────────────────────────── */
+  .s2s-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    background: #000000;
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border-left: 3px solid var(--red);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    max-width: 280px;
+    line-height: 1.4;
+  }
+
+  .s2s-toast.toast-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) { .s2s-toast { display: none; } }
+
   /* Print styles */
   @media print {
     #download-bar .reset-btn { display: none; }
@@ -1896,6 +1927,32 @@
     }
 
     let state = loadState();
+    const sectionLabels = {
+      lights: 'Light & Visibility', clutter: 'Clear the Space',
+      curb: 'Curb Appeal', outdoor: 'Outdoor & Backyard'
+    };
+    const sectionOrder = ['lights','clutter','curb','outdoor'];
+
+    let toastTimer = null;
+    function showToast(section) {
+      let el = document.getElementById('s2s-toast');
+      if (!el) {
+        el = document.createElement('div');
+        el.id = 's2s-toast';
+        el.className = 's2s-toast';
+        document.body.appendChild(el);
+      }
+      const idx = sectionOrder.indexOf(section);
+      const next = sectionOrder[idx + 1];
+      const nextLabel = next ? sectionLabels[next] : null;
+      el.textContent = '✓ ' + sectionLabels[section] + ' complete!' + (nextLabel ? ' Up next: ' + nextLabel : ' All done!');
+      clearTimeout(toastTimer);
+      el.classList.remove('toast-visible');
+      void el.offsetWidth;
+      el.classList.add('toast-visible');
+      toastTimer = setTimeout(() => el.classList.remove('toast-visible'), 3000);
+    }
+
     let prevCompleted = false;
 
     // Apply saved state to checkboxes
@@ -2008,15 +2065,18 @@
         // Milestone dot
         if (dot) dot.classList.toggle('dot-complete', complete);
 
-        // Ring pulse on new completion (animate only)
+        // Ring pulse on new completion (animate only) — staggered 300ms after icon
         if (complete && !wasComplete && animate) {
-          const circleWrap = document.getElementById('sidebar-circle-wrap');
-          if (circleWrap) {
-            circleWrap.classList.remove('ring-pulse');
-            void circleWrap.offsetWidth;
-            circleWrap.classList.add('ring-pulse');
-            setTimeout(() => circleWrap.classList.remove('ring-pulse'), 600);
-          }
+          showToast(section);
+          setTimeout(() => {
+            const circleWrap = document.getElementById('sidebar-circle-wrap');
+            if (circleWrap) {
+              circleWrap.classList.remove('ring-pulse');
+              void circleWrap.offsetWidth;
+              circleWrap.classList.add('ring-pulse');
+              setTimeout(() => circleWrap.classList.remove('ring-pulse'), 600);
+            }
+          }, 300);
         }
 
         if (complete) {
