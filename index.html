@@ -6,7 +6,7 @@
 <title>Photoshoot Checklist | Shoot2Sell Real Estate Photography</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
     --red: #C8102E;
@@ -21,8 +21,8 @@
     --pearl: #ECECEC;
     --off-white: #F7F6F4;
     --white: #FFFFFF;
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
     --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
     --radius: 4px;
     --radius-lg: 10px;
@@ -330,7 +330,7 @@
   }
 
   .sidebar-nav-item.active {
-    background: rgba(200,16,46,0.15);
+    background: none;
     border-left-color: var(--red);
     padding-left: 10px;
   }
@@ -379,7 +379,7 @@
   }
 
   .sidebar-nav-item.section-complete .sidebar-nav-text {
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,1);
   }
 
   /* Progress counts */
@@ -411,8 +411,8 @@
 
   .progress-circle {
     position: relative;
-    width: 96px;
-    height: 96px;
+    width: 72px;
+    height: 72px;
   }
 
   .progress-circle svg {
@@ -422,18 +422,18 @@
   .progress-circle-track {
     fill: none;
     stroke: rgba(255,255,255,0.08);
-    stroke-width: 5;
+    stroke-width: 4;
   }
 
   #sidebar-circle-fill {
     fill: none;
     stroke: var(--red);
-    stroke-width: 5;
+    stroke-width: 4;
     stroke-linecap: round;
-    stroke-dasharray: 282.7;
-    stroke-dashoffset: 282.7;
+    stroke-dasharray: 207.3;
+    stroke-dashoffset: 207.3;
     transition: stroke-dashoffset 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: drop-shadow(0 0 8px rgba(200,16,46,0.7));
+    filter: drop-shadow(0 0 6px rgba(200,16,46,0.7));
   }
 
   .progress-circle-text {
@@ -447,7 +447,7 @@
 
   .progress-circle-pct {
     font-family: var(--font-display);
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600;
     color: #ffffff;
     line-height: 1;
@@ -471,8 +471,8 @@
   }
 
   .milestone-dot {
-    width: 6px;
-    height: 6px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: rgba(255,255,255,0.12);
     transition: background 0.4s cubic-bezier(0.4,0,0.2,1),
@@ -482,8 +482,8 @@
 
   .milestone-dot.dot-complete {
     background: var(--red);
-    transform: scale(1.3);
-    box-shadow: 0 0 8px rgba(200,16,46,0.8);
+    transform: scale(1.5);
+    box-shadow: 0 0 10px rgba(200,16,46,0.9);
   }
 
   /* Ring pulse */
@@ -1285,6 +1285,13 @@
     #sidebar { padding: 40px 28px 40px 40px; }
   }
 
+  @media (max-width: 800px) {
+    #main-layout { grid-template-columns: 220px 1fr; }
+    #sidebar { padding: 28px 16px 28px 20px; }
+    .sidebar-circle-wrap { display: none; }
+    #content { padding: 0 32px 80px 36px; }
+  }
+
   @media (max-width: 860px) {
     body { padding-bottom: 60px; }
     #mobile-bottom-nav { display: block; }
@@ -1338,10 +1345,10 @@
   <div class="hero-content">
     <p class="hero-eyebrow">Photoshoot Checklist</p>
     <h1 class="hero-h1" id="hero-heading">Get your home<br><em>camera&#8209;ready.</em></h1>
-    <p class="hero-sub">19 items across 5 categories. Most take under 5 minutes. Complete these before your photographer arrives and your listing photos will look significantly better.</p>
+    <p class="hero-sub">18 items across 4 categories. Most take under 5 minutes. Complete these before your photographer arrives and your listing photos will look significantly better.</p>
     <div class="hero-meta">
       <div class="hero-stat">
-        <span class="hero-stat-num">19</span>
+        <span class="hero-stat-num">18</span>
         <span class="hero-stat-label">Checklist Items</span>
       </div>
       <div class="hero-stat-divider"></div>
@@ -1351,7 +1358,7 @@
       </div>
       <div class="hero-stat-divider"></div>
       <div class="hero-stat">
-        <span class="hero-stat-num">5</span>
+        <span class="hero-stat-num">4</span>
         <span class="hero-stat-label">Categories</span>
       </div>
     </div>
@@ -1494,11 +1501,11 @@
             <span class="bento-stat-label">Min to prep</span>
           </div>
           <div class="bento-stat-block">
-            <span class="bento-stat-num">19</span>
+            <span class="bento-stat-num">18</span>
             <span class="bento-stat-label">Checklist items</span>
           </div>
           <div class="bento-stat-block">
-            <span class="bento-stat-num">5</span>
+            <span class="bento-stat-num">4</span>
             <span class="bento-stat-label">Categories</span>
           </div>
         </div>
@@ -1515,50 +1522,39 @@
   <nav id="sidebar" aria-label="Checklist section navigation">
     <div class="sidebar-circle-wrap">
       <div class="progress-circle" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="sidebar-circle-wrap" aria-label="Overall checklist completion">
-        <svg width="96" height="96" viewBox="0 0 96 96">
-          <circle class="progress-circle-track" cx="48" cy="48" r="45"/>
-          <circle id="sidebar-circle-fill" cx="48" cy="48" r="45"/>
+        <svg width="72" height="72" viewBox="0 0 72 72">
+          <circle class="progress-circle-track" cx="36" cy="36" r="33"/>
+          <circle id="sidebar-circle-fill" cx="36" cy="36" r="33"/>
         </svg>
         <div class="progress-circle-text">
           <span class="progress-circle-pct" id="sidebar-pct">0%</span>
           <span class="progress-circle-label">done</span>
         </div>
       </div>
-      <p class="sidebar-ready-label" id="sidebar-ready-label">Complete all 19 items</p>
-      <div class="sidebar-milestone-dots" aria-hidden="true">
-        <div class="milestone-dot" id="dot-lights"></div>
-        <div class="milestone-dot" id="dot-clutter"></div>
-        <div class="milestone-dot" id="dot-motion"></div>
-        <div class="milestone-dot" id="dot-curb"></div>
-        <div class="milestone-dot" id="dot-outdoor"></div>
-      </div>
+      <p class="sidebar-ready-label" id="sidebar-ready-label">Complete all 18 items</p>
+
     </div>
 
     <p class="sidebar-section-label">Sections</p>
 
     <a class="sidebar-nav-item" href="#section-lights" id="nav-lights">
       <span class="sidebar-nav-icon"><svg viewBox="-4 0 19 19" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M10.328 6.83a5.903 5.903 0 0 1-1.439 3.64 2.874 2.874 0 0 0-.584 1v1.037a.95.95 0 0 1-.95.95h-3.71a.95.95 0 0 1-.95-.95V11.47a2.876 2.876 0 0 0-.584-1A5.903 5.903 0 0 1 .67 6.83a4.83 4.83 0 0 1 9.28-1.878 4.796 4.796 0 0 1 .38 1.88zm-.95 0a3.878 3.878 0 0 0-7.756 0c0 2.363 2.023 3.409 2.023 4.64v1.037h3.71V11.47c0-1.231 2.023-2.277 2.023-4.64zM7.83 14.572a.475.475 0 0 1-.475.476h-3.71a.475.475 0 0 1 0-.95h3.71a.475.475 0 0 1 .475.474zm-.64 1.262a.238.238 0 0 1-.078.265 2.669 2.669 0 0 1-3.274 0 .237.237 0 0 1 .145-.425h2.983a.238.238 0 0 1 .225.16z"/></svg></span>
-      <span class="sidebar-nav-text">Lights &amp; Screens</span>
-      <span class="sidebar-nav-progress" id="nav-lights-count">0/4</span>
+      <span class="sidebar-nav-text">Light &amp; Visibility</span>
+      <span class="sidebar-nav-progress" id="nav-lights-count">0/5</span>
     </a>
     <a class="sidebar-nav-item" href="#section-clutter" id="nav-clutter">
       <span class="sidebar-nav-icon"><svg viewBox="0 0 57.042 57.042" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M49.48 55.758l-8.571-29a1 1 0 0 0-.43-.554c-.433-6.226-5.623-11.162-11.958-11.162s-11.524 4.936-11.958 11.162a1 1 0 0 0-.43.554l-8.571 29a1 1 0 0 0 .959 1.283h40a1 1 0 0 0 .959-1.283zM28.521 17.042c5.177 0 9.447 3.954 9.95 9h-19.9c.502-5.046 4.773-9 9.95-9zm11.926 38H16.6l3.894-16.774a1 1 0 0 0-1.947-.452L14.548 55.042H9.859l7.981-27h21.363l7.98 27h-4.636l-4-17.226a1 1 0 0 0-1.947.452z"/><rect x="27.521" width="2" height="14.042"/></svg></span>
-      <span class="sidebar-nav-text">De-clutter</span>
-      <span class="sidebar-nav-progress" id="nav-clutter-count">0/4</span>
-    </a>
-    <a class="sidebar-nav-item" href="#section-motion" id="nav-motion">
-      <span class="sidebar-nav-icon"><svg viewBox="0 0 228.804 228.804" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M184.475 161.189c-2.368-3.731-19.724-30.767-34.558-45.068-12.376-11.883-30.9-12.227-33-12.227-.191.001-.383.008-.571.023h-4.491c-1.984 0-19.761.338-32.763 12.042C63.05 130.416 45.3 159.575 44.058 161.63c-9.403 14.867-15.166 24.536-15.166 35.286 0 19.371 14.193 31.888 36.158 31.888h98.711c21.959 0 36.148-12.529 36.148-31.92 0-10.845-5.777-20.5-15.205-35.353-.074-.116-.15-.231-.229-.342zm-20.714 52.615H65.05c-7.902 0-21.158-2.194-21.158-16.888 0-6.279 4.126-13.489 12.885-27.334.029-.046.058-.093.087-.14.175-.29 17.631-29.146 32.267-42.336 8.925-8.034 22.597-8.187 22.73-8.188h5.08c.143 0 .284-.004.426-.012 2.441.092 14.739.907 22.152 8.024 14.283 13.772 32.324 42.347 32.505 42.634.081.129.165.254.253.376 9.316 14.698 12.633 21.018 12.633 26.942 0 10.054-11.501 12.922-21.148 12.922zM78.198 85.731c16.929 0 30.189-18.831 30.189-42.87C108.388 18.827 95.127 0 78.198 0 61.271 0 48.011 18.827 48.011 42.861c0 24.04 13.26 42.87 30.187 42.87zm0-70.731c7.184 0 15.189 11.442 15.189 27.861 0 16.424-8.006 27.87-15.189 27.87s-15.188-11.446-15.188-27.87C63.011 26.442 71.015 15 78.198 15zM38.664 137.296c2.951 0 5.77-.607 8.413-1.82 13.162-6.12 16.827-25.327 8.34-43.731C48.832 77.493 36.65 67.918 25.101 67.918c-2.954 0-5.777.609-8.401 1.817C3.52 75.834-.157 95.045 8.332 113.481c6.585 14.244 18.774 23.814 30.33 23.815zm-16.712-30.099c-5.076-11.024-3.635-21.683 1.033-23.842.639-.294 1.33-.437 2.115-.437 4.71 0 12.162 5.298 16.697 15.113 5.076 11.008 3.635 21.668-1.011 23.828-.642.294-1.336.438-2.123.438-4.716 0-12.177-5.296-16.711-15.1zM150.591 85.731c16.923 0 30.18-18.831 30.18-42.87C180.771 18.827 167.514 0 150.591 0c-16.939 0-30.207 18.827-30.207 42.861 0 24.04 13.268 42.87 30.207 42.87zm0-70.731c7.18 0 15.18 11.442 15.18 27.861 0 16.424-8 27.87-15.18 27.87-7.192 0-15.207-11.446-15.207-27.87C135.384 26.442 143.399 15 150.591 15zM212.104 69.737c-2.617-1.212-5.447-1.827-8.411-1.827-11.532 0-23.71 9.578-30.299 23.827-8.525 18.396-4.863 37.61 8.368 43.756 2.609 1.197 5.429 1.804 8.38 1.804 11.559 0 23.745-9.572 30.324-23.822 8.496-18.423 4.821-37.636-8.362-43.738zm-5.258 37.453c-4.53 9.812-11.987 15.106-16.704 15.106-.788 0-1.482-.143-2.093-.423-4.696-2.181-6.141-12.835-1.043-23.835 4.544-9.827 11.988-15.129 16.687-15.129.781 0 1.47.143 2.107.438 4.684 2.179 6.126 12.837 1.046 23.843z"/></svg></span>
-      <span class="sidebar-nav-text">Pets &amp; Fans</span>
-      <span class="sidebar-nav-progress" id="nav-motion-count">0/2</span>
+      <span class="sidebar-nav-text">Clear the Space</span>
+      <span class="sidebar-nav-progress" id="nav-clutter-count">0/5</span>
     </a>
     <a class="sidebar-nav-item" href="#section-curb" id="nav-curb">
       <span class="sidebar-nav-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1H5a1 1 0 01-1-1V10.5z"/><path d="M9 22V12h6v10"/></svg></span>
       <span class="sidebar-nav-text">Curb Appeal</span>
-      <span class="sidebar-nav-progress" id="nav-curb-count">0/5</span>
+      <span class="sidebar-nav-progress" id="nav-curb-count">0/4</span>
     </a>
     <a class="sidebar-nav-item" href="#section-outdoor" id="nav-outdoor">
       <span class="sidebar-nav-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 17.75A5.75 5.75 0 1 0 12 6.25a5.75 5.75 0 0 0 0 11.5zm0-10a4.25 4.25 0 1 1 0 8.5 4.25 4.25 0 0 1 0-8.5zM12 5a.75.75 0 0 0 .75-.75v-1.5a.75.75 0 0 0-1.5 0v1.5A.75.75 0 0 0 12 5zm0 14a.75.75 0 0 0-.75.75v1.5a.75.75 0 0 0 1.5 0v-1.5A.75.75 0 0 0 12 19zm7.25-7.75a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5zm-15.5 0a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5zM6.5 7.25A.75.75 0 0 0 7 7L6 6a.75.75 0 0 0-1.06 1.06L6 8a.75.75 0 0 0 .5.25zm12.06 9.69L17.5 16a.75.75 0 0 0-1.06 1.06l1.06 1.06a.75.75 0 1 0 1.06-1.06zM17.5 7a.75.75 0 0 0 .56-.25l1-1.06A.75.75 0 0 0 18 4.63l-1 1.06a.75.75 0 0 0 .5 1.31zm-12.06 9.69a.75.75 0 0 0-1.06 1.06l1.06 1.06a.75.75 0 0 0 1.06-1.06z"/></svg></span>
-      <span class="sidebar-nav-text">Backyard &amp; Outdoor</span>
+      <span class="sidebar-nav-text" style="white-space:nowrap">Outdoor &amp; Backyard</span>
       <span class="sidebar-nav-progress" id="nav-outdoor-count">0/4</span>
     </a>
 
@@ -1574,17 +1570,17 @@
   <!-- CONTENT -->
   <main id="content" role="main">
 
-    <!-- SECTION 1: LIGHTS -->
+    <!-- SECTION 1: LIGHT & VISIBILITY (PDF: 5 items) -->
     <section class="checklist-section" id="section-lights" aria-labelledby="section-lights-heading">
       <div class="section-header">
         <div class="section-header-left">
           <div class="section-icon-title">
             <div class="section-icon" aria-hidden="true"><svg viewBox="-4 0 19 19" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M10.328 6.83a5.903 5.903 0 0 1-1.439 3.64 2.874 2.874 0 0 0-.584 1v1.037a.95.95 0 0 1-.95.95h-3.71a.95.95 0 0 1-.95-.95V11.47a2.876 2.876 0 0 0-.584-1A5.903 5.903 0 0 1 .67 6.83a4.83 4.83 0 0 1 9.28-1.878 4.796 4.796 0 0 1 .38 1.88zm-.95 0a3.878 3.878 0 0 0-7.756 0c0 2.363 2.023 3.409 2.023 4.64v1.037h3.71V11.47c0-1.231 2.023-2.277 2.023-4.64zM7.83 14.572a.475.475 0 0 1-.475.476h-3.71a.475.475 0 0 1 0-.95h3.71a.475.475 0 0 1 .475.474zm-.64 1.262a.238.238 0 0 1-.078.265 2.669 2.669 0 0 1-3.274 0 .237.237 0 0 1 .145-.425h2.983a.238.238 0 0 1 .225.16z"/></svg></div>
-            <h2 class="section-h2" id="section-lights-heading">Lights, Bulbs &amp; Screens</h2>
+            <h2 class="section-h2" id="section-lights-heading">Light &amp; Visibility</h2>
           </div>
-          <p class="section-desc">The camera reveals every lighting mistake. Get these right first — they affect every shot in the house.</p>
+          <p class="section-desc">Light is the first thing buyers feel — before they read a single word.</p>
         </div>
-        <span class="section-badge" id="badge-lights">0 of 4 done</span>
+        <span class="section-badge" id="badge-lights">0 of 5 done</span>
       </div>
 
       <div class="checklist-item" data-section="lights">
@@ -1592,8 +1588,8 @@
           <input type="checkbox" class="item-checkbox" id="item-1" data-id="item-1" aria-describedby="desc-1">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-1">Turn on every light in the house</label>
-          <p class="item-desc" id="desc-1">Every overhead, every lamp, every under-cabinet light. Mixed natural and artificial light warms interiors on camera — don't skip small lamps.</p>
+          <label class="item-title" for="item-1">Turn on every light — overheads, lamps, under-cabinet</label>
+          <p class="item-desc" id="desc-1">Dark rooms photograph small. Every light source matters.</p>
         </div>
       </div>
 
@@ -1602,8 +1598,8 @@
           <input type="checkbox" class="item-checkbox" id="item-2" data-id="item-2" aria-describedby="desc-2">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-2">Raise or open all blinds and shutters</label>
-          <p class="item-desc" id="desc-2">Let natural light flood in. Only keep blinds closed if there's something distracting or unflattering outside the window.</p>
+          <label class="item-title" for="item-2">Raise every blind and shutter</label>
+          <p class="item-desc" id="desc-2">Natural light is free staging. Let it in.</p>
         </div>
       </div>
 
@@ -1612,8 +1608,8 @@
           <input type="checkbox" class="item-checkbox" id="item-3" data-id="item-3" aria-describedby="desc-3">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-3">Replace mismatched or broken bulbs</label>
-          <p class="item-desc" id="desc-3">A mix of cool-blue and warm-yellow bulbs in the same room is visible on camera even when your eye ignores it. Consistency matters.</p>
+          <label class="item-title" for="item-3">Replace any mismatched bulbs</label>
+          <p class="item-desc" id="desc-3">Mixed color temps read as neglect on camera.</p>
         </div>
       </div>
 
@@ -1622,33 +1618,33 @@
           <input type="checkbox" class="item-checkbox" id="item-4" data-id="item-4" aria-describedby="desc-4">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-4">Turn off all TVs, screens, and projectors</label>
-          <p class="item-desc" id="desc-4">Black screens photograph far better than a frozen mid-frame. Same applies to computer monitors and any projector displays.</p>
+          <label class="item-title" for="item-4">Power off all screens</label>
+          <p class="item-desc" id="desc-4">A black screen disappears. A frozen one steals the frame.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item" data-section="lights">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-5" data-id="item-5" aria-describedby="desc-5">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-5">Turn off every ceiling fan</label>
+          <p class="item-desc" id="desc-5">Spinning blades blur every shot. Turn them off well before the photographer arrives.</p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: DE-CLUTTER -->
+    <!-- SECTION 2: CLEAR THE SPACE (PDF: 5 items) -->
     <section class="checklist-section" id="section-clutter" aria-labelledby="section-clutter-heading">
       <div class="section-header">
         <div class="section-header-left">
           <div class="section-icon-title">
             <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 57.042 57.042" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M49.48 55.758l-8.571-29a1 1 0 0 0-.43-.554c-.433-6.226-5.623-11.162-11.958-11.162s-11.524 4.936-11.958 11.162a1 1 0 0 0-.43.554l-8.571 29a1 1 0 0 0 .959 1.283h40a1 1 0 0 0 .959-1.283zM28.521 17.042c5.177 0 9.447 3.954 9.95 9h-19.9c.502-5.046 4.773-9 9.95-9zm11.926 38H16.6l3.894-16.774a1 1 0 0 0-1.947-.452L14.548 55.042H9.859l7.981-27h21.363l7.98 27h-4.636l-4-17.226a1 1 0 0 0-1.947.452z"/><rect x="27.521" width="2" height="14.042"/></svg></div>
-            <h2 class="section-h2" id="section-clutter-heading">De-clutter Personal Items</h2>
+            <h2 class="section-h2" id="section-clutter-heading">Clear the Space</h2>
           </div>
-          <p class="section-desc">Anything on a flat surface that isn't part of the house should disappear. Start with the kitchen — it's the highest-impact room.</p>
+          <p class="section-desc">Buyers are purchasing your square footage, not your belongings.</p>
         </div>
-        <span class="section-badge" id="badge-clutter">0 of 4 done</span>
-      </div>
-
-      <div class="checklist-item" data-section="clutter">
-        <div class="item-check-col">
-          <input type="checkbox" class="item-checkbox" id="item-5" data-id="item-5" aria-describedby="desc-5">
-        </div>
-        <div class="item-body">
-          <label class="item-title" for="item-5">Clear all kitchen countertops and islands</label>
-          <p class="item-desc" id="desc-5">Appliances, utensils, towels, trash cans, dog bowls, fridge magnets — all of it. Bare counters read as spacious and clean on camera.</p>
-        </div>
+        <span class="section-badge" id="badge-clutter">0 of 5 done</span>
       </div>
 
       <div class="checklist-item" data-section="clutter">
@@ -1656,8 +1652,8 @@
           <input type="checkbox" class="item-checkbox" id="item-6" data-id="item-6" aria-describedby="desc-6">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-6">Remove personal items from all surfaces</label>
-          <p class="item-desc" id="desc-6">Photo frames, faux plants, clocks, and small decor from tables, mantles, dressers, and desks. Buyers want to picture their own life here.</p>
+          <label class="item-title" for="item-6">Clear 90% of kitchen surfaces</label>
+          <p class="item-desc" id="desc-6">The emptier it looks, the larger it photographs.</p>
         </div>
       </div>
 
@@ -1666,8 +1662,8 @@
           <input type="checkbox" class="item-checkbox" id="item-7" data-id="item-7" aria-describedby="desc-7">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-7">Clear all bathroom counters, tubs, and showers</label>
-          <p class="item-desc" id="desc-7">Toiletries, appliances, tissue boxes, soap dispensers — completely clear. The master bathroom carries as much weight as the kitchen.</p>
+          <label class="item-title" for="item-7">Bathrooms completely bare — counters, tub ledges, shower floors</label>
+          <p class="item-desc" id="desc-7">Think boutique hotel. The master bathroom carries as much weight as the kitchen.</p>
         </div>
       </div>
 
@@ -1676,47 +1672,33 @@
           <input type="checkbox" class="item-checkbox" id="item-8" data-id="item-8" aria-describedby="desc-8">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-8">Remove throw rugs, bath mats, and doormats</label>
-          <p class="item-desc" id="desc-8">Small rugs break up the visual continuity of flooring. Rooms read larger and more cohesive without them interrupting the sightlines.</p>
+          <label class="item-title" for="item-8">Clear all tables, dressers, nightstands, and mantles</label>
+          <p class="item-desc" id="desc-8">Buyers need to picture their life here, not yours.</p>
         </div>
       </div>
-    </section>
 
-    <!-- SECTION 3: MOTION -->
-    <section class="checklist-section" id="section-motion" aria-labelledby="section-motion-heading">
-      <div class="section-header">
-        <div class="section-header-left">
-          <div class="section-icon-title">
-            <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" aria-hidden="true"><path d="M3.5 39.773L24.052 4.21 44.5 39.79z"/><circle cx="24.06" cy="33.073" r="1.5"/><path d="M24.058 14.677v13.26"/></svg></div>
-            <h2 class="section-h2" id="section-motion-heading">Stop the Motion</h2>
-          </div>
-          <p class="section-desc">Anything that moves causes blur or distraction. Two quick items handle most of it — don't overlook either.</p>
-        </div>
-        <span class="section-badge" id="badge-motion">0 of 2 done</span>
-      </div>
-
-      <div class="checklist-item" data-section="motion">
+      <div class="checklist-item" data-section="clutter">
         <div class="item-check-col">
           <input type="checkbox" class="item-checkbox" id="item-9" data-id="item-9" aria-describedby="desc-9">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-9">Send pets away for the duration of the shoot</label>
-          <p class="item-desc" id="desc-9">As cute as they are — garage, kennel, or offsite. Wagging tails and moving bodies blur the frame and require retakes.</p>
+          <label class="item-title" for="item-9">Pull every rug and mat, including doormats</label>
+          <p class="item-desc" id="desc-9">Bare floors photograph larger and read cleaner.</p>
         </div>
       </div>
 
-      <div class="checklist-item" data-section="motion">
+      <div class="checklist-item" data-section="clutter">
         <div class="item-check-col">
           <input type="checkbox" class="item-checkbox" id="item-10" data-id="item-10" aria-describedby="desc-10">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-10">Turn off all ceiling fans now</label>
-          <p class="item-desc" id="desc-10">Some fans take 5 minutes to fully stop spinning. Turn them off well before the photographer arrives so blades are completely still.</p>
+          <label class="item-title" for="item-10">Relocate pets — beds, bowls, and toys too</label>
+          <p class="item-desc" id="desc-10">Garage, kennel, or offsite. Everything belonging to them leaves the frame.</p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 4: CURB APPEAL -->
+    <!-- SECTION 3: CURB APPEAL (PDF: 4 items) -->
     <section class="checklist-section" id="section-curb" aria-labelledby="section-curb-heading">
       <div class="section-header">
         <div class="section-header-left">
@@ -1724,9 +1706,9 @@
             <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1H5a1 1 0 01-1-1V10.5z"/><path d="M9 22V12h6v10"/></svg></div>
             <h2 class="section-h2" id="section-curb-heading">Curb Appeal</h2>
           </div>
-          <p class="section-desc">The exterior is usually the first photo a buyer sees. Don't let a car, a yard sign, or a pile of leaves steal the frame from the house.</p>
+          <p class="section-desc">The exterior is the first photo every buyer sees. Make them stop scrolling.</p>
         </div>
-        <span class="section-badge" id="badge-curb">0 of 5 done</span>
+        <span class="section-badge" id="badge-curb">0 of 4 done</span>
       </div>
 
       <div class="checklist-item" data-section="curb">
@@ -1734,8 +1716,8 @@
           <input type="checkbox" class="item-checkbox" id="item-11" data-id="item-11" aria-describedby="desc-11">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-11">Move all vehicles out of sight</label>
-          <p class="item-desc" id="desc-11">Into the garage, onto a side street, or around the block. Anywhere but the driveway or directly in front of the house.</p>
+          <label class="item-title" for="item-11">Move every vehicle off the driveway and street</label>
+          <p class="item-desc" id="desc-11">A parked car halves the shot.</p>
         </div>
       </div>
 
@@ -1744,8 +1726,8 @@
           <input type="checkbox" class="item-checkbox" id="item-12" data-id="item-12" aria-describedby="desc-12">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-12">Mow, edge, and tidy the lawn and landscaping</label>
-          <p class="item-desc" id="desc-12">A fresh cut dramatically changes how the exterior reads on camera. Confirm beds look tidy and hedges are shaped.</p>
+          <label class="item-title" for="item-12">Mow, edge, and shape all landscaping</label>
+          <p class="item-desc" id="desc-12">Crisp yards signal turnkey.</p>
         </div>
       </div>
 
@@ -1754,8 +1736,8 @@
           <input type="checkbox" class="item-checkbox" id="item-13" data-id="item-13" aria-describedby="desc-13">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-13">Clear leaves, debris, and swept surfaces</label>
-          <p class="item-desc" id="desc-13">Rake the lawn, sweep patios, walkways, and driveways. Nothing ages a photo faster than a pile of leaves or scattered debris.</p>
+          <label class="item-title" for="item-13">Sweep every paved surface</label>
+          <p class="item-desc" id="desc-13">Leaves and debris date a photo instantly.</p>
         </div>
       </div>
 
@@ -1764,33 +1746,33 @@
           <input type="checkbox" class="item-checkbox" id="item-14" data-id="item-14" aria-describedby="desc-14">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-14">Remove all yard signs</label>
-          <p class="item-desc" id="desc-14">For Sale, security, school spirit, seasonal — all of them. Signs date a photo and add visual clutter the eye can't ignore.</p>
-        </div>
-      </div>
-
-      <div class="checklist-item" data-section="curb">
-        <div class="item-check-col">
-          <input type="checkbox" class="item-checkbox" id="item-15" data-id="item-15" aria-describedby="desc-15">
-        </div>
-        <div class="item-body">
-          <label class="item-title" for="item-15">Clean driveways and paths (power wash if possible)</label>
-          <p class="item-desc" id="desc-15">A power-washed driveway can transform an exterior shot. At minimum, sweep all paved surfaces clean of dirt and stains.</p>
+          <label class="item-title" for="item-14">Pull all yard signs — including For Sale</label>
+          <p class="item-desc" id="desc-14">Signs date the listing photos.</p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 5: OUTDOOR -->
+    <!-- SECTION 4: OUTDOOR & BACKYARD (PDF: 4 items) -->
     <section class="checklist-section" id="section-outdoor" aria-labelledby="section-outdoor-heading">
       <div class="section-header">
         <div class="section-header-left">
           <div class="section-icon-title">
             <div class="section-icon" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 17.75A5.75 5.75 0 1 0 12 6.25a5.75 5.75 0 0 0 0 11.5zm0-10a4.25 4.25 0 1 1 0 8.5 4.25 4.25 0 0 1 0-8.5zM12 5a.75.75 0 0 0 .75-.75v-1.5a.75.75 0 0 0-1.5 0v1.5A.75.75 0 0 0 12 5zm0 14a.75.75 0 0 0-.75.75v1.5a.75.75 0 0 0 1.5 0v-1.5A.75.75 0 0 0 12 19zm7.25-7.75a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5zm-15.5 0a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5zM6.5 7.25A.75.75 0 0 0 7 7L6 6a.75.75 0 0 0-1.06 1.06L6 8a.75.75 0 0 0 .5.25zm12.06 9.69L17.5 16a.75.75 0 0 0-1.06 1.06l1.06 1.06a.75.75 0 1 0 1.06-1.06zM17.5 7a.75.75 0 0 0 .56-.25l1-1.06A.75.75 0 0 0 18 4.63l-1 1.06a.75.75 0 0 0 .5 1.31zm-12.06 9.69a.75.75 0 0 0-1.06 1.06l1.06 1.06a.75.75 0 0 0 1.06-1.06z"/></svg></div>
-            <h2 class="section-h2" id="section-outdoor-heading">Backyard &amp; Outdoor</h2>
+            <h2 class="section-h2" id="section-outdoor-heading">Outdoor &amp; Backyard</h2>
           </div>
-          <p class="section-desc">The backyard is where buyers imagine their next weekend. Stage it like you're about to entertain — open, clean, aspirational.</p>
+          <p class="section-desc">Buyers are buying a lifestyle. Show them the one they want.</p>
         </div>
         <span class="section-badge" id="badge-outdoor">0 of 4 done</span>
+      </div>
+
+      <div class="checklist-item" data-section="outdoor">
+        <div class="item-check-col">
+          <input type="checkbox" class="item-checkbox" id="item-15" data-id="item-15" aria-describedby="desc-15">
+        </div>
+        <div class="item-body">
+          <label class="item-title" for="item-15">Clear the pool completely</label>
+          <p class="item-desc" id="desc-15">Still water reads as luxury. Remove every float, toy, and cleaning pole.</p>
+        </div>
       </div>
 
       <div class="checklist-item" data-section="outdoor">
@@ -1798,8 +1780,8 @@
           <input type="checkbox" class="item-checkbox" id="item-16" data-id="item-16" aria-describedby="desc-16">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-16">Clean the pool and remove all toys and equipment</label>
-          <p class="item-desc" id="desc-16">Vacuum, skim, and pull every float, toy, and cleaning pole off the water. A clean, still pool is a calm and aspirational shot.</p>
+          <label class="item-title" for="item-16">Open umbrellas, arrange chairs, clear the table</label>
+          <p class="item-desc" id="desc-16">Stage it like you're hosting.</p>
         </div>
       </div>
 
@@ -1808,8 +1790,8 @@
           <input type="checkbox" class="item-checkbox" id="item-17" data-id="item-17" aria-describedby="desc-17">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-17">Arrange outdoor furniture and open patio umbrellas</label>
-          <p class="item-desc" id="desc-17">Stage it how you'd want it photographed. Open umbrellas read as usable and inviting. Arrange chairs to create a natural gathering feel.</p>
+          <label class="item-title" for="item-17">Stow hoses, bins, and cleaning equipment</label>
+          <p class="item-desc" id="desc-17">If you'd hide it for a dinner party, hide it now.</p>
         </div>
       </div>
 
@@ -1818,18 +1800,8 @@
           <input type="checkbox" class="item-checkbox" id="item-18" data-id="item-18" aria-describedby="desc-18">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-18">Put away hoses, cleaning supplies, and recycle bins</label>
-          <p class="item-desc" id="desc-18">Garden hoses, brooms, chemical bottles, trash and recycle bins — all out of frame. If you'd put it away for a dinner party, put it away for this.</p>
-        </div>
-      </div>
-
-      <div class="checklist-item" data-section="outdoor">
-        <div class="item-check-col">
-          <input type="checkbox" class="item-checkbox" id="item-19" data-id="item-19" aria-describedby="desc-19">
-        </div>
-        <div class="item-body">
-          <label class="item-title" for="item-19">Remove or minimize window screens and pool screens</label>
-          <p class="item-desc" id="desc-19">Screens reduce light transmission and can distort window frames in photos. Remove or minimize where possible without compromising the shoot setup.</p>
+          <label class="item-title" for="item-18">Remove window and pool screens where you can</label>
+          <p class="item-desc" id="desc-18">Screens reduce light and distort clean lines.</p>
         </div>
       </div>
     </section>
@@ -1856,7 +1828,7 @@
         </svg>
       </div>
       <h2 class="completion-title">You're <em>camera&#8209;ready.</em></h2>
-      <p class="completion-sub">All 19 items complete. Your home is set up for the best possible listing photos.<br>Your photographer is on their way — see you at the shoot.</p>
+      <p class="completion-sub">All 18 items complete. Your home is set up for the best possible listing photos.<br>Your photographer is on their way — see you at the shoot.</p>
       <a href="https://shoot2sell.vercel.app/book" class="completion-cta">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         Book Your Next Shoot
@@ -1868,16 +1840,15 @@
 
 <script>
   (function() {
-    const TOTAL = 19;
+    const TOTAL = 18;
     const STORAGE_KEY = 's2s_checklist_v2';
     const STORAGE_DATE_KEY = 's2s_checklist_date_v2';
     const TTL_DAYS = 7;
 
     const sectionMap = {
-      lights: { total: 4, badgeId: 'badge-lights', navId: 'nav-lights', countId: 'nav-lights-count' },
-      clutter: { total: 4, badgeId: 'badge-clutter', navId: 'nav-clutter', countId: 'nav-clutter-count' },
-      motion: { total: 2, badgeId: 'badge-motion', navId: 'nav-motion', countId: 'nav-motion-count' },
-      curb: { total: 5, badgeId: 'badge-curb', navId: 'nav-curb', countId: 'nav-curb-count' },
+      lights: { total: 5, badgeId: 'badge-lights', navId: 'nav-lights', countId: 'nav-lights-count' },
+      clutter: { total: 5, badgeId: 'badge-clutter', navId: 'nav-clutter', countId: 'nav-clutter-count' },
+      curb: { total: 4, badgeId: 'badge-curb', navId: 'nav-curb', countId: 'nav-curb-count' },
       outdoor: { total: 4, badgeId: 'badge-outdoor', navId: 'nav-outdoor', countId: 'nav-outdoor-count' }
     };
 
@@ -1974,7 +1945,7 @@
 
 
       // Sidebar circle
-      const circumference = 282.7;
+      const circumference = 207.3;
       const offset = circumference - (pct / 100) * circumference;
       document.getElementById('sidebar-circle-fill').style.strokeDashoffset = offset;
       document.querySelector('#sidebar-circle-wrap').setAttribute('aria-valuenow', pct);
@@ -1993,9 +1964,9 @@
 
       const readyLabel = document.getElementById('sidebar-ready-label');
       if (totalChecked === TOTAL) {
-        readyLabel.textContent = '✔ Camera-ready!';
-        readyLabel.style.color = 'var(--red)';
-        readyLabel.style.fontWeight = '600';
+        readyLabel.textContent = '✓ CAMERA-READY!';
+        readyLabel.style.color = '#ffffff';
+        readyLabel.style.fontWeight = '700';
       } else {
         readyLabel.textContent = (TOTAL - totalChecked) + ' item' + (TOTAL - totalChecked !== 1 ? 's' : '') + ' remaining';
         readyLabel.style.color = '';
@@ -2005,7 +1976,7 @@
       // Per-section counts
       const dotMap = {
         lights: 'dot-lights', clutter: 'dot-clutter',
-        motion: 'dot-motion', curb: 'dot-curb', outdoor: 'dot-outdoor'
+        curb: 'dot-curb', outdoor: 'dot-outdoor'
       };
 
       Object.entries(sectionMap).forEach(([section, cfg]) => {
