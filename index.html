@@ -73,7 +73,7 @@
 
   .hero-h1 {
     font-family: var(--font-display);
-    font-size: clamp(36px, 4vw, 56px);
+    font-size: clamp(32px, 6vw, 56px);
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.025em;
@@ -622,7 +622,7 @@
 
   .bento-hero h3 {
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: clamp(16px, 3vw, 20px);
     font-weight: 600;
     color: var(--white);
     line-height: 1.2;
@@ -682,7 +682,7 @@
 
   .bento-card-dark h3 {
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: clamp(16px, 3vw, 20px);
     font-weight: 600;
     color: var(--white);
     line-height: 1.2;
@@ -761,7 +761,7 @@
 
   .why-h2 {
     font-family: var(--font-display);
-    font-size: clamp(24px, 3vw, 32px);
+    font-size: clamp(20px, 4vw, 32px);
     font-weight: 600;
     color: #000000;
     line-height: 1.2;
@@ -809,7 +809,7 @@
 
   .section-h2 {
     font-family: var(--font-display);
-    font-size: clamp(24px, 3vw, 32px);
+    font-size: clamp(20px, 4vw, 32px);
     font-weight: 600;
     color: #1A1A1A;
     line-height: 1.2;
@@ -989,7 +989,7 @@
 
   .summary-title {
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: clamp(16px, 3vw, 20px);
     font-weight: 600;
     color: var(--white);
     line-height: 1.2;
@@ -1069,9 +1069,8 @@
 
   .completion-title {
     font-family: var(--font-display);
-    font-size: 36px;
+    font-size: clamp(28px, 4vw, 36px);
     font-weight: 700;
-    color: var(--white);
     line-height: 1.2;
     margin-bottom: 8px;
     letter-spacing: -0.02em;
@@ -1219,7 +1218,7 @@
   }
 
   .mobile-nav-label {
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -1285,7 +1284,7 @@
   }
 
   @media (max-width: 860px) {
-    body { padding-bottom: 60px; }
+    body { font-size: 15px; padding-bottom: 60px; }
     #mobile-bottom-nav { display: block; }
     #hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-visual { height: 220px; }
