@@ -770,8 +770,8 @@
 
   /* ─── CHECKLIST SECTION ─────────────────────────────────────── */
   .checklist-section {
-    padding: 56px 0 20px;
-    border-bottom: 1px solid var(--pearl);
+    padding: 64px 0 32px;
+    border-bottom: 2px solid var(--pearl);
     scroll-margin-top: 24px;
   }
 
@@ -849,15 +849,16 @@
     display: grid;
     grid-template-columns: 40px 1fr;
     gap: 0;
-    padding: 0 0 16px 0;
+    padding: 24px 0 24px 0;
     border-top: none;
+    border-bottom: 1px solid var(--pearl);
     align-items: start;
     transition: background var(--transition);
     border-radius: var(--radius);
   }
 
-  .checklist-item:first-of-type {
-    border-top: none;
+  .checklist-item:last-of-type {
+    border-bottom: none;
   }
 
   .item-check-col {
@@ -1303,6 +1304,7 @@
     .sidebar-circle-wrap { display: none; }
     .sidebar-section-label { width: 100%; }
     #content { padding: 0 32px 64px; }
+    .checklist-section { padding: 48px 0 24px; }
     .summary-list { grid-template-columns: 1fr; }
     .bento-grid { grid-template-columns: 1fr; grid-template-rows: 260px auto auto; }
     .bento-hero { grid-column: 1; grid-row: 1; min-height: 260px; }
