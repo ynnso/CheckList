@@ -858,10 +858,10 @@
   /* ─── CHECKLIST ITEM ────────────────────────────────────────── */
   .checklist-item {
     display: grid;
-    grid-template-columns: 48px 1fr;
+    grid-template-columns: 40px 1fr;
     gap: 0;
-    padding: 18px 0;
-    border-top: 1px solid var(--pearl);
+    padding: 0 0 16px 0;
+    border-top: none;
     align-items: start;
     transition: background var(--transition);
     border-radius: var(--radius);
@@ -932,6 +932,9 @@
     color: #000000;
     line-height: 1.4;
     margin-bottom: 4px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
     transition: color var(--transition), text-decoration var(--transition);
   }
 
@@ -944,13 +947,13 @@
 
   /* Checked state */
   .checklist-item.is-checked .item-title {
-    color: #555555;
+    opacity: 0.5;
     text-decoration: line-through;
-    text-decoration-color: var(--smoke);
+    text-decoration-color: currentColor;
   }
 
   .checklist-item.is-checked .item-desc {
-    color: var(--smoke);
+    opacity: 0.5;
   }
 
   /* ─── QUICK SUMMARY ─────────────────────────────────────────── */
@@ -1589,7 +1592,7 @@
         </div>
         <div class="item-body">
           <label class="item-title" for="item-1">Turn on every light — overheads, lamps, under-cabinet</label>
-          <p class="item-desc" id="desc-1">Dark rooms photograph small. Every light source matters.</p>
+          <p class="item-desc" id="desc-1">Dark rooms photograph small.</p>
         </div>
       </div>
 
@@ -1629,7 +1632,7 @@
         </div>
         <div class="item-body">
           <label class="item-title" for="item-5">Turn off every ceiling fan</label>
-          <p class="item-desc" id="desc-5">Spinning blades blur every shot. Turn them off well before the photographer arrives.</p>
+          <p class="item-desc" id="desc-5">Spinning blades blur every shot.</p>
         </div>
       </div>
     </section>
@@ -1663,7 +1666,7 @@
         </div>
         <div class="item-body">
           <label class="item-title" for="item-7">Bathrooms completely bare — counters, tub ledges, shower floors</label>
-          <p class="item-desc" id="desc-7">Think boutique hotel. The master bathroom carries as much weight as the kitchen.</p>
+          <p class="item-desc" id="desc-7">Think boutique hotel — counters, tub ledges, shower floors.</p>
         </div>
       </div>
 
@@ -1693,7 +1696,7 @@
         </div>
         <div class="item-body">
           <label class="item-title" for="item-10">Relocate pets — beds, bowls, and toys too</label>
-          <p class="item-desc" id="desc-10">Garage, kennel, or offsite. Everything belonging to them leaves the frame.</p>
+          <p class="item-desc" id="desc-10">Garage, kennel, or offsite. Beds, bowls, toys too.</p>
         </div>
       </div>
     </section>
@@ -1771,7 +1774,7 @@
         </div>
         <div class="item-body">
           <label class="item-title" for="item-15">Clear the pool completely</label>
-          <p class="item-desc" id="desc-15">Still water reads as luxury. Remove every float, toy, and cleaning pole.</p>
+          <p class="item-desc" id="desc-15">Still water reads as luxury. Every float and pole out.</p>
         </div>
       </div>
 
