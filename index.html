@@ -888,7 +888,7 @@
 
   .item-checkbox:hover {
     border-color: var(--red);
-    box-shadow: 0 0 0 3px var(--red-light);
+    box-shadow: 0 0 0 2px var(--red-light);
   }
 
   .item-checkbox:checked {
@@ -937,7 +937,7 @@
 
   /* Checked state */
   .checklist-item.is-checked .item-title {
-    opacity: 0.5;
+    opacity: 0.6;
     text-decoration: line-through;
     text-decoration-color: currentColor;
   }
@@ -1131,13 +1131,25 @@
   /* ─── MICRO-ANIMATION: item check ───────────────────────────── */
   @keyframes itemCheck {
     0% { transform: scale(1); }
-    40% { transform: scale(0.96); }
-    70% { transform: scale(1.02); }
+    40% { transform: scale(0.98); }
+    70% { transform: scale(1.01); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes checkboxPop {
+    0%   { transform: scale(1); }
+    25%  { transform: scale(0.85); }
+    60%  { transform: scale(1.12); }
+    80%  { transform: scale(0.97); }
     100% { transform: scale(1); }
   }
 
   .checklist-item.just-checked {
-    animation: itemCheck 0.3s ease;
+    animation: itemCheck 0.5s ease;
+  }
+
+  .checklist-item.just-checked .item-checkbox {
+    animation: checkboxPop 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /* ─── SECTION COMPLETE FLASH ────────────────────────────────── */
@@ -1902,7 +1914,8 @@
         const item = this.closest('.checklist-item');
         if (this.checked) {
           item.classList.add('is-checked', 'just-checked');
-          setTimeout(() => item.classList.remove('just-checked'), 350);
+          setTimeout(() => item.classList.remove('just-checked'), 500);
+          if (navigator.vibrate) navigator.vibrate(50);
           state[this.dataset.id] = true;
         } else {
           item.classList.remove('is-checked');
