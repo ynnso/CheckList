@@ -49,7 +49,7 @@
     background: var(--white);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 420px;
+    min-height: 520px;
     overflow: hidden;
   }
 
@@ -84,12 +84,12 @@
 
   .hero-h1 {
     font-family: var(--font-display);
-    font-size: clamp(32px, 6vw, 56px);
+    font-size: clamp(40px, 7vw, 72px);
     font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.025em;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
     color: #000000;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
   .hero-h1 em {
@@ -97,17 +97,17 @@
     font-weight: 800;
     color: var(--red);
     font-size: 1.13em;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.035em;
     display: block;
-    line-height: 1.1;
+    line-height: 1.05;
   }
 
   .hero-sub {
     font-size: 15px;
     color: #000000;
-    max-width: 380px;
-    line-height: 1.6;
-    margin-bottom: 40px;
+    max-width: 340px;
+    line-height: 1.55;
+    margin-bottom: 36px;
   }
 
   .hero-meta {
@@ -175,9 +175,10 @@
     inset: 0;
     background: linear-gradient(
       to top,
-      rgba(0,0,0,0.72) 0%,
-      rgba(0,0,0,0.18) 50%,
-      rgba(0,0,0,0.08) 100%
+      rgba(0,0,0,0.88) 0%,
+      rgba(0,0,0,0.45) 35%,
+      rgba(0,0,0,0.10) 65%,
+      rgba(0,0,0,0.04) 100%
     );
     pointer-events: none;
     z-index: 1;
@@ -188,20 +189,23 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 28px 36px;
+    padding: 32px 36px 36px;
     z-index: 2;
   }
 
   .carousel-caption {
     font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.92);
-    line-height: 1.4;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.3;
     letter-spacing: -0.01em;
     opacity: 0;
     transform: translateY(6px);
     transition: opacity 0.4s ease 0.5s, transform 0.4s ease 0.5s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .carousel-caption.caption-visible {
@@ -211,29 +215,30 @@
 
   .carousel-dots {
     position: absolute;
-    bottom: 14px;
-    right: 20px;
+    bottom: 16px;
+    right: 24px;
     display: flex;
-    gap: 5px;
+    gap: 6px;
     z-index: 2;
   }
 
   .carousel-dot {
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.3);
-    transition: background 0.3s ease, transform 0.3s ease;
+    background: rgba(255,255,255,0.45);
+    transition: background 0.3s ease, transform 0.3s ease, width 0.3s ease;
   }
 
   .carousel-dot.active {
     background: #ffffff;
-    transform: scale(1.3);
+    width: 18px;
+    border-radius: 3px;
   }
 
   @media (max-width: 768px) {
-    .carousel-caption { font-size: 13px; }
-    .carousel-caption-wrap { padding: 20px 24px; }
+    .carousel-caption { font-size: 13px; white-space: normal; }
+    .carousel-caption-wrap { padding: 20px 24px 28px; }
   }
 
 
@@ -1466,12 +1471,15 @@
   }
 
   .hero-micro {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 400;
-    color: var(--silver);
+    color: var(--ash);
     letter-spacing: 0.01em;
     line-height: 1.5;
-    margin-top: -4px;
+    margin-top: -2px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 
   .hero-cta-btn {
@@ -1695,7 +1703,10 @@
         Start the Checklist
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
-      <p class="hero-micro">No account needed. Saves your progress automatically.</p>
+      <p class="hero-micro">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;opacity:0.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        No account needed. Saves your progress automatically.
+      </p>
       <a href="CHECKLIST_MAY12.pdf" class="hero-cta-ghost" download target="_blank" rel="noopener">
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 10v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2"/><polyline points="5 7 8 10 11 7"/><line x1="8" y1="1" x2="8" y2="10"/></svg>
         Download PDF
@@ -2504,13 +2515,13 @@
   (function() {
     const captions = [
       'Clear the island. Let the kitchen speak.',
-      'Move every vehicle. A parked car halves the shot.',
+      'One car in the driveway. Half the shot gone.',
       'This is what prepared looks like.',
       'Buyers see everything the camera sees.',
       'Still water. Clear pool. Pure luxury on camera.',
-      'Mismatched bulbs. The camera sees it even when you don\'t.',
+      'Mismatched bulbs. The camera always notices.',
       'Stage it like you\'re about to host.',
-      'Cute dog. Wrong photo. Relocate pets before the shoot.'
+      'Cute dog. Wrong photo. Pets out before the shoot.'
     ];
 
     const slides = document.querySelectorAll('.carousel-slide');
