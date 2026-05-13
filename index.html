@@ -84,22 +84,44 @@
 
   .hero-h1 {
     font-family: var(--font-display);
-    font-size: clamp(40px, 7vw, 72px);
     font-weight: 700;
-    line-height: 1.15;
+    line-height: 1;
     letter-spacing: -0.03em;
     color: #000000;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
-  .hero-h1 em {
-    font-style: normal;
-    font-weight: 800;
-    color: var(--red);
-    font-size: 1.13em;
-    letter-spacing: -0.035em;
+  /* "Bad Photos" — base size */
+  .h1-line1 {
+    font-size: clamp(40px, 6.8vw, 70px);
+    font-weight: 700;
+    color: #000000;
     display: block;
     line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  /* "Cost You" — slightly larger, red */
+  .h1-line2 {
+    font-size: clamp(44px, 7.6vw, 78px);
+    font-weight: 800;
+    color: var(--red);
+    display: block;
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+  }
+
+  /* "Offers" — largest, red, fills width */
+  .h1-line3 {
+    font-size: clamp(54px, 9.2vw, 96px);
+    font-weight: 800;
+    color: var(--red);
+    display: block;
+    line-height: 1.0;
+    letter-spacing: -0.04em;
   }
 
   .hero-sub {
@@ -215,19 +237,20 @@
 
   .carousel-dots {
     position: absolute;
-    bottom: 16px;
-    right: 24px;
+    top: 20px;
+    right: 20px;
     display: flex;
     gap: 6px;
-    z-index: 2;
+    z-index: 3;
   }
 
   .carousel-dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.45);
-    transition: background 0.3s ease, transform 0.3s ease, width 0.3s ease;
+    background: rgba(255,255,255,0.4);
+    transition: background 0.3s ease, width 0.3s ease;
+    flex-shrink: 0;
   }
 
   .carousel-dot.active {
@@ -1696,7 +1719,11 @@
 <section id="hero" aria-labelledby="hero-heading">
   <div class="hero-content">
     <p class="hero-eyebrow">Shoot2Sell · Photoshoot Checklist</p>
-    <h1 class="hero-h1" id="hero-heading">Bad photos<br><em>cost you offers.</em></h1>
+    <h1 class="hero-h1" id="hero-heading">
+      <span class="h1-line1">Bad Photos</span>
+      <span class="h1-line2">Cost You</span>
+      <span class="h1-line3">Offers</span>
+    </h1>
     <p class="hero-sub">Most homes are photographed before they're ready. Here's how to not be one of them.</p>
     <div class="hero-ctas">
       <a href="#section-lights" class="hero-cta-btn">
