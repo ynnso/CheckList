@@ -62,17 +62,24 @@
 
   .hero-eyebrow {
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--red);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::before {
     content: '';
     display: block;
-    width: 32px;
+    width: 24px;
     height: 1px;
     background: var(--red);
+    flex-shrink: 0;
   }
 
   .hero-h1 {
@@ -87,8 +94,12 @@
 
   .hero-h1 em {
     font-style: normal;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--red);
+    font-size: 1.13em;
+    letter-spacing: -0.03em;
+    display: block;
+    line-height: 1.1;
   }
 
   .hero-sub {
@@ -167,81 +178,30 @@
     line-height: 1.4;
   }
 
-  /* ─── DOWNLOAD BAR ──────────────────────────────────────────── */
-  #download-bar {
-    background: var(--off-white);
-    border-top: 1px solid var(--pearl);
-    border-bottom: 1px solid var(--pearl);
-    padding: 16px 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .download-label {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #000000;
-  }
-
-  .download-links {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .dl-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-body);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: #000000;
-    background: var(--white);
-    border: 1px solid var(--smoke);
-    padding: 8px 16px;
-    border-radius: var(--radius);
-    text-decoration: none;
-    transition: border-color var(--transition), color var(--transition), box-shadow var(--transition);
-  }
-
-  .dl-btn:hover {
-    border-color: var(--red);
-    color: var(--red);
-    box-shadow: 0 0 0 3px var(--red-light);
-  }
-
-  .dl-btn svg {
-    flex-shrink: 0;
-  }
 
   .reset-btn {
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
-    color: #555555;
+    color: rgba(255,255,255,0.35);
     background: none;
     border: none;
     cursor: pointer;
     letter-spacing: 0.04em;
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    text-decoration: none;
     transition: color var(--transition);
-    padding: 0;
+    padding: 4px 14px;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 4px;
   }
 
-  .reset-btn:hover { color: var(--red); }
+  .reset-btn:hover { color: rgba(255,255,255,0.75); }
 
   /* ─── MAIN LAYOUT ───────────────────────────────────────────── */
   #main-layout {
     display: grid;
-    grid-template-columns: 340px 1fr;
+    grid-template-columns: auto 1fr;
     max-width: 1280px;
     margin: 0 auto;
     gap: 0;
@@ -253,6 +213,7 @@
     top: 0;
     max-height: 100vh;
     overflow-y: auto;
+    overflow-x: hidden;
     background: linear-gradient(175deg, #0a0002 0%, #150004 30%, #200008 65%, #0d0002 100%);
     border-right: none;
     padding: 48px 40px 48px 48px;
@@ -260,6 +221,21 @@
     flex-direction: column;
     gap: 8px;
     scrollbar-width: none;
+    min-width: 0;
+    transition: width 0.45s cubic-bezier(0.4,0,0.2,1),
+                min-width 0.45s cubic-bezier(0.4,0,0.2,1),
+                padding 0.45s cubic-bezier(0.4,0,0.2,1),
+                opacity 0.3s ease;
+  }
+
+  #sidebar.sidebar-collapsed {
+    width: 0 !important;
+    min-width: 0 !important;
+    padding-left: 0;
+    padding-right: 0;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
   }
 
   /* Top-right red glow — exact match to quick-summary ::before */
@@ -953,11 +929,11 @@
 
   /* ─── QUICK SUMMARY ─────────────────────────────────────────── */
   #quick-summary {
-    margin: 48px 0 0;
-    background: #000000;
+    margin: 56px 0 0;
+    background: linear-gradient(135deg, #000000 0%, #1A0005 100%);
+    border: 1px solid rgba(200,16,46,0.2);
     border-radius: var(--radius-lg);
-    padding: 36px 40px;
-    color: var(--white);
+    padding: 48px 52px;
     position: relative;
     overflow: hidden;
   }
@@ -965,21 +941,19 @@
   #quick-summary::before {
     content: '';
     position: absolute;
-    top: -40px;
-    right: -40px;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(200,16,46,0.25) 0%, transparent 70%);
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(200,16,46,0.18) 0%, transparent 70%);
     pointer-events: none;
   }
 
   .summary-eyebrow {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
     text-transform: uppercase;
     color: var(--red);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -995,45 +969,47 @@
 
   .summary-title {
     font-family: var(--font-display);
-    font-size: clamp(16px, 3vw, 20px);
-    font-weight: 600;
-    color: var(--white);
-    line-height: 1.2;
-    margin-bottom: 24px;
-    letter-spacing: -0.01em;
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 32px;
+    letter-spacing: -0.025em;
+    white-space: nowrap;
   }
 
   .summary-list {
     list-style: none;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px 32px;
+    gap: 14px 48px;
   }
 
   .summary-list li {
-    font-size: 13px;
+    font-size: 14px;
     color: rgba(255,255,255,0.85);
     display: flex;
     align-items: baseline;
-    gap: 8px;
-    line-height: 1.6;
+    gap: 10px;
+    line-height: 1.5;
   }
 
   .summary-list li::before {
-    content: '—';
+    content: '✓';
     color: var(--red);
     flex-shrink: 0;
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 700;
   }
 
   /* ─── COMPLETION STATE ──────────────────────────────────────── */
   #completion-banner {
     display: none;
-    margin: 48px 0 0;
-    background: linear-gradient(135deg, #000000 0%, #2D0D13 100%);
-    border: 1px solid rgba(200,16,46,0.3);
+    margin: 32px 0 0;
+    background: var(--off-white);
+    border: 1px solid var(--pearl);
     border-radius: var(--radius-lg);
-    padding: 40px;
+    padding: 48px 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -1050,23 +1026,19 @@
   }
 
   #completion-banner::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(200,16,46,0.2) 0%, transparent 60%);
-    pointer-events: none;
+    content: none;
   }
 
   .completion-icon {
-    width: 56px;
-    height: 56px;
-    background: rgba(200,16,46,0.15);
-    border: 1px solid rgba(200,16,46,0.4);
+    width: 48px;
+    height: 48px;
+    background: rgba(200,16,46,0.08);
+    border: 1px solid rgba(200,16,46,0.25);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
+    margin: 0 auto 16px;
   }
 
   .completion-icon svg {
@@ -1075,8 +1047,9 @@
 
   .completion-title {
     font-family: var(--font-display);
-    font-size: clamp(28px, 4vw, 36px);
+    font-size: clamp(24px, 3vw, 32px);
     font-weight: 700;
+    color: #000000;
     line-height: 1.2;
     margin-bottom: 8px;
     letter-spacing: -0.02em;
@@ -1090,8 +1063,8 @@
 
   .completion-sub {
     font-size: 14px;
-    color: rgba(255,255,255,0.75);
-    margin-bottom: 32px;
+    color: var(--ash);
+    margin-bottom: 28px;
   }
 
   .completion-cta {
@@ -1103,17 +1076,28 @@
     font-family: var(--font-body);
     font-size: 13px;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    padding: 14px 32px;
+    padding: 13px 28px;
     border-radius: var(--radius);
+    border: 1.5px solid var(--red);
     text-decoration: none;
     transition: background var(--transition), transform var(--transition);
   }
 
   .completion-cta:hover {
     background: var(--red-dark);
+    border-color: var(--red-dark);
     transform: translateY(-1px);
+  }
+
+  .completion-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
   /* ─── CONFETTI ──────────────────────────────────────────────── */
@@ -1304,7 +1288,6 @@
     .sidebar-circle-wrap { display: none; }
     #content { padding: 0 40px 80px 48px; }
     .hero-content { padding: 48px 40px; }
-    #download-bar { padding: 14px 40px; }
   }
 
   /* Mobile L: collapse sidebar, 32px padding */
@@ -1314,7 +1297,6 @@
     #hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-visual { height: 220px; }
     .hero-content { padding: 48px 32px 40px; }
-    #download-bar { padding: 14px 32px; }
     #main-layout { grid-template-columns: 1fr; }
     #sidebar {
       position: static; height: auto; border-right: none;
@@ -1336,7 +1318,6 @@
   /* Mobile S: <560px → 24px padding */
   @media (max-width: 560px) {
     .hero-content { padding: 36px 24px 32px; }
-    #download-bar { padding: 14px 24px; flex-direction: column; align-items: flex-start; }
     #content { padding: 0 24px 64px; }
     .section-desc { padding-left: 0; }
     #quick-summary { padding: 28px 24px; }
@@ -1373,9 +1354,235 @@
 
   @media (max-width: 768px) { .s2s-toast { display: none; } }
 
-  /* Print styles */
+  .hero-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+    max-width: 320px;
+  }
+
+  .hero-cta-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #000000;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    border: 1.5px solid #000000;
+    background: transparent;
+    transition: background var(--transition), color var(--transition);
+  }
+  .hero-cta-ghost:hover {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--red);
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    border: 1.5px solid var(--red);
+    text-decoration: none;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  }
+  .hero-cta-btn:hover {
+    background: var(--red-dark);
+    border-color: var(--red-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(200,16,46,0.3);
+  }
+
+  /* ─── BOOKING CTA BAND ──────────────────────────────────────── */
+  #booking-band {
+    background: #000000;
+    padding: 40px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .booking-band-text {}
+  .booking-band-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 6px;
+  }
+  .booking-band-headline {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .booking-band-headline em {
+    font-style: normal;
+    color: var(--red);
+  }
+  .booking-band-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--red);
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background var(--transition), transform var(--transition);
+    flex-shrink: 0;
+  }
+  .booking-band-btn:hover {
+    background: var(--red-dark);
+    transform: translateY(-1px);
+  }
+  @media (max-width: 768px) {
+    #booking-band { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+    .booking-band-btn { width: 100%; justify-content: center; }
+  }
+
+  /* ─── 75% NUDGE BAR ─────────────────────────────────────────── */
+  #nudge-bar {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 180;
+    background: #000000;
+    border-top: 1px solid rgba(200,16,46,0.4);
+    padding: 12px 24px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  #nudge-bar.nudge-visible { display: flex; }
+  .nudge-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+  .nudge-text strong { color: #ffffff; font-weight: 700; }
+  .nudge-close {
+    background: none; border: none; color: rgba(255,255,255,0.4);
+    cursor: pointer; font-size: 18px; line-height: 1; padding: 4px;
+    flex-shrink: 0;
+  }
+  .nudge-close:hover { color: #ffffff; }
+  @media (max-width: 768px) { #nudge-bar { bottom: 60px; } }
+
+
+  #quick-reads {
+    background: var(--off-white);
+    border-bottom: 1px solid var(--pearl);
+    padding: 0 80px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  #quick-reads::-webkit-scrollbar { display: none; }
+
+  .qr-inner {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    min-width: max-content;
+    height: 44px;
+  }
+
+  .qr-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--silver);
+    margin-right: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .qr-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ash);
+    text-decoration: none;
+    padding: 4px 12px;
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    height: 44px;
+    transition: color var(--transition), border-color var(--transition);
+    flex-shrink: 0;
+  }
+
+  .qr-pill:hover {
+    color: #000000;
+    border-bottom-color: var(--smoke);
+    background: none;
+  }
+
+  .qr-pill.qr-active {
+    color: var(--red);
+    border-bottom-color: var(--red);
+    font-weight: 600;
+    background: none;
+  }
+
+  .qr-divider {
+    width: 1px;
+    height: 14px;
+    background: var(--pearl);
+    margin: 0 2px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1000px) { #quick-reads { padding: 0 40px; } }
+  @media (max-width: 768px)  { #quick-reads { padding: 0 24px; } }
+  @media (max-width: 560px)  { #quick-reads { padding: 0 16px; } }
+
+
+  .item-priority {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--red);
+    background: var(--red-light);
+    border: 1px solid rgba(200,16,46,0.2);
+    padding: 2px 8px;
+    border-radius: 100px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
   @media print {
-    #download-bar .reset-btn { display: none; }
     #sidebar { display: none; }
     #main-layout { grid-template-columns: 1fr; }
     body { font-size: 12pt; }
@@ -1390,24 +1597,18 @@
 <!-- HERO -->
 <section id="hero" aria-labelledby="hero-heading">
   <div class="hero-content">
-    <p class="hero-eyebrow">Photoshoot Checklist</p>
-    <h1 class="hero-h1" id="hero-heading">Get your home<br><em>camera&#8209;ready.</em></h1>
-    <p class="hero-sub">18 items across 4 categories. Most take under 5 minutes. Complete these before your photographer arrives and your listing photos will look significantly better.</p>
-    <div class="hero-meta">
-      <div class="hero-stat">
-        <span class="hero-stat-num">18</span>
-        <span class="hero-stat-label">Checklist Items</span>
-      </div>
-      <div class="hero-stat-divider"></div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">~90</span>
-        <span class="hero-stat-label">Minutes to Prep</span>
-      </div>
-      <div class="hero-stat-divider"></div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">4</span>
-        <span class="hero-stat-label">Categories</span>
-      </div>
+    <p class="hero-eyebrow">Shoot2Sell · Photoshoot Checklist</p>
+    <h1 class="hero-h1" id="hero-heading">Great Photos<br><em>Sell Faster.</em></h1>
+    <p class="hero-sub">Buyers decide in 3 seconds. These steps make sure your home wins that moment — before the photographer even knocks.</p>
+    <div class="hero-ctas">
+      <a href="#section-lights" class="hero-cta-btn">
+        Start the Checklist
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="CHECKLIST_MAY12.pdf" class="hero-cta-ghost" download target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 10v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2"/><polyline points="5 7 8 10 11 7"/><line x1="8" y1="1" x2="8" y2="10"/></svg>
+        Download PDF
+      </a>
     </div>
   </div>
   <div class="hero-visual" role="img" aria-label="Beautifully staged living room ready for real estate photography">
@@ -1471,96 +1672,29 @@
       <rect width="600" height="420" fill="rgba(0,0,0,0.18)"/>
     </svg>
     <div class="hero-visual-overlay"></div>
-    <p class="hero-visual-caption">Staged &amp; ready.<br>Let's capture it.</p>
+    <p class="hero-visual-caption">Staged. Lit. Ready.<br>Let's shoot.</p>
   </div>
 </section>
 
-<!-- DOWNLOAD BAR -->
-<div id="download-bar" role="complementary" aria-label="Download options">
-  <span class="download-label">Prefer a printable version?</span>
-  <div class="download-links">
-    <a href="https://cdn.sanity.io/files/pqq2n64j/dev/56206cb04c8bf2f8509ca9b45cb20ad1c01b93bd.pdf" class="dl-btn" target="_blank" rel="noopener" aria-label="Download the checklist as a PDF">
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 10v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2"/><polyline points="5 7 8 10 11 7"/><line x1="8" y1="1" x2="8" y2="10"/></svg>
-      Download Checklist PDF
-    </a>
+<!-- QUICK READS -->
+<nav id="quick-reads" aria-label="Before your shoot — quick reads">
+  <div class="qr-inner">
+    <span class="qr-label">Quick reads:</span>
+    <a class="qr-pill" href="https://shoot2sell.com/blog/best-times-to-schedule" target="_blank" rel="noopener">Best Times to Schedule</a>
+    <div class="qr-divider" aria-hidden="true"></div>
+    <a class="qr-pill" href="https://shoot2sell.com/blog/which-rooms-do-we-shoot" target="_blank" rel="noopener">Which Rooms We Shoot</a>
+    <div class="qr-divider" aria-hidden="true"></div>
+    <a class="qr-pill qr-active" href="#section-lights" aria-current="page">Photoshoot Checklist</a>
+    <div class="qr-divider" aria-hidden="true"></div>
+    <a class="qr-pill" href="https://shoot2sell.com/blog/photo-usage-rights" target="_blank" rel="noopener">Photo Usage Rights</a>
+    <div class="qr-divider" aria-hidden="true"></div>
+    <a class="qr-pill" href="https://shoot2sell.com/blog/booking-cancellation-policy" target="_blank" rel="noopener">Booking &amp; Cancellation</a>
+    <div class="qr-divider" aria-hidden="true"></div>
+    <a class="qr-pill" href="https://shoot2sell.com/blog/inclement-weather-policy" target="_blank" rel="noopener">Inclement Weather</a>
   </div>
-  <button class="reset-btn" id="reset-btn" aria-label="Reset all checklist items">Reset checklist</button>
-</div>
+</nav>
 
-<!-- WHY IT MATTERS — FULL WIDTH -->
-<section id="why-matters-wrap">
-  <div style="max-width:1280px; margin:0 auto; padding:0 80px;">
-<!-- WHY IT MATTERS — BENTO -->
-    <section id="why-matters" aria-labelledby="why-heading">
-      <p class="section-eyebrow">Before you begin</p>
-      <h2 class="why-h2" id="why-heading">Less is more.<br>Way less is way more.</h2>
-      <div class="bento-grid" role="list">
 
-        <!-- Large image tile — left column, full height -->
-        <div class="bento-hero" role="listitem">
-          <svg width="100%" height="100%" viewBox="0 0 420 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="bw1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8e4de"/><stop offset="100%" stop-color="#d5cfc6"/></linearGradient>
-              <linearGradient id="bfloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c9ab85"/><stop offset="100%" stop-color="#b09268"/></linearGradient>
-              <linearGradient id="beam2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff8ee" stop-opacity="0.55"/><stop offset="100%" stop-color="#fff8ee" stop-opacity="0"/></linearGradient>
-            </defs>
-            <rect width="420" height="300" fill="url(#bw1)"/>
-            <rect y="300" width="420" height="120" fill="url(#bfloor)"/>
-            <rect y="298" width="420" height="4" fill="rgba(0,0,0,0.1)"/>
-            <!-- window left -->
-            <rect x="30" y="30" width="110" height="200" rx="2" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
-            <line x1="85" y1="30" x2="85" y2="230" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-            <line x1="30" y1="130" x2="140" y2="130" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-            <polygon points="30,30 140,30 180,300 -10,300" fill="url(#beam2)"/>
-            <!-- window right -->
-            <rect x="300" y="30" width="100" height="200" rx="2" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
-            <line x1="350" y1="30" x2="350" y2="230" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-            <line x1="300" y1="130" x2="400" y2="130" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-            <!-- counter -->
-            <rect x="0" y="270" width="420" height="38" fill="#ddd5c8"/>
-            <rect x="0" y="268" width="420" height="5" fill="rgba(0,0,0,0.07)"/>
-            <!-- clean countertop — completely bare -->
-            <rect x="10" y="248" width="80" height="22" rx="3" fill="rgba(255,255,255,0.18)"/>
-            <!-- red accent line -->
-            <rect x="0" y="420" width="420" height="3" fill="#C8102E"/>
-            <!-- vignette -->
-            <rect width="420" height="420" fill="rgba(0,0,0,0.22)"/>
-          </svg>
-          <div class="bento-hero-overlay"></div>
-          <div class="bento-hero-text">
-            <p class="bento-hero-eyebrow">The strategy</p>
-            <h3>Staging vs. Photography</h3>
-            <p>There's a 90% overlap between staging and photography prep. The other 10% is where photography requires a completely different approach.</p>
-          </div>
-        </div>
-
-        <!-- Dark info card — top right -->
-        <div class="bento-card-dark" role="listitem">
-          <div class="bento-card-icon" aria-hidden="true"><svg viewBox="-4 0 19 19" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M10.328 6.83a5.903 5.903 0 0 1-1.439 3.64 2.874 2.874 0 0 0-.584 1v1.037a.95.95 0 0 1-.95.95h-3.71a.95.95 0 0 1-.95-.95V11.47a2.876 2.876 0 0 0-.584-1A5.903 5.903 0 0 1 .67 6.83a4.83 4.83 0 0 1 9.28-1.878 4.796 4.796 0 0 1 .38 1.88zm-.95 0a3.878 3.878 0 0 0-7.756 0c0 2.363 2.023 3.409 2.023 4.64v1.037h3.71V11.47c0-1.231 2.023-2.277 2.023-4.64zM7.83 14.572a.475.475 0 0 1-.475.476h-3.71a.475.475 0 0 1 0-.95h3.71a.475.475 0 0 1 .475.474zm-.64 1.262a.238.238 0 0 1-.078.265 2.669 2.669 0 0 1-3.274 0 .237.237 0 0 1 .145-.425h2.983a.238.238 0 0 1 .225.16z"/></svg></div>
-          <h3>The camera sees differently</h3>
-          <p>What feels warm and inviting in person reads as clutter on camera. Decorative items that stagers love are exactly what the lens reveals as noise.</p>
-        </div>
-
-        <!-- Light stat card — bottom right -->
-        <div class="bento-card-light" role="listitem">
-          <div class="bento-stat-block">
-            <span class="bento-stat-num">~90</span>
-            <span class="bento-stat-label">Min to prep</span>
-          </div>
-          <div class="bento-stat-block">
-            <span class="bento-stat-num">18</span>
-            <span class="bento-stat-label">Checklist items</span>
-          </div>
-          <div class="bento-stat-block">
-            <span class="bento-stat-num">4</span>
-            <span class="bento-stat-label">Categories</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </div>
-</section>
 
 <!-- MAIN LAYOUT -->
 <div id="main-layout">
@@ -1583,6 +1717,8 @@
     </div>
 
     <p class="sidebar-section-label">Sections</p>
+
+    <button class="reset-btn" id="reset-btn" aria-label="Reset all checklist items" style="display:none">↺ Reset progress</button>
 
     <a class="sidebar-nav-item" href="#section-lights" id="nav-lights">
       <span class="sidebar-nav-icon"><svg viewBox="-4 0 19 19" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M10.328 6.83a5.903 5.903 0 0 1-1.439 3.64 2.874 2.874 0 0 0-.584 1v1.037a.95.95 0 0 1-.95.95h-3.71a.95.95 0 0 1-.95-.95V11.47a2.876 2.876 0 0 0-.584-1A5.903 5.903 0 0 1 .67 6.83a4.83 4.83 0 0 1 9.28-1.878 4.796 4.796 0 0 1 .38 1.88zm-.95 0a3.878 3.878 0 0 0-7.756 0c0 2.363 2.023 3.409 2.023 4.64v1.037h3.71V11.47c0-1.231 2.023-2.277 2.023-4.64zM7.83 14.572a.475.475 0 0 1-.475.476h-3.71a.475.475 0 0 1 0-.95h3.71a.475.475 0 0 1 .475.474zm-.64 1.262a.238.238 0 0 1-.078.265 2.669 2.669 0 0 1-3.274 0 .237.237 0 0 1 .145-.425h2.983a.238.238 0 0 1 .225.16z"/></svg></span>
@@ -1626,7 +1762,7 @@
             <h2 class="section-h2" id="section-lights-heading">Light &amp; Visibility</h2>
             <span class="section-badge" id="badge-lights">0 of 5 done</span>
           </div>
-          <p class="section-desc">Light is the first thing buyers feel — before they read a single word.</p>
+          <p class="section-desc">Light is what separates a bright, airy listing from one buyers scroll past.</p>
         </div>
       </div>
 
@@ -1635,8 +1771,8 @@
           <input type="checkbox" class="item-checkbox" id="item-1" data-id="item-1" aria-describedby="desc-1">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-1">Turn on every light — overheads, lamps, under-cabinet</label>
-          <p class="item-desc" id="desc-1">Dark rooms photograph small.</p>
+          <label class="item-title" for="item-1">Turn on every light — overheads, lamps, under-cabinet <span class="item-priority">Priority</span></label>
+          <p class="item-desc" id="desc-1">Lit rooms photograph larger, warmer, and more inviting. Every bulb counts.</p>
         </div>
       </div>
 
@@ -1646,7 +1782,7 @@
         </div>
         <div class="item-body">
           <label class="item-title" for="item-2">Raise every blind and shutter</label>
-          <p class="item-desc" id="desc-2">Natural light is free staging. Let it in.</p>
+          <p class="item-desc" id="desc-2">Natural light is free staging — and it makes every room feel bigger on camera.</p>
         </div>
       </div>
 
@@ -1690,7 +1826,7 @@
             <h2 class="section-h2" id="section-clutter-heading">Clear the Space</h2>
             <span class="section-badge" id="badge-clutter">0 of 5 done</span>
           </div>
-          <p class="section-desc">Buyers are purchasing your square footage, not your belongings.</p>
+          <p class="section-desc">You're not hiding your life — you're making room for theirs. Clear surfaces sell square footage.</p>
         </div>
       </div>
 
@@ -1699,8 +1835,8 @@
           <input type="checkbox" class="item-checkbox" id="item-6" data-id="item-6" aria-describedby="desc-6">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-6">Clear 90% of kitchen surfaces</label>
-          <p class="item-desc" id="desc-6">The emptier it looks, the larger it photographs.</p>
+          <label class="item-title" for="item-6">Clear 90% of kitchen surfaces <span class="item-priority">Priority</span></label>
+          <p class="item-desc" id="desc-6">The kitchen makes or breaks a listing. Bare counters read as spacious, modern, move-in ready.</p>
         </div>
       </div>
 
@@ -1709,8 +1845,8 @@
           <input type="checkbox" class="item-checkbox" id="item-7" data-id="item-7" aria-describedby="desc-7">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-7">Bathrooms completely bare — counters, tub ledges, shower floors</label>
-          <p class="item-desc" id="desc-7">Think boutique hotel — counters, tub ledges, shower floors.</p>
+          <label class="item-title" for="item-7">Bathrooms completely bare — counters, tub ledges, shower floors <span class="item-priority">Priority</span></label>
+          <p class="item-desc" id="desc-7">One product on the ledge ruins the shot. Think boutique hotel: nothing visible, nothing personal.</p>
         </div>
       </div>
 
@@ -1720,7 +1856,7 @@
         </div>
         <div class="item-body">
           <label class="item-title" for="item-8">Clear all tables, dressers, nightstands, and mantles</label>
-          <p class="item-desc" id="desc-8">Buyers need to picture their life here, not yours.</p>
+          <p class="item-desc" id="desc-8">If you can see it, the camera can. Buyers need to picture their life here, not yours.</p>
         </div>
       </div>
 
@@ -1754,7 +1890,7 @@
             <h2 class="section-h2" id="section-curb-heading">Curb Appeal</h2>
             <span class="section-badge" id="badge-curb">0 of 4 done</span>
           </div>
-          <p class="section-desc">The exterior is the first photo every buyer sees. Make them stop scrolling.</p>
+          <p class="section-desc">The exterior shot is the thumbnail. It's the first thing every buyer sees — make them stop scrolling.</p>
         </div>
       </div>
 
@@ -1763,7 +1899,7 @@
           <input type="checkbox" class="item-checkbox" id="item-11" data-id="item-11" aria-describedby="desc-11">
         </div>
         <div class="item-body">
-          <label class="item-title" for="item-11">Move every vehicle off the driveway and street</label>
+          <label class="item-title" for="item-11">Move every vehicle off the driveway and street <span class="item-priority">Priority</span></label>
           <p class="item-desc" id="desc-11">A parked car halves the shot.</p>
         </div>
       </div>
@@ -1808,7 +1944,7 @@
             <h2 class="section-h2" id="section-outdoor-heading">Outdoor &amp; Backyard</h2>
             <span class="section-badge" id="badge-outdoor">0 of 4 done</span>
           </div>
-          <p class="section-desc">Buyers are buying a lifestyle. Show them the one they want.</p>
+          <p class="section-desc">The backyard is where buyers imagine their next weekend. Stage it like you're about to host.</p>
         </div>
       </div>
 
@@ -1853,17 +1989,77 @@
       </div>
     </section>
 
+    <!-- WHY IT WORKS — credibility layer mid-scroll -->
+    <div id="checklist-end-sentinel" style="height:1px;"></div>
+    <section id="why-matters-wrap" style="margin: 0 -88px; padding: 0 88px; border-top: 2px solid var(--pearl); border-bottom: 2px solid var(--pearl);">
+      <section id="why-matters" aria-labelledby="why-heading" style="padding: 52px 0 44px;">
+        <p class="section-eyebrow">The key insight</p>
+        <h2 class="why-h2" id="why-heading">The camera sees<br>everything differently.</h2>
+        <div class="bento-grid" role="list">
+          <div class="bento-hero" role="listitem">
+            <svg width="100%" height="100%" viewBox="0 0 420 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="bw1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8e4de"/><stop offset="100%" stop-color="#d5cfc6"/></linearGradient>
+                <linearGradient id="bfloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c9ab85"/><stop offset="100%" stop-color="#b09268"/></linearGradient>
+                <linearGradient id="beam2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff8ee" stop-opacity="0.55"/><stop offset="100%" stop-color="#fff8ee" stop-opacity="0"/></linearGradient>
+              </defs>
+              <rect width="420" height="300" fill="url(#bw1)"/>
+              <rect y="300" width="420" height="120" fill="url(#bfloor)"/>
+              <rect y="298" width="420" height="4" fill="rgba(0,0,0,0.1)"/>
+              <rect x="30" y="30" width="110" height="200" rx="2" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+              <line x1="85" y1="30" x2="85" y2="230" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <line x1="30" y1="130" x2="140" y2="130" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <polygon points="30,30 140,30 180,300 -10,300" fill="url(#beam2)"/>
+              <rect x="300" y="30" width="100" height="200" rx="2" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+              <line x1="350" y1="30" x2="350" y2="230" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <line x1="300" y1="130" x2="400" y2="130" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <rect x="0" y="270" width="420" height="38" fill="#ddd5c8"/>
+              <rect x="0" y="268" width="420" height="5" fill="rgba(0,0,0,0.07)"/>
+              <rect x="10" y="248" width="80" height="22" rx="3" fill="rgba(255,255,255,0.18)"/>
+              <rect x="0" y="420" width="420" height="3" fill="#C8102E"/>
+              <rect width="420" height="420" fill="rgba(0,0,0,0.22)"/>
+            </svg>
+            <div class="bento-hero-overlay"></div>
+            <div class="bento-hero-text">
+              <p class="bento-hero-eyebrow">Staging vs. photography</p>
+              <h3>90% overlap. 10% completely different.</h3>
+              <p>Great staging attracts buyers in person. These steps ensure your space also performs on camera — where every listing starts.</p>
+            </div>
+          </div>
+          <div class="bento-card-dark" role="listitem">
+            <div class="bento-card-icon" aria-hidden="true"><svg viewBox="-4 0 19 19" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M10.328 6.83a5.903 5.903 0 0 1-1.439 3.64 2.874 2.874 0 0 0-.584 1v1.037a.95.95 0 0 1-.95.95h-3.71a.95.95 0 0 1-.95-.95V11.47a2.876 2.876 0 0 0-.584-1A5.903 5.903 0 0 1 .67 6.83a4.83 4.83 0 0 1 9.28-1.878 4.796 4.796 0 0 1 .38 1.88zm-.95 0a3.878 3.878 0 0 0-7.756 0c0 2.363 2.023 3.409 2.023 4.64v1.037h3.71V11.47c0-1.231 2.023-2.277 2.023-4.64zM7.83 14.572a.475.475 0 0 1-.475.476h-3.71a.475.475 0 0 1 0-.95h3.71a.475.475 0 0 1 .475.474zm-.64 1.262a.238.238 0 0 1-.078.265 2.669 2.669 0 0 1-3.274 0 .237.237 0 0 1 .145-.425h2.983a.238.238 0 0 1 .225.16z"/></svg></div>
+            <h3>What feels cozy reads as clutter</h3>
+            <p>The decorative warmth stagers love is exactly what a lens turns into visual noise. Less on every surface, always.</p>
+          </div>
+          <div class="bento-card-light" role="listitem">
+            <div class="bento-stat-block">
+              <span class="bento-stat-num">1st</span>
+              <span class="bento-stat-label">Impression online</span>
+            </div>
+            <div class="bento-stat-block">
+              <span class="bento-stat-num">3 sec</span>
+              <span class="bento-stat-label">Buyer decides</span>
+            </div>
+            <div class="bento-stat-block">
+              <span class="bento-stat-num">∞</span>
+              <span class="bento-stat-label">Impact of light</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
     <!-- QUICK SUMMARY -->
     <aside id="quick-summary" aria-labelledby="summary-heading">
-      <p class="summary-eyebrow">Quick reminder</p>
-      <h2 class="summary-title" id="summary-heading">Treat it like<br>the in-laws are coming.</h2>
+      <p class="summary-eyebrow">Before they knock</p>
+      <h2 class="summary-title" id="summary-heading">The 15-Minute Final Sweep.</h2>
       <ul class="summary-list">
-        <li>Don't just tidy up — thoroughly clean</li>
-        <li>Hide items in places that won't be photographed</li>
-        <li>Less = more. Way less = way more</li>
-        <li>Kitchen and master bath are the top priority</li>
-        <li>Closets, cabinets, drawers — use them</li>
-        <li>Review images with your photographer on-site</li>
+        <li>All lights on. Every ceiling fan off</li>
+        <li>Every vehicle off the driveway and street</li>
+        <li>Toilet lids closed in every bathroom</li>
+        <li>Floors vacuumed or swept</li>
+        <li>Pets relocated — beds, bowls, toys gone</li>
+        <li>Golden rule: if it wouldn't be in a luxury hotel room, it shouldn't be here</li>
       </ul>
     </aside>
 
@@ -1874,15 +2070,39 @@
           <polyline points="20 6 9 17 4 12"/>
         </svg>
       </div>
-      <h2 class="completion-title">You're <em>camera&#8209;ready.</em></h2>
-      <p class="completion-sub">All 18 items complete. Your home is set up for the best possible listing photos.<br>Your photographer is on their way — see you at the shoot.</p>
+      <h2 class="completion-title">You're <em>Camera&#8209;Ready.</em></h2>
+      <p class="completion-sub">Every item complete. Your home is set up for the best possible listing photos.<br>See you at the shoot.</p>
+      <div class="completion-actions">
       <a href="https://shoot2sell.vercel.app/book" class="completion-cta">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         Book Your Next Shoot
       </a>
+      <a href="CHECKLIST_MAY12.pdf" class="completion-cta" style="background:transparent;border:1.5px solid #000000;color:#000000;" download target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 10v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2"/><polyline points="5 7 8 10 11 7"/><line x1="8" y1="1" x2="8" y2="10"/></svg>
+        Download PDF
+      </a>
+      </div>
     </div>
 
   </main>
+</div>
+
+<!-- BOOKING BAND -->
+<section id="booking-band" aria-label="Book your shoot">
+  <div class="booking-band-text">
+    <p class="booking-band-eyebrow">Ready when you are</p>
+    <p class="booking-band-headline">Your checklist is done.<br><em>Book your shoot.</em></p>
+  </div>
+  <a href="https://shoot2sell.vercel.app/book" class="booking-band-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Schedule Your Shoot
+  </a>
+</section>
+
+<!-- 75% NUDGE BAR -->
+<div id="nudge-bar" role="status" aria-live="polite">
+  <span class="nudge-text" id="nudge-text"><strong>Almost there.</strong> A few items left — finish strong.</span>
+  <button class="nudge-close" id="nudge-close" aria-label="Dismiss">×</button>
 </div>
 
 <script>
@@ -1891,6 +2111,7 @@
     const STORAGE_KEY = 's2s_checklist_v2';
     const STORAGE_DATE_KEY = 's2s_checklist_date_v2';
     const TTL_DAYS = 7;
+    let nudgeDismissed = false;
 
     const sectionMap = {
       lights: { total: 5, badgeId: 'badge-lights', navId: 'nav-lights', countId: 'nav-lights-count' },
@@ -1987,6 +2208,7 @@
           delete state[this.dataset.id];
         }
         saveState(state);
+        document.getElementById('reset-btn').style.display = 'inline';
         updateAll(true);
       });
     });
@@ -2004,6 +2226,17 @@
         updateAll(false);
         document.getElementById('completion-banner').classList.remove('visible');
       }
+    });
+
+    // Show reset if state has items on load
+    if (Object.keys(state).length > 0) {
+      document.getElementById('reset-btn').style.display = 'inline';
+    }
+
+    // Nudge bar dismiss
+    document.getElementById('nudge-close').addEventListener('click', function() {
+      nudgeDismissed = true;
+      document.getElementById('nudge-bar').classList.remove('nudge-visible');
     });
 
     // Scroll effect on rail
@@ -2087,6 +2320,17 @@
           navCount.textContent = '✓';
         }
       });
+
+      // Nudge bar at 75%
+      const nudgeBar = document.getElementById('nudge-bar');
+      const nudgeText = document.getElementById('nudge-text');
+      const remaining = TOTAL - totalChecked;
+      if (!nudgeDismissed && pct >= 75 && pct < 100) {
+        nudgeText.innerHTML = '<strong>Almost there.</strong> ' + remaining + ' item' + (remaining !== 1 ? 's' : '') + ' left — finish strong.';
+        nudgeBar.classList.add('nudge-visible');
+      } else {
+        nudgeBar.classList.remove('nudge-visible');
+      }
 
       // Completion banner
       const banner = document.getElementById('completion-banner');
@@ -2185,6 +2429,18 @@
     }, { rootMargin: '-30% 0px -60% 0px' });
 
     sections.forEach(s => observer.observe(s));
+
+    // Sidebar collapse after checklist ends
+    const sentinel = document.getElementById('checklist-end-sentinel');
+    const sidebar = document.getElementById('sidebar');
+    if (sentinel && sidebar) {
+      const collapseObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          sidebar.classList.toggle('sidebar-collapsed', entry.boundingClientRect.top < 0);
+        });
+      }, { threshold: 0 });
+      collapseObserver.observe(sentinel);
+    }
 
   })();
 </script>
