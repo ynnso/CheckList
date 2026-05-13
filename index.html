@@ -651,13 +651,13 @@
 
   .bento-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto auto;
     gap: 10px;
     margin-top: 28px;
   }
 
-  /* ── Row 1: full-width top band ── */
+  /* Row 1 spans all 4 columns */
   .bento-top {
     grid-column: 1 / -1;
     background: #000000;
@@ -829,14 +829,13 @@
   }
 
   .bento-card-light {
-    grid-column: 3;
     background: #000000;
     border: none;
     border-radius: var(--radius-lg);
     padding: 28px 24px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     min-height: 160px;
     position: relative;
     overflow: hidden;
@@ -854,21 +853,17 @@
   .bento-stat-block {
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    flex: 1;
-    padding-bottom: 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    gap: 4px;
   }
 
   .bento-stat-block:last-child {
     border-bottom: none;
     padding-bottom: 0;
-    padding-top: 14px;
   }
 
   .bento-stat-num {
     font-family: var(--font-display);
-    font-size: 26px;
+    font-size: clamp(22px, 3vw, 30px);
     font-weight: 700;
     color: #ffffff;
     line-height: 1;
@@ -893,9 +888,8 @@
     .bento-top { grid-column: 1 / -1; flex-direction: column; align-items: flex-start; gap: 12px; }
     .bento-card-red { grid-column: 1; }
     .bento-card-dark { grid-column: 2; }
-    .bento-card-light { grid-column: 1 / -1; flex-direction: row; min-height: auto; padding: 20px 24px; }
-    .bento-stat-block { border-bottom: none; padding-bottom: 0; border-right: 1px solid rgba(255,255,255,0.07); padding-right: 20px; }
-    .bento-stat-block:last-child { border-right: none; padding-top: 0; padding-left: 20px; }
+    .bento-card-light { min-height: 100px; padding: 20px; }
+    .bento-stat-block { border-bottom: none; padding-bottom: 0; }
   }
 
   .section-eyebrow {
@@ -2164,12 +2158,16 @@
             <p>The decorative warmth stagers love is exactly what a lens turns into visual noise. Less on every surface, always.</p>
           </div>
 
-          <!-- Row 2 Card C: light stats -->
+          <!-- Row 2 Card C: stat 1 -->
           <div class="bento-card-light" role="listitem">
             <div class="bento-stat-block">
               <span class="bento-stat-num">9 days</span>
               <span class="bento-stat-label">Faster to sell</span>
             </div>
+          </div>
+
+          <!-- Row 2 Card D: stat 2 -->
+          <div class="bento-card-light" role="listitem">
             <div class="bento-stat-block">
               <span class="bento-stat-num">95%</span>
               <span class="bento-stat-label">Search online first</span>
