@@ -1495,18 +1495,6 @@
     color: #ffffff;
   }
 
-  .hero-micro {
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--ash);
-    letter-spacing: 0.01em;
-    line-height: 1.5;
-    margin-top: -2px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
   .hero-cta-btn {
     display: inline-flex;
     align-items: center;
@@ -1726,16 +1714,12 @@
       <span class="h1-line2">Cost You</span>
       <span class="h1-line3">Offers</span>
     </h1>
-    <p class="hero-sub">Most homes are photographed before they're ready. Here's how to not be one of them.</p>
+    <p class="hero-sub">Most homes aren't ready when the photographer arrives.<br>This checklist fixes that.</p>
     <div class="hero-ctas">
       <a href="#section-lights" class="hero-cta-btn">
         Start the Checklist
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
-      <p class="hero-micro">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;opacity:0.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        No account needed. Saves your progress automatically.
-      </p>
       <a href="CHECKLIST_MAY12.pdf" class="hero-cta-ghost" download target="_blank" rel="noopener">
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 10v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2"/><polyline points="5 7 8 10 11 7"/><line x1="8" y1="1" x2="8" y2="10"/></svg>
         Download PDF
@@ -2587,16 +2571,28 @@
     cap.textContent = captions[0];
     setTimeout(() => cap.classList.add('caption-visible'), 400);
 
-    // Pause on hover
-    hero.addEventListener('mouseenter', () => paused = true);
-    hero.addEventListener('mouseleave', () => paused = false);
-
     // Reduced motion: show first slide only, no cycling
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       cap.textContent = captions[0];
       cap.classList.add('caption-visible');
       return;
     }
+
+    // Pause on hover — desktop only (hover: hover means real mouse)
+    if (window.matchMedia('(hover: hover)').matches) {
+      hero.addEventListener('mouseenter', () => paused = true);
+      hero.addEventListener('mouseleave', () => paused = false);
+    }
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    hero.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    hero.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+    }, { passive: true });
 
     start();
   })();
