@@ -147,35 +147,93 @@
 
   .hero-visual {
     position: relative;
-    background: #1A1A1A;
     overflow: hidden;
+    background: #0a0002;
   }
 
-  .hero-visual-img {
+  /* ─── CAROUSEL ──────────────────────────────────────────────── */
+  .carousel {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.7;
   }
 
-  .hero-visual-overlay {
+  .carousel-slide {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(13,13,13,0.4) 0%, rgba(200,16,46,0.15) 100%);
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .hero-visual-caption {
+  .carousel-slide.active {
+    opacity: 1;
+  }
+
+  .carousel-overlay {
     position: absolute;
-    bottom: 32px;
-    right: 32px;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.72) 0%,
+      rgba(0,0,0,0.18) 50%,
+      rgba(0,0,0,0.08) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .carousel-caption-wrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px 36px;
+    z-index: 2;
+  }
+
+  .carousel-caption {
     font-family: var(--font-display);
-    font-style: normal;
+    font-size: 15px;
     font-weight: 500;
-    color: rgba(255,255,255,0.85);
-    text-align: right;
+    color: rgba(255,255,255,0.92);
     line-height: 1.4;
+    letter-spacing: -0.01em;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.4s ease 0.5s, transform 0.4s ease 0.5s;
+  }
+
+  .carousel-caption.caption-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .carousel-dots {
+    position: absolute;
+    bottom: 14px;
+    right: 20px;
+    display: flex;
+    gap: 5px;
+    z-index: 2;
+  }
+
+  .carousel-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .carousel-dot.active {
+    background: #ffffff;
+    transform: scale(1.3);
+  }
+
+  @media (max-width: 768px) {
+    .carousel-caption { font-size: 13px; }
+    .carousel-caption-wrap { padding: 20px 24px; }
   }
 
 
@@ -381,7 +439,31 @@
     align-items: center;
     padding: 32px 0 8px;
     gap: 12px;
+    position: relative;
   }
+
+  .sidebar-circle-top {
+    position: absolute;
+    top: 28px;
+    right: 0;
+  }
+
+  .reset-btn {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.3);
+    background: none;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: color var(--transition);
+    padding: 4px 0;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .reset-btn:hover { color: rgba(255,255,255,0.65); }
 
   .progress-circle {
     position: relative;
@@ -969,13 +1051,12 @@
 
   .summary-title {
     font-family: var(--font-display);
-    font-size: clamp(22px, 3.5vw, 32px);
+    font-size: clamp(18px, 3.5vw, 32px);
     font-weight: 700;
     color: #ffffff;
     line-height: 1.15;
     margin-bottom: 32px;
     letter-spacing: -0.025em;
-    white-space: nowrap;
   }
 
   .summary-list {
@@ -1384,6 +1465,15 @@
     color: #ffffff;
   }
 
+  .hero-micro {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--silver);
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+    margin-top: -4px;
+  }
+
   .hero-cta-btn {
     display: inline-flex;
     align-items: center;
@@ -1598,81 +1688,45 @@
 <section id="hero" aria-labelledby="hero-heading">
   <div class="hero-content">
     <p class="hero-eyebrow">Shoot2Sell · Photoshoot Checklist</p>
-    <h1 class="hero-h1" id="hero-heading">Great Photos<br><em>Sell Faster.</em></h1>
-    <p class="hero-sub">Buyers decide in 3 seconds. These steps make sure your home wins that moment — before the photographer even knocks.</p>
+    <h1 class="hero-h1" id="hero-heading">Bad photos<br><em>cost you offers.</em></h1>
+    <p class="hero-sub">Most homes are photographed before they're ready. Here's how to not be one of them.</p>
     <div class="hero-ctas">
       <a href="#section-lights" class="hero-cta-btn">
         Start the Checklist
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
+      <p class="hero-micro">No account needed. Saves your progress automatically.</p>
       <a href="CHECKLIST_MAY12.pdf" class="hero-cta-ghost" download target="_blank" rel="noopener">
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 10v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2"/><polyline points="5 7 8 10 11 7"/><line x1="8" y1="1" x2="8" y2="10"/></svg>
         Download PDF
       </a>
     </div>
   </div>
-  <div class="hero-visual" role="img" aria-label="Beautifully staged living room ready for real estate photography">
-    <!-- SVG placeholder simulating a clean interior scene -->
-    <svg width="100%" height="100%" viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
-      <defs>
-        <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#e8e4de"/>
-          <stop offset="100%" stop-color="#d8d2c9"/>
-        </linearGradient>
-        <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#c4a882"/>
-          <stop offset="100%" stop-color="#a8906c"/>
-        </linearGradient>
-        <linearGradient id="lightBeam" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#fff9f0" stop-opacity="0.6"/>
-          <stop offset="100%" stop-color="#fff9f0" stop-opacity="0"/>
-        </linearGradient>
-        <linearGradient id="sofaGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#f2ede6"/>
-          <stop offset="100%" stop-color="#ddd7ce"/>
-        </linearGradient>
-      </defs>
-      <!-- Wall -->
-      <rect width="600" height="300" fill="url(#wallGrad)"/>
-      <!-- Floor -->
-      <rect y="300" width="600" height="120" fill="url(#floorGrad)"/>
-      <!-- Floor highlight -->
-      <rect y="298" width="600" height="4" fill="rgba(0,0,0,0.08)"/>
-      <!-- Window left -->
-      <rect x="40" y="40" width="120" height="200" rx="2" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-      <line x1="100" y1="40" x2="100" y2="240" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-      <line x1="40" y1="140" x2="160" y2="140" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-      <!-- Light beam from window -->
-      <polygon points="40,40 160,40 220,300 -20,300" fill="url(#lightBeam)"/>
-      <!-- Window right -->
-      <rect x="420" y="40" width="140" height="200" rx="2" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-      <line x1="490" y1="40" x2="490" y2="240" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-      <line x1="420" y1="140" x2="560" y2="140" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-      <!-- Sofa -->
-      <rect x="120" y="240" width="360" height="90" rx="6" fill="url(#sofaGrad)"/>
-      <rect x="120" y="240" width="360" height="24" rx="5" fill="rgba(255,255,255,0.3)"/>
-      <rect x="120" y="240" width="18" height="90" rx="4" fill="#e5e0d8"/>
-      <rect x="462" y="240" width="18" height="90" rx="4" fill="#e5e0d8"/>
-      <!-- Cushion lines -->
-      <line x1="218" y1="264" x2="218" y2="330" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
-      <line x1="316" y1="264" x2="316" y2="330" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
-      <!-- Coffee table -->
-      <rect x="200" y="340" width="200" height="48" rx="4" fill="#b8a48a"/>
-      <rect x="200" y="338" width="200" height="6" rx="2" fill="#c4b09a"/>
-      <!-- Rug -->
-      <ellipse cx="300" cy="355" rx="180" ry="40" fill="rgba(100,80,60,0.1)"/>
-      <!-- Art on wall -->
-      <rect x="240" y="50" width="120" height="80" rx="2" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
-      <rect x="250" y="58" width="100" height="64" fill="rgba(200,16,46,0.12)"/>
-      <!-- Plant -->
-      <rect x="530" y="260" width="14" height="40" rx="2" fill="#8B7355"/>
-      <ellipse cx="537" cy="256" rx="22" ry="30" fill="#6B7F5B" opacity="0.7"/>
-      <ellipse cx="522" cy="270" rx="14" ry="18" fill="#5A6E4A" opacity="0.7"/>
-      <!-- Overhead darkness (vignette feel) -->
-      <rect width="600" height="420" fill="rgba(0,0,0,0.18)"/>
-    </svg>
-    <div class="hero-visual-overlay"></div>
-    <p class="hero-visual-caption">Staged. Lit. Ready.<br>Let's shoot.</p>
+  <div class="hero-visual" role="region" aria-label="Property photo examples" aria-live="polite">
+    <div class="carousel" id="hero-carousel">
+      <div class="carousel-slide active" style="background-image:url('hero-1-kitchen.jpg')" aria-label="Slide 1 of 8"></div>
+      <div class="carousel-slide" style="background-image:url('hero-2-car.jpg')" aria-label="Slide 2 of 8"></div>
+      <div class="carousel-slide" style="background-image:url('hero-3-office.jpg')" aria-label="Slide 3 of 8"></div>
+      <div class="carousel-slide" style="background-image:url('hero-4-living-x.jpg')" aria-label="Slide 4 of 8"></div>
+      <div class="carousel-slide" style="background-image:url('hero-5-pool.jpg')" aria-label="Slide 5 of 8"></div>
+      <div class="carousel-slide" style="background-image:url('hero-6-dark-kitchen.jpg')" aria-label="Slide 6 of 8"></div>
+      <div class="carousel-slide" style="background-image:url('hero-7-backyard.jpg')" aria-label="Slide 7 of 8"></div>
+      <div class="carousel-slide" style="background-image:url('hero-8-dog.jpg')" aria-label="Slide 8 of 8"></div>
+    </div>
+    <div class="carousel-overlay"></div>
+    <div class="carousel-caption-wrap">
+      <p class="carousel-caption" id="carousel-caption">Clear the island. Let the kitchen speak.</p>
+    </div>
+    <div class="carousel-dots" aria-hidden="true">
+      <span class="carousel-dot active"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+    </div>
   </div>
 </section>
 
@@ -1702,6 +1756,9 @@
   <!-- SIDEBAR -->
   <nav id="sidebar" aria-label="Checklist section navigation">
     <div class="sidebar-circle-wrap">
+      <div class="sidebar-circle-top">
+        <button class="reset-btn" id="reset-btn" aria-label="Reset all checklist items" style="display:none">↺ Reset</button>
+      </div>
       <div class="progress-circle" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="sidebar-circle-wrap" aria-label="Overall checklist completion">
         <svg width="72" height="72" viewBox="0 0 72 72">
           <circle class="progress-circle-track" cx="36" cy="36" r="33"/>
@@ -1717,8 +1774,6 @@
     </div>
 
     <p class="sidebar-section-label">Sections</p>
-
-    <button class="reset-btn" id="reset-btn" aria-label="Reset all checklist items" style="display:none">↺ Reset progress</button>
 
     <a class="sidebar-nav-item" href="#section-lights" id="nav-lights">
       <span class="sidebar-nav-icon"><svg viewBox="-4 0 19 19" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M10.328 6.83a5.903 5.903 0 0 1-1.439 3.64 2.874 2.874 0 0 0-.584 1v1.037a.95.95 0 0 1-.95.95h-3.71a.95.95 0 0 1-.95-.95V11.47a2.876 2.876 0 0 0-.584-1A5.903 5.903 0 0 1 .67 6.83a4.83 4.83 0 0 1 9.28-1.878 4.796 4.796 0 0 1 .38 1.88zm-.95 0a3.878 3.878 0 0 0-7.756 0c0 2.363 2.023 3.409 2.023 4.64v1.037h3.71V11.47c0-1.231 2.023-2.277 2.023-4.64zM7.83 14.572a.475.475 0 0 1-.475.476h-3.71a.475.475 0 0 1 0-.95h3.71a.475.475 0 0 1 .475.474zm-.64 1.262a.238.238 0 0 1-.078.265 2.669 2.669 0 0 1-3.274 0 .237.237 0 0 1 .145-.425h2.983a.238.238 0 0 1 .225.16z"/></svg></span>
@@ -2041,8 +2096,8 @@
               <span class="bento-stat-label">Buyer decides</span>
             </div>
             <div class="bento-stat-block">
-              <span class="bento-stat-num">∞</span>
-              <span class="bento-stat-label">Impact of light</span>
+              <span class="bento-stat-num">4×</span>
+              <span class="bento-stat-label">More listing views</span>
             </div>
           </div>
         </div>
@@ -2088,7 +2143,7 @@
 </div>
 
 <!-- BOOKING BAND -->
-<section id="booking-band" aria-label="Book your shoot">
+<section id="booking-band" aria-label="Book your shoot" style="display:none">
   <div class="booking-band-text">
     <p class="booking-band-eyebrow">Ready when you are</p>
     <p class="booking-band-headline">Your checklist is done.<br><em>Book your shoot.</em></p>
@@ -2171,10 +2226,7 @@
         el.className = 's2s-toast';
         document.body.appendChild(el);
       }
-      const idx = sectionOrder.indexOf(section);
-      const next = sectionOrder[idx + 1];
-      const nextLabel = next ? sectionLabels[next] : null;
-      el.textContent = '✓ ' + sectionLabels[section] + ' complete!' + (nextLabel ? ' Up next: ' + nextLabel : ' All done!');
+      el.textContent = '✓ ' + sectionLabels[section] + ' complete!';
       clearTimeout(toastTimer);
       el.classList.remove('toast-visible');
       void el.offsetWidth;
@@ -2209,6 +2261,7 @@
         }
         saveState(state);
         document.getElementById('reset-btn').style.display = 'inline';
+        document.getElementById('booking-band').style.display = 'flex';
         updateAll(true);
       });
     });
@@ -2225,12 +2278,15 @@
         prevCompleted = false;
         updateAll(false);
         document.getElementById('completion-banner').classList.remove('visible');
+        document.getElementById('reset-btn').style.display = 'none';
+        document.getElementById('booking-band').style.display = 'none';
       }
     });
 
-    // Show reset if state has items on load
+    // Show reset + booking band if state has items on load
     if (Object.keys(state).length > 0) {
       document.getElementById('reset-btn').style.display = 'inline';
+      document.getElementById('booking-band').style.display = 'flex';
     }
 
     // Nudge bar dismiss
@@ -2267,9 +2323,9 @@
 
       const readyLabel = document.getElementById('sidebar-ready-label');
       if (totalChecked === TOTAL) {
-        readyLabel.textContent = '✓ CAMERA-READY!';
+        readyLabel.textContent = 'You\'re ready.';
         readyLabel.style.color = '#ffffff';
-        readyLabel.style.fontWeight = '700';
+        readyLabel.style.fontWeight = '600';
       } else {
         readyLabel.textContent = (TOTAL - totalChecked) + ' item' + (TOTAL - totalChecked !== 1 ? 's' : '') + ' remaining';
         readyLabel.style.color = '';
@@ -2442,6 +2498,67 @@
       collapseObserver.observe(sentinel);
     }
 
+  })();
+
+  // ─── HERO CAROUSEL ───────────────────────────────────────────
+  (function() {
+    const captions = [
+      'Clear the island. Let the kitchen speak.',
+      'Move every vehicle. A parked car halves the shot.',
+      'This is what prepared looks like.',
+      'Buyers see everything the camera sees.',
+      'Still water. Clear pool. Pure luxury on camera.',
+      'Mismatched bulbs. The camera sees it even when you don\'t.',
+      'Stage it like you\'re about to host.',
+      'Cute dog. Wrong photo. Relocate pets before the shoot.'
+    ];
+
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots   = document.querySelectorAll('.carousel-dot');
+    const cap    = document.getElementById('carousel-caption');
+    const hero   = document.getElementById('hero-carousel');
+
+    if (!slides.length || !cap) return;
+
+    let current = 0;
+    let timer;
+    let paused = false;
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+
+      // Caption crossfade
+      cap.classList.remove('caption-visible');
+      setTimeout(() => {
+        cap.textContent = captions[current];
+        cap.classList.add('caption-visible');
+      }, 120);
+    }
+
+    function start() {
+      timer = setInterval(() => { if (!paused) goTo(current + 1); }, 2000);
+    }
+
+    // Init caption
+    cap.textContent = captions[0];
+    setTimeout(() => cap.classList.add('caption-visible'), 400);
+
+    // Pause on hover
+    hero.addEventListener('mouseenter', () => paused = true);
+    hero.addEventListener('mouseleave', () => paused = false);
+
+    // Reduced motion: show first slide only, no cycling
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      cap.textContent = captions[0];
+      cap.classList.add('caption-visible');
+      return;
+    }
+
+    start();
   })();
 </script>
 
