@@ -861,7 +861,7 @@
 
   /* ─── CHECKLIST SECTION ─────────────────────────────────────── */
   .checklist-section {
-    padding: 64px 0 32px;
+    padding: 48px 0 24px;
     border-bottom: 2px solid var(--pearl);
     scroll-margin-top: 24px;
   }
@@ -871,7 +871,7 @@
   }
 
   .section-header {
-    margin-bottom: 32px;
+    margin-bottom: 20px;
   }
 
   .section-header-left {}
@@ -908,10 +908,10 @@
   }
 
   .section-desc {
-    font-size: 14px;
-    color: #000000;
-    margin-top: 0;
-    line-height: 1.6;
+    font-size: 13px;
+    color: #555555;
+    margin-top: 2px;
+    line-height: 1.55;
     max-width: 80%;
     padding-left: 46px;
   }
@@ -940,7 +940,7 @@
     display: grid;
     grid-template-columns: 40px 1fr;
     gap: 0;
-    padding: 24px 0 24px 0;
+    padding: 16px 0;
     border-top: none;
     border-bottom: 1px solid var(--pearl);
     align-items: start;
@@ -1416,7 +1416,7 @@
     .sidebar-circle-wrap { display: none; }
     .sidebar-section-label { width: 100%; }
     #content { padding: 0 32px 64px; }
-    .checklist-section { padding: 48px 0 24px; }
+    .checklist-section { padding: 36px 0 16px; }
     .summary-list { grid-template-columns: 1fr; }
     .bento-grid { grid-template-columns: 1fr; grid-template-rows: 260px auto auto; }
     .bento-hero { grid-column: 1; grid-row: 1; min-height: 260px; }
@@ -1428,9 +1428,11 @@
   @media (max-width: 560px) {
     .hero-content { padding: 36px 24px 32px; }
     #content { padding: 0 24px 64px; }
-    .section-desc { padding-left: 0; }
+    .section-desc { padding-left: 44px; max-width: 100%; }
     #quick-summary { padding: 28px 24px; }
     .summary-list { grid-template-columns: 1fr; }
+    .checklist-section { padding: 36px 0 16px; }
+    .checklist-item { padding: 14px 0; }
   }
 
   /* ─── SECTION COMPLETE TOAST ───────────────────────────────── */
