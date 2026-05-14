@@ -291,6 +291,7 @@
     max-width: 1280px;
     margin: 0 auto;
     gap: 0;
+    border-top: 2px solid var(--pearl);
   }
 
   /* ─── SIDEBAR ───────────────────────────────────────────────── */
@@ -1340,17 +1341,17 @@
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.03em;
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
     padding: 14px 28px;
     border-radius: var(--radius);
     border: 1.5px solid #000000;
-    background: transparent;
+    background: #000000;
     transition: background var(--transition), color var(--transition);
   }
   .hero-cta-ghost:hover {
-    background: #000000;
-    color: #ffffff;
+    background: #1a1a1a;
+    border-color: #1a1a1a;
   }
 
   .hero-cta-btn {
@@ -1464,76 +1465,137 @@
   @media (max-width: 768px) { #nudge-bar { bottom: 60px; } }
 
 
+  /* ─── QUICK READS ───────────────────────────────────────────── */
   #quick-reads {
-    background: var(--off-white);
-    border-top: 1px solid var(--pearl);
-    padding: 0 80px;
+    background: #000000;
+    padding: 48px 80px;
+    overflow: hidden;
+  }
+
+  .qr-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .qr-header-left {}
+
+  .qr-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .qr-eyebrow::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 1px;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+
+  .qr-headline {
+    font-family: var(--font-display);
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .qr-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  .qr-cards-wrap {
     overflow-x: auto;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+    cursor: grab;
   }
-  #quick-reads::-webkit-scrollbar { display: none; }
 
-  .qr-inner {
+  .qr-cards-wrap::-webkit-scrollbar { display: none; }
+  .qr-cards-wrap:active { cursor: grabbing; }
+
+  .qr-cards {
     display: flex;
-    align-items: center;
-    gap: 0;
+    gap: 12px;
     min-width: max-content;
-    height: 44px;
   }
 
-  .qr-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    color: var(--silver);
-    margin-right: 20px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .qr-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--ash);
+  .qr-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 220px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-lg);
+    padding: 20px;
     text-decoration: none;
-    padding: 4px 12px;
-    border-radius: 0;
-    border: none;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    height: 44px;
-    transition: color var(--transition), border-color var(--transition);
+    transition: background var(--transition), border-color var(--transition), transform var(--transition);
     flex-shrink: 0;
+    gap: 16px;
   }
 
-  .qr-pill:hover {
-    color: #000000;
-    border-bottom-color: var(--smoke);
-    background: none;
+  .qr-card:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(200,16,46,0.35);
+    transform: translateY(-2px);
   }
 
-  .qr-pill.qr-active {
-    color: var(--red);
-    border-bottom-color: var(--red);
+  .qr-card-eyebrow {
+    font-size: 9px;
     font-weight: 600;
-    background: none;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
   }
 
-  .qr-divider {
-    width: 1px;
-    height: 14px;
-    background: var(--pearl);
-    margin: 0 2px;
-    flex-shrink: 0;
+  .qr-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    flex: 1;
   }
 
-  @media (max-width: 1000px) { #quick-reads { padding: 0 40px; } }
-  @media (max-width: 768px)  { #quick-reads { padding: 0 24px; } }
-  @media (max-width: 560px)  { #quick-reads { padding: 0 16px; } }
+  .qr-card-desc {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.5;
+  }
+
+  .qr-card-arrow {
+    font-size: 14px;
+    color: var(--red);
+    font-weight: 700;
+    align-self: flex-end;
+    transition: transform var(--transition);
+  }
+
+  .qr-card:hover .qr-card-arrow {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 1000px) { #quick-reads { padding: 40px 40px; } }
+  @media (max-width: 768px)  { #quick-reads { padding: 36px 24px; } .qr-card { width: 190px; } }
+  @media (max-width: 560px)  { #quick-reads { padding: 32px 20px; } }
 
 
   .item-priority {
@@ -1959,22 +2021,55 @@
 </div>
 
 <!-- QUICK READS -->
-<nav id="quick-reads" aria-label="Before your shoot — quick reads">
-  <div class="qr-inner">
-    <span class="qr-label">Quick reads:</span>
-    <a class="qr-pill" href="https://shoot2sell.com/blog/best-times-to-schedule" target="_blank" rel="noopener">Best Times to Schedule</a>
-    <div class="qr-divider" aria-hidden="true"></div>
-    <a class="qr-pill" href="https://shoot2sell.com/blog/which-rooms-do-we-shoot" target="_blank" rel="noopener">Which Rooms We Shoot</a>
-    <div class="qr-divider" aria-hidden="true"></div>
-    <a class="qr-pill qr-active" href="#section-lights" aria-current="page">Photoshoot Checklist</a>
-    <div class="qr-divider" aria-hidden="true"></div>
-    <a class="qr-pill" href="https://shoot2sell.com/blog/photo-usage-rights" target="_blank" rel="noopener">Photo Usage Rights</a>
-    <div class="qr-divider" aria-hidden="true"></div>
-    <a class="qr-pill" href="https://shoot2sell.com/blog/booking-cancellation-policy" target="_blank" rel="noopener">Booking &amp; Cancellation</a>
-    <div class="qr-divider" aria-hidden="true"></div>
-    <a class="qr-pill" href="https://shoot2sell.com/blog/inclement-weather-policy" target="_blank" rel="noopener">Inclement Weather</a>
+<section id="quick-reads" aria-labelledby="qr-heading">
+  <div class="qr-header">
+    <div class="qr-header-left">
+      <p class="qr-eyebrow">Before your shoot</p>
+      <h2 class="qr-headline" id="qr-heading">Common questions, answered.</h2>
+      <p class="qr-sub">Browse these before your appointment for the smoothest session.</p>
+    </div>
   </div>
-</nav>
+  <div class="qr-cards-wrap">
+    <div class="qr-cards">
+
+      <a class="qr-card" href="https://shoot2sell.com/blog/best-times-to-schedule" target="_blank" rel="noopener">
+        <p class="qr-card-eyebrow">Scheduling</p>
+        <p class="qr-card-title">Best Times to Schedule a Photography Appointment</p>
+        <p class="qr-card-desc">Light, traffic, and timing — what affects your shoot window.</p>
+        <span class="qr-card-arrow">→</span>
+      </a>
+
+      <a class="qr-card" href="https://shoot2sell.com/blog/which-rooms-do-we-shoot" target="_blank" rel="noopener">
+        <p class="qr-card-eyebrow">Coverage</p>
+        <p class="qr-card-title">Which Rooms Do We Shoot</p>
+        <p class="qr-card-desc">What's included by default and how to add extra spaces.</p>
+        <span class="qr-card-arrow">→</span>
+      </a>
+
+      <a class="qr-card" href="https://shoot2sell.com/blog/photo-usage-rights" target="_blank" rel="noopener">
+        <p class="qr-card-eyebrow">Your photos</p>
+        <p class="qr-card-title">Photo Usage Rights Guide</p>
+        <p class="qr-card-desc">Where you can use your images and what the license covers.</p>
+        <span class="qr-card-arrow">→</span>
+      </a>
+
+      <a class="qr-card" href="https://shoot2sell.com/blog/booking-cancellation-policy" target="_blank" rel="noopener">
+        <p class="qr-card-eyebrow">Policy</p>
+        <p class="qr-card-title">Booking &amp; Cancellation Policy</p>
+        <p class="qr-card-desc">Reschedule windows, cancellation fees, and how to make changes.</p>
+        <span class="qr-card-arrow">→</span>
+      </a>
+
+      <a class="qr-card" href="https://shoot2sell.com/blog/inclement-weather-policy" target="_blank" rel="noopener">
+        <p class="qr-card-eyebrow">Weather</p>
+        <p class="qr-card-title">Inclement Weather Policy</p>
+        <p class="qr-card-desc">What happens when conditions affect your shoot day.</p>
+        <span class="qr-card-arrow">→</span>
+      </a>
+
+    </div>
+  </div>
+</section>
 
 <!-- BOOKING BAND -->
 <section id="booking-band" aria-label="Book your shoot" style="display:none">
