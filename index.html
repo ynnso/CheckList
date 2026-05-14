@@ -638,260 +638,59 @@
     padding: 0 80px 96px 88px;
   }
 
-  /* ─── WHY IT MATTERS — FULL WIDTH ─────────────────────────── */
-  #why-matters-wrap {
+
+  /* ─── INTRO COPY ─────────────────────────────────────────────── */
+  #intro-copy {
+    padding: 52px 80px;
     border-bottom: 1px solid var(--pearl);
     background: var(--white);
   }
 
-  #why-matters {
-    padding: 52px 0 44px;
-    margin-bottom: 0;
+  .intro-h2 {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3.5vw, 36px);
+    font-weight: 700;
+    color: #000000;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    margin-bottom: 28px;
+    max-width: 640px;
   }
 
-  .bento-grid {
+  .intro-body {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 10px;
-    margin-top: 28px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0 48px;
+    max-width: 1100px;
   }
 
-  /* Row 1 spans all 4 columns */
-  .bento-top {
-    grid-column: 1 / -1;
-    background: #000000;
-    border-radius: var(--radius-lg);
-    padding: 32px 36px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-    position: relative;
-    overflow: hidden;
+  .intro-body p {
+    font-size: 14px;
+    color: #333333;
+    line-height: 1.8;
+    margin: 0;
+    padding-right: 0;
   }
 
-  .bento-top::before {
-    content: '';
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 220px; height: 220px;
-    background: radial-gradient(circle, rgba(200,16,46,0.18) 0%, transparent 65%);
-    pointer-events: none;
-  }
-
-  .bento-top::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--red);
-  }
-
-  .bento-top-text {}
-
-  .bento-top-eyebrow {
-    font-size: 10px;
+  .intro-body p strong {
     font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    color: #000000;
   }
 
-  .bento-top-eyebrow::before {
-    content: '';
-    display: block;
-    width: 16px; height: 1px;
-    background: var(--red);
-    flex-shrink: 0;
+  @media (max-width: 1000px) {
+    #intro-copy { padding: 44px 40px; }
+    .intro-body { grid-template-columns: 1fr 1fr; gap: 0 32px; }
+    .intro-body p:last-child { grid-column: 1 / -1; margin-top: 20px; }
   }
 
-  .bento-top h3 {
-    font-family: var(--font-display);
-    font-size: clamp(18px, 2.5vw, 24px);
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: 0;
+  @media (max-width: 600px) {
+    #intro-copy { padding: 36px 24px; }
+    .intro-body { grid-template-columns: 1fr; gap: 20px 0; }
+    .intro-body p:last-child { grid-column: auto; margin-top: 0; }
+    .intro-h2 { font-size: clamp(20px, 6vw, 28px); }
   }
 
-  .bento-top-sub {
-    font-size: 13px;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.5;
-    max-width: 480px;
-    margin-top: 8px;
-  }
-
-  /* ── Row 2 Card A: RED dominant stat ── */
-  .bento-card-red {
-    grid-column: 1;
-    background: var(--red);
-    border-radius: var(--radius-lg);
-    padding: 28px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-    min-height: 160px;
-  }
-
-  .bento-card-red::before {
-    content: '';
-    position: absolute;
-    bottom: -20px; right: -20px;
-    width: 120px; height: 120px;
-    background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 65%);
-    pointer-events: none;
-  }
-
-  .bento-card-red-num {
-    font-family: var(--font-display);
-    font-size: 56px;
-    font-weight: 800;
-    color: #ffffff;
-    line-height: 1;
-    letter-spacing: -0.04em;
-  }
-
-  .bento-card-red-label {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.8);
-    margin-top: 8px;
-  }
-
-  /* ── Row 2 Card B: dark insight ── */
-  .bento-card-dark {
-    grid-column: 2;
-    background: #0d0d0d;
-    border-radius: var(--radius-lg);
-    padding: 28px 24px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    min-height: 160px;
-  }
-
-  .bento-card-dark::before {
-    content: '';
-    position: absolute;
-    top: -30px; right: -30px;
-    width: 140px; height: 140px;
-    background: radial-gradient(circle, rgba(200,16,46,0.15) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .bento-card-dark .bento-card-icon {
-    position: absolute;
-    top: 20px; right: 20px;
-    width: 32px; height: 32px;
-    border-radius: 7px;
-    background: rgba(200,16,46,0.12);
-    border: 1px solid rgba(200,16,46,0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .bento-card-dark .bento-card-icon svg {
-    stroke: var(--red);
-    fill: none;
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .bento-card-dark h3 {
-    font-family: var(--font-display);
-    font-size: clamp(14px, 2vw, 17px);
-    font-weight: 600;
-    color: #ffffff;
-    line-height: 1.25;
-    margin-bottom: 8px;
-    letter-spacing: -0.01em;
-  }
-
-  .bento-card-dark p {
-    font-size: 12px;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.55;
-  }
-
-  .bento-card-light {
-    background: #000000;
-    border: none;
-    border-radius: var(--radius-lg);
-    padding: 28px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    min-height: 160px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .bento-card-light::before {
-    content: '';
-    position: absolute;
-    bottom: -20px; left: -20px;
-    width: 120px; height: 120px;
-    background: radial-gradient(circle, rgba(200,16,46,0.10) 0%, transparent 65%);
-    pointer-events: none;
-  }
-
-  .bento-stat-block {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .bento-stat-block:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  .bento-stat-num {
-    font-family: var(--font-display);
-    font-size: clamp(22px, 3vw, 30px);
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-
-  .bento-stat-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-top: 4px;
-  }
-
-  /* ── Mobile: stack all ── */
-  @media (max-width: 768px) {
-    .bento-grid {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto auto;
-    }
-    .bento-top { grid-column: 1 / -1; flex-direction: column; align-items: flex-start; gap: 12px; }
-    .bento-card-red { grid-column: 1; }
-    .bento-card-dark { grid-column: 2; }
-    .bento-card-light { min-height: 100px; padding: 20px; }
-    .bento-stat-block { border-bottom: none; padding-bottom: 0; }
-  }
-
+  /* ─── SECTION EYEBROW ────────────────────────────────────────── */
   .section-eyebrow {
     font-size: 12px;
     font-weight: 500;
@@ -1667,7 +1466,7 @@
 
   #quick-reads {
     background: var(--off-white);
-    border-bottom: 1px solid var(--pearl);
+    border-top: 1px solid var(--pearl);
     padding: 0 80px;
     overflow-x: auto;
     scrollbar-width: none;
@@ -1813,25 +1612,17 @@
   </div>
 </section>
 
-<!-- QUICK READS -->
-<nav id="quick-reads" aria-label="Before your shoot — quick reads">
-  <div class="qr-inner">
-    <span class="qr-label">Quick reads:</span>
-    <a class="qr-pill" href="https://shoot2sell.com/blog/best-times-to-schedule" target="_blank" rel="noopener">Best Times to Schedule</a>
-    <div class="qr-divider" aria-hidden="true"></div>
-    <a class="qr-pill" href="https://shoot2sell.com/blog/which-rooms-do-we-shoot" target="_blank" rel="noopener">Which Rooms We Shoot</a>
-    <div class="qr-divider" aria-hidden="true"></div>
-    <a class="qr-pill qr-active" href="#section-lights" aria-current="page">Photoshoot Checklist</a>
-    <div class="qr-divider" aria-hidden="true"></div>
-    <a class="qr-pill" href="https://shoot2sell.com/blog/photo-usage-rights" target="_blank" rel="noopener">Photo Usage Rights</a>
-    <div class="qr-divider" aria-hidden="true"></div>
-    <a class="qr-pill" href="https://shoot2sell.com/blog/booking-cancellation-policy" target="_blank" rel="noopener">Booking &amp; Cancellation</a>
-    <div class="qr-divider" aria-hidden="true"></div>
-    <a class="qr-pill" href="https://shoot2sell.com/blog/inclement-weather-policy" target="_blank" rel="noopener">Inclement Weather</a>
+
+
+<!-- INTRO COPY -->
+<section id="intro-copy" aria-labelledby="intro-heading">
+  <h2 class="intro-h2" id="intro-heading">90% of Staging Works.<br>The Other 10% Is This.</h2>
+  <div class="intro-body">
+    <p><strong>Stagers and photographers share the same goal</strong> — make the home look its absolute best. There's about a 90% overlap in what works for both. The other 10% is where photography requires a completely different approach.</p>
+    <p><strong>What feels warm and inviting in person often reads as clutter on camera.</strong> Decorative touches that stagers love are exactly what the lens turns into visual noise. The human eye and a wide-angle lens are not the same thing.</p>
+    <p><strong>Great photos bring more buyers through the door.</strong> But the camera needs to stay focused on the property — not your appliances, plants, or personal decor. Work through the checklist below and your home will photograph spacious, clean, and at its absolute best.</p>
   </div>
-</nav>
-
-
+</section>
 
 <!-- MAIN LAYOUT -->
 <div id="main-layout">
@@ -2127,56 +1918,7 @@
       </div>
     </section>
 
-    <!-- WHY IT WORKS — credibility layer mid-scroll -->
     <div id="checklist-end-sentinel" style="height:1px;"></div>
-    <section id="why-matters-wrap" style="margin: 0 -88px; padding: 0 88px; border-top: 2px solid var(--pearl); border-bottom: 2px solid var(--pearl);">
-      <section id="why-matters" aria-labelledby="why-heading" style="padding: 52px 0 44px;">
-        <p class="section-eyebrow">The key insight</p>
-        <h2 class="why-h2" id="why-heading">The Camera Sees Everything Differently.</h2>
-        <div class="bento-grid" role="list">
-
-          <!-- Row 1: Full-width top band -->
-          <div class="bento-top" role="listitem">
-            <div class="bento-top-text">
-              <p class="bento-top-eyebrow">Staging vs. photography</p>
-              <h3>90% overlap. 10% completely different.</h3>
-              <p class="bento-top-sub">The prep work happens here. The photos happen there.</p>
-            </div>
-          </div>
-
-          <!-- Row 2 Card A: RED dominant stat -->
-          <div class="bento-card-red" role="listitem">
-            <div>
-              <div class="bento-card-red-num">4×</div>
-              <div class="bento-card-red-label">More listing views</div>
-            </div>
-          </div>
-
-          <!-- Row 2 Card B: dark insight -->
-          <div class="bento-card-dark" role="listitem">
-            <h3>Cozy feels like clutter on camera</h3>
-            <p>The decorative warmth stagers love is exactly what a lens turns into visual noise. Less on every surface, always.</p>
-          </div>
-
-          <!-- Row 2 Card C: stat 1 -->
-          <div class="bento-card-light" role="listitem">
-            <div class="bento-stat-block">
-              <span class="bento-stat-num">9 days</span>
-              <span class="bento-stat-label">Faster to sell</span>
-            </div>
-          </div>
-
-          <!-- Row 2 Card D: stat 2 -->
-          <div class="bento-card-light" role="listitem">
-            <div class="bento-stat-block">
-              <span class="bento-stat-num">95%</span>
-              <span class="bento-stat-label">Search online first</span>
-            </div>
-          </div>
-
-        </div>
-      </section>
-    </section>
 
     <!-- QUICK SUMMARY -->
     <aside id="quick-summary" aria-labelledby="summary-heading">
@@ -2215,6 +1957,24 @@
 
   </main>
 </div>
+
+<!-- QUICK READS -->
+<nav id="quick-reads" aria-label="Before your shoot — quick reads">
+  <div class="qr-inner">
+    <span class="qr-label">Quick reads:</span>
+    <a class="qr-pill" href="https://shoot2sell.com/blog/best-times-to-schedule" target="_blank" rel="noopener">Best Times to Schedule</a>
+    <div class="qr-divider" aria-hidden="true"></div>
+    <a class="qr-pill" href="https://shoot2sell.com/blog/which-rooms-do-we-shoot" target="_blank" rel="noopener">Which Rooms We Shoot</a>
+    <div class="qr-divider" aria-hidden="true"></div>
+    <a class="qr-pill qr-active" href="#section-lights" aria-current="page">Photoshoot Checklist</a>
+    <div class="qr-divider" aria-hidden="true"></div>
+    <a class="qr-pill" href="https://shoot2sell.com/blog/photo-usage-rights" target="_blank" rel="noopener">Photo Usage Rights</a>
+    <div class="qr-divider" aria-hidden="true"></div>
+    <a class="qr-pill" href="https://shoot2sell.com/blog/booking-cancellation-policy" target="_blank" rel="noopener">Booking &amp; Cancellation</a>
+    <div class="qr-divider" aria-hidden="true"></div>
+    <a class="qr-pill" href="https://shoot2sell.com/blog/inclement-weather-policy" target="_blank" rel="noopener">Inclement Weather</a>
+  </div>
+</nav>
 
 <!-- BOOKING BAND -->
 <section id="booking-band" aria-label="Book your shoot" style="display:none">
