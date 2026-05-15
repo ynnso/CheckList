@@ -54,7 +54,7 @@
   }
 
   .hero-content {
-    padding: 72px 80px 64px 80px;
+    padding: 72px 64px 64px 64px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -397,9 +397,9 @@
   .sidebar-nav-item.section-complete .sidebar-nav-icon {
     background: var(--red);
     color: #ffffff;
-    box-shadow: 0 0 10px rgba(200,16,46,0.25);
+    box-shadow: 0 0 16px rgba(200,16,46,0.4);
     transform: scale(1.05);
-    animation: iconComplete 0.45s cubic-bezier(0.4,0,0.2,1) forwards;
+    animation: iconComplete 0.35s cubic-bezier(0.4,0,0.2,1) forwards;
   }
 
   .sidebar-nav-text {
@@ -494,7 +494,7 @@
     stroke-linecap: round;
     stroke-dasharray: 207.3;
     stroke-dashoffset: calc(207.3 - (var(--ring-pct, 0) / 100) * 207.3);
-    transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: stroke-dashoffset 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     filter: none;
   }
 
@@ -515,13 +515,22 @@
     line-height: 1;
   }
 
+  .progress-circle-fraction {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    color: #555555;
+    line-height: 1.2;
+    margin-top: 1px;
+  }
+
   .progress-circle-label {
     font-size: 9px;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--silver);
-    margin-top: 2px;
+    margin-top: 4px;
   }
 
   /* Section milestone dots */
@@ -611,13 +620,13 @@
 
   /* ─── CONTENT ───────────────────────────────────────────────── */
   #content {
-    padding: 0 80px 96px 88px;
+    padding: 0 64px 96px 72px;
   }
 
 
   /* ─── INTRO COPY ─────────────────────────────────────────────── */
   #intro-copy {
-    padding: 52px 80px;
+    padding: 52px 64px;
     border-bottom: 1px solid var(--pearl);
     background: var(--white);
   }
@@ -654,7 +663,7 @@
   }
 
   @media (max-width: 1000px) {
-    #intro-copy { padding: 44px 40px; }
+    #intro-copy { padding: 44px 32px; }
     .intro-body { grid-template-columns: 1fr 1fr; gap: 0 32px; }
     .intro-body p:last-child { grid-column: 1 / -1; margin-top: 20px; }
   }
@@ -778,12 +787,45 @@
     display: grid;
     grid-template-columns: 40px 1fr;
     gap: 0;
-    padding: 16px 0;
+    padding: 18px 0;
     border-top: none;
-    border-bottom: 1px solid var(--pearl);
+    border-bottom: 0.5px solid rgba(236, 236, 236, 0.6);
     align-items: start;
     transition: background var(--transition);
     border-radius: var(--radius);
+    cursor: pointer;
+  }
+
+  .checklist-item:hover {
+    background: rgba(247, 246, 244, 0.3);
+  }
+
+  .checklist-item:active {
+    background: rgba(247, 246, 244, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    .checklist-item {
+      padding: 22px 0;
+      min-height: 48px;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 12px;
+    }
+    
+    .item-check-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 48px;
+      min-height: 48px;
+      padding: 0;
+    }
+    
+    .item-checkbox {
+      width: 28px;
+      height: 28px;
+    }
   }
 
   .checklist-item:last-of-type {
@@ -801,15 +843,15 @@
   .item-checkbox {
     appearance: none;
     -webkit-appearance: none;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     border: 1.5px solid var(--ash);
     border-radius: 4px;
     background: var(--white);
     cursor: pointer;
     position: relative;
     flex-shrink: 0;
-    transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+    transition: border-color var(--transition), background var(--transition), box-shadow var(--transition), transform var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -818,6 +860,7 @@
   .item-checkbox:hover {
     border-color: var(--red);
     box-shadow: 0 0 0 2px var(--red-light);
+    transform: scale(1.08);
   }
 
   .item-checkbox:checked {
@@ -1043,7 +1086,7 @@
   /* ─── CONFETTI ──────────────────────────────────────────────── */
   .confetti-piece {
     position: fixed;
-    top: -20px;
+    top: 20vh;
     pointer-events: none;
     z-index: 999;
     animation: confettiFall linear forwards;
@@ -1054,27 +1097,27 @@
     0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity: 1; }
     20%  { opacity: 1; }
     80%  { opacity: 0.8; }
-    100% { transform: translateY(105vh) rotate(var(--spin)) translateX(var(--drift)); opacity: 0; }
+    100% { transform: translateY(80vh) rotate(var(--spin)) translateX(var(--drift)); opacity: 0; }
   }
 
   /* ─── MICRO-ANIMATION: item check ───────────────────────────── */
   @keyframes itemCheck {
-    0% { transform: scale(1); }
-    40% { transform: scale(0.98); }
-    70% { transform: scale(1.01); }
-    100% { transform: scale(1); }
+    0% { transform: translateX(0) scale(1); }
+    40% { transform: translateX(2px) scale(0.98); }
+    70% { transform: translateX(-1px) scale(1.01); }
+    100% { transform: translateX(0) scale(1); }
   }
 
   @keyframes checkboxPop {
     0%   { transform: scale(1); }
     25%  { transform: scale(0.85); }
-    60%  { transform: scale(1.12); }
+    60%  { transform: scale(1.15); }
     80%  { transform: scale(0.97); }
     100% { transform: scale(1); }
   }
 
   .checklist-item.just-checked {
-    animation: itemCheck 0.5s ease;
+    animation: itemCheck 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .checklist-item.just-checked .item-checkbox {
@@ -1090,6 +1133,10 @@
 
   .section-complete-flash {
     animation: sectionFlash 0.8s ease;
+  }
+
+  .section-header.section-highlight {
+    animation: sectionFlash 0.6s ease;
   }
 
   /* ─── MOBILE BOTTOM NAV ─────────────────────────────────────── */
@@ -1200,7 +1247,7 @@
     stroke-linecap: round;
     stroke-dasharray: 62.8;
     stroke-dashoffset: 62.8;
-    transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: stroke-dashoffset 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .mobile-ring-pct {
@@ -1216,11 +1263,11 @@
   }
 
   /* ─── RESPONSIVE ────────────────────────────────────────────── */
-  /* Desktop L: 1000–1200px → 64px padding, sidebar 280px */
+  /* Desktop L: 1000–1200px → 56px padding, sidebar 280px */
   @media (max-width: 1200px) {
     #main-layout { grid-template-columns: 280px 1fr; }
-    .hero-content { padding: 56px 64px 56px 64px; }
-    #content { padding: 0 64px 80px 72px; }
+    .hero-content { padding: 56px 56px 56px 56px; }
+    #content { padding: 0 56px 80px 64px; }
     #sidebar { padding: 40px 28px 40px 40px; }
     .progress-circle { width: 60px; height: 60px; }
     .progress-circle-pct { font-size: 15px; }
@@ -1231,8 +1278,8 @@
     #main-layout { grid-template-columns: 240px 1fr; }
     #sidebar { padding: 32px 16px 32px 24px; }
     .sidebar-circle-wrap { display: none; }
-    #content { padding: 0 40px 80px 48px; }
-    .hero-content { padding: 48px 40px; }
+    #content { padding: 0 32px 80px 40px; }
+    .hero-content { padding: 48px 32px; }
   }
 
   /* Mobile L: hide sidebar entirely, 32px padding */
@@ -1249,18 +1296,18 @@
     .summary-list { grid-template-columns: 1fr; }
   }
 
-  /* Mobile S: <560px → 24px padding */
+  /* Mobile S: <560px → 20px padding */
   @media (max-width: 560px) {
-    .hero-content { padding: 36px 24px 32px; }
-    #content { padding: 0 24px 64px; }
+    .hero-content { padding: 36px 20px 32px; }
+    #content { padding: 0 20px 64px; }
     .section-desc { padding-left: 44px; max-width: 100%; }
-    #quick-summary { padding: 28px 24px; }
+    #quick-summary { padding: 28px 20px; }
     .summary-list { grid-template-columns: 1fr; }
     .checklist-section { padding: 36px 0 16px; }
     .checklist-item { padding: 14px 0; }
   }
 
-  /* ─── SECTION COMPLETE TOAST ───────────────────────────────── */
+  /* ─── SECTION COMPLETE TOAST ───────────────────────────────– */
   .s2s-toast {
     position: fixed;
     bottom: 24px;
@@ -1288,7 +1335,14 @@
     transform: translateY(0);
   }
 
-  @media (max-width: 768px) { .s2s-toast { display: none; } }
+  @media (max-width: 768px) {
+    .s2s-toast {
+      bottom: 72px;
+      right: 12px;
+      left: 12px;
+      max-width: none;
+    }
+  }
 
   .hero-ctas {
     display: flex;
@@ -1347,7 +1401,7 @@
   /* ─── BOOKING CTA BAND ──────────────────────────────────────── */
   #booking-band {
     background: #000000;
-    padding: 40px 80px;
+    padding: 40px 64px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1446,7 +1500,7 @@
   #quick-reads {
     background: var(--off-white);
     border-top: 1px solid var(--pearl);
-    padding: 48px 80px;
+    padding: 48px 64px;
     overflow: hidden;
   }
 
@@ -1571,8 +1625,8 @@
     transform: translateX(4px);
   }
 
-  @media (max-width: 1000px) { #quick-reads { padding: 40px 40px; } }
-  @media (max-width: 768px)  { #quick-reads { padding: 36px 24px; } .qr-card { width: 190px; } }
+  @media (max-width: 1000px) { #quick-reads { padding: 40px 32px; } }
+  @media (max-width: 768px)  { #quick-reads { padding: 36px 20px; } .qr-card { width: 190px; } }
   @media (max-width: 560px)  { #quick-reads { padding: 32px 20px; } }
 
 
@@ -1653,7 +1707,7 @@
 </section>
 
 <!-- CONFIDENCE BANNER -->
-<div style="background: white; padding: 16px 80px; border-bottom: 1px solid #ECECEC; text-align: center;">
+<div style="background: white; padding: 16px 64px; border-bottom: 1px solid #ECECEC; text-align: center;">
   <p style="font-size: 13px; color: #555555; margin: 0;">
     <strong>Used by 10,000+ agents and homeowners</strong> preparing for professional real estate photography
   </p>
@@ -1685,6 +1739,7 @@
         </svg>
         <div class="progress-circle-text">
           <span class="progress-circle-pct" id="sidebar-pct">0%</span>
+          <span class="progress-circle-fraction" id="sidebar-fraction">0/18</span>
           <span class="progress-circle-label">done</span>
         </div>
       </div>
@@ -2000,6 +2055,13 @@
       </div>
     </div>
 
+    <!-- Scroll to top button (appears after completion) -->
+    <div style="text-align: center; margin-top: 32px; display: none;" id="scroll-top-wrap">
+      <button id="scroll-top-btn" style="background: none; border: none; cursor: pointer; padding: 8px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #555555; transition: color 0.2s ease;" aria-label="Scroll to top">
+        ↑ Back to Top
+      </button>
+    </div>
+
   </main>
 </div>
 
@@ -2146,7 +2208,32 @@
       toastTimer = setTimeout(() => el.classList.remove('toast-visible'), 3000);
     }
 
+    function showMilestoneToast(milestone) {
+      let el = document.getElementById('s2s-milestone-toast');
+      if (!el) {
+        el = document.createElement('div');
+        el.id = 's2s-milestone-toast';
+        el.className = 's2s-toast';
+        el.style.bottom = '90px';
+        document.body.appendChild(el);
+      }
+      
+      const messages = {
+        25: '🎯 Great start! 25% done',
+        50: '🔥 Halfway there! 50% complete',
+        75: '🚀 Almost done! 75% complete'
+      };
+      
+      el.textContent = messages[milestone];
+      clearTimeout(toastTimer);
+      el.classList.remove('toast-visible');
+      void el.offsetWidth;
+      el.classList.add('toast-visible');
+      toastTimer = setTimeout(() => el.classList.remove('toast-visible'), 3500);
+    }
+
     let prevCompleted = false;
+    let milestonesSeen = { 25: false, 50: false, 75: false };
 
     // Apply saved state to checkboxes
     document.querySelectorAll('.item-checkbox').forEach(cb => {
@@ -2178,6 +2265,17 @@
       });
     });
 
+    // Make entire item tappable
+    document.querySelectorAll('.checklist-item').forEach(item => {
+      item.addEventListener('click', function(e) {
+        if (e.target !== this.querySelector('.item-checkbox')) {
+          const checkbox = this.querySelector('.item-checkbox');
+          checkbox.checked = !checkbox.checked;
+          checkbox.dispatchEvent(new Event('change'));
+        }
+      });
+    });
+
     // Reset button
     document.getElementById('reset-btn').addEventListener('click', function() {
       if (confirm('Reset all checklist items? Your progress will be cleared.')) {
@@ -2188,6 +2286,7 @@
           cb.closest('.checklist-item').classList.remove('is-checked');
         });
         prevCompleted = false;
+        milestonesSeen = { 25: false, 50: false, 75: false };
         updateAll(false);
         document.getElementById('completion-banner').classList.remove('visible');
         document.getElementById('reset-btn').style.display = 'none';
@@ -2228,10 +2327,30 @@
       circleWrapEl.setAttribute('aria-valuenow', pct);
       circleWrapEl.setAttribute('aria-label', 'Overall progress, ' + totalChecked + ' of ' + TOTAL + ' items complete');
       document.getElementById('sidebar-pct').textContent = pct + '%';
+      
+      // Add fraction display
+      const fractionEl = document.getElementById('sidebar-fraction');
+      if (fractionEl) fractionEl.textContent = totalChecked + '/' + TOTAL;
 
       // Mobile status tab percentage
       const mobProgressPct = document.getElementById('mob-progress-pct');
       if (mobProgressPct) mobProgressPct.textContent = pct + '%';
+
+      // Milestone celebrations
+      if (animate && totalChecked > 0) {
+        if (pct >= 25 && !milestonesSeen[25]) {
+          showMilestoneToast(25);
+          milestonesSeen[25] = true;
+        }
+        if (pct >= 50 && !milestonesSeen[50]) {
+          showMilestoneToast(50);
+          milestonesSeen[50] = true;
+        }
+        if (pct >= 75 && !milestonesSeen[75]) {
+          showMilestoneToast(75);
+          milestonesSeen[75] = true;
+        }
+      }
 
       // Track current section for mobile nav
       const updateMobileSection = () => {
@@ -2305,7 +2424,7 @@
         // Milestone dot
         if (dot) dot.classList.toggle('dot-complete', complete);
 
-        // Ring pulse on new completion (animate only) — staggered 300ms after icon
+        // Ring pulse on new completion (animate only) — toast now immediate
         if (complete && !wasComplete && animate) {
           showToast(section);
           setTimeout(() => {
@@ -2314,9 +2433,9 @@
               circleWrap.classList.remove('ring-pulse');
               void circleWrap.offsetWidth;
               circleWrap.classList.add('ring-pulse');
-              setTimeout(() => circleWrap.classList.remove('ring-pulse'), 600);
+              setTimeout(() => circleWrap.classList.remove('ring-pulse'), 500);
             }
-          }, 300);
+          }, 150);
         }
 
         if (complete) {
@@ -2337,12 +2456,21 @@
 
       // Completion banner
       const banner = document.getElementById('completion-banner');
+      const scrollTopWrap = document.getElementById('scroll-top-wrap');
       if (totalChecked === TOTAL && !prevCompleted) {
         banner.classList.add('visible');
-        if (animate) launchConfetti();
+        scrollTopWrap.style.display = 'block';
+        if (animate) {
+          launchConfetti();
+          // Scroll banner to center of viewport
+          setTimeout(() => {
+            banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 100);
+        }
         prevCompleted = true;
       } else if (totalChecked < TOTAL) {
         banner.classList.remove('visible');
+        scrollTopWrap.style.display = 'none';
         prevCompleted = false;
       }
     }
@@ -2411,15 +2539,27 @@
     const sections = document.querySelectorAll('.checklist-section');
     const navItems = document.querySelectorAll('.sidebar-nav-item');
 
-    // Mobile tab active state — sync with scroll
-    function setMobileTab(activeHref) {
-      document.querySelectorAll('.mobile-nav-tab').forEach(t => {
-        if (t.tagName === 'A') {
-          t.classList.toggle('tab-active', t.getAttribute('href') === activeHref);
+    // Add click handlers to nav items for immediate feedback
+    navItems.forEach(navItem => {
+      navItem.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = navItem.getAttribute('href');
+        const section = document.querySelector(href);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Highlight section header
+          const sectionHeader = section.querySelector('.section-header');
+          if (sectionHeader) {
+            sectionHeader.classList.remove('section-highlight');
+            void sectionHeader.offsetWidth; // Trigger reflow
+            sectionHeader.classList.add('section-highlight');
+            setTimeout(() => sectionHeader.classList.remove('section-highlight'), 600);
+          }
         }
       });
-    }
+    });
 
+    // Scroll-based active state update
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -2443,6 +2583,20 @@
         });
       }, { threshold: 0 });
       collapseObserver.observe(sentinel);
+    }
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scroll-top-btn');
+    if (scrollTopBtn) {
+      scrollTopBtn.addEventListener('click', () => {
+        document.getElementById('hero').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      scrollTopBtn.addEventListener('mouseenter', () => {
+        scrollTopBtn.style.color = '#000000';
+      });
+      scrollTopBtn.addEventListener('mouseleave', () => {
+        scrollTopBtn.style.color = '#555555';
+      });
     }
 
   })();
