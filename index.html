@@ -382,13 +382,13 @@
     color: #ffffff;
   }
 
-  /* Icon tile */
+  /* Icon tile — neutral idle state */
   .sidebar-nav-icon {
     width: 32px;
     height: 32px;
     border-radius: 7px;
-    background: #000000;
-    color: #ffffff;
+    background: #F0F0F0;
+    color: #1A1A1A;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -402,11 +402,17 @@
   .sidebar-nav-icon svg { fill: currentColor; stroke: currentColor; }
   .sidebar-nav-icon svg.icon-outline { fill: none; stroke: currentColor; }
 
-  /* Section complete: icon tile turns red */
+  /* Active: keep icon neutral (black row handles the highlight) */
+  .sidebar-nav-item.active .sidebar-nav-icon {
+    background: #2a2a2a;
+    color: #ffffff;
+  }
+
+  /* Section complete: icon turns red — earned state */
   .sidebar-nav-item.section-complete .sidebar-nav-icon {
     background: var(--red);
     color: #ffffff;
-    box-shadow: 0 0 16px rgba(200,16,46,0.4);
+    box-shadow: 0 0 14px rgba(200,16,46,0.35);
     transform: scale(1.05);
     animation: iconComplete 0.35s cubic-bezier(0.4,0,0.2,1) forwards;
   }
@@ -422,7 +428,7 @@
 
   .sidebar-nav-item.active .sidebar-nav-text {
     font-weight: 700;
-    color: #000000;
+    color: #ffffff !important;
   }
 
   .sidebar-nav-item.section-complete .sidebar-nav-text {
@@ -439,7 +445,7 @@
   }
 
   .sidebar-nav-item.active .sidebar-nav-progress {
-    color: var(--ash);
+    color: rgba(255,255,255,0.7) !important;
   }
 
   .sidebar-nav-item.section-complete .sidebar-nav-progress {
@@ -482,8 +488,8 @@
 
   .progress-circle {
     position: relative;
-    width: 72px;
-    height: 72px;
+    width: 80px;
+    height: 80px;
   }
 
   .progress-circle svg {
@@ -492,17 +498,17 @@
 
   .progress-circle-track {
     fill: none;
-    stroke: var(--pearl);
-    stroke-width: 4;
+    stroke: #EBEBEB;
+    stroke-width: 5;
   }
 
   #sidebar-circle-fill {
     fill: none;
     stroke: var(--red);
-    stroke-width: 4;
+    stroke-width: 5;
     stroke-linecap: round;
-    stroke-dasharray: 207.3;
-    stroke-dashoffset: calc(207.3 - (var(--ring-pct, 0) / 100) * 207.3);
+    stroke-dasharray: 226.2;
+    stroke-dashoffset: calc(226.2 - (var(--ring-pct, 0) / 100) * 226.2);
     transition: stroke-dashoffset 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     filter: none;
   }
@@ -514,23 +520,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 0;
   }
 
   .progress-circle-pct {
     font-family: var(--font-display);
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 800;
     color: #000000;
     line-height: 1;
+    letter-spacing: -0.02em;
   }
 
   .progress-circle-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--silver);
-    margin-top: 4px;
+    display: none;
   }
 
   /* Section milestone dots */
@@ -582,40 +585,6 @@
     font-weight: 500;
     color: var(--ash);
     text-align: center;
-  }
-
-  .sidebar-footer {
-    margin-top: auto;
-    padding-top: 24px;
-    padding-bottom: 8px;
-    border-top: 1px solid var(--pearl);
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .sidebar-brand {
-    font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--ink);
-    letter-spacing: -0.02em;
-    text-decoration: none;
-    transition: color var(--transition);
-  }
-
-  .sidebar-brand:hover { color: #000000; }
-
-  .sidebar-brand span {
-    color: var(--red);
-  }
-
-  .sidebar-footer-tag {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--silver);
   }
 
   /* ─── CONTENT ───────────────────────────────────────────────── */
@@ -866,14 +835,15 @@
   .item-checkbox:checked {
     background: var(--red);
     border-color: var(--red);
+    overflow: visible;
   }
 
   .item-checkbox:checked::after {
     content: '';
     position: absolute;
-    width: 12px;
-    height: 12px;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='1.5,6 4.5,9 10.5,3' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    width: 18px;
+    height: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 18 18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='2,9 7,14 16,4' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -920,13 +890,14 @@
 
   /* ─── QUICK SUMMARY ─────────────────────────────────────────── */
   #quick-summary {
-    margin: 56px 0 0;
-    background: #ffffff;
-    border: 1px solid var(--pearl);
-    border-radius: var(--radius-lg);
-    padding: 48px 52px;
+    margin: 64px 0 0;
+    background: transparent;
+    border: none;
+    border-top: 2px solid var(--pearl);
+    border-radius: 0;
+    padding: 48px 0 0;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
   }
 
   #quick-summary::before { display: none; }
@@ -965,30 +936,38 @@
     list-style: none;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px 48px;
+    gap: 16px 48px;
   }
 
   .summary-list li {
     font-size: 14px;
     color: #333333;
     display: flex;
-    align-items: baseline;
-    gap: 10px;
+    align-items: flex-start;
+    gap: 12px;
     line-height: 1.6;
   }
 
   .summary-list li::before {
-    content: '✓';
-    color: var(--red);
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
     flex-shrink: 0;
-    font-size: 14px;
-    font-weight: 700;
+    margin-top: 2px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 18 18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='2,9 7,14 16,4' fill='none' stroke='%23C8102E' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   .summary-list li:nth-child(6) {
     grid-column: 1 / -1;
-    font-weight: 600;
+    font-weight: 700;
     color: #000000;
+    padding-top: 16px;
+    border-top: 1px solid var(--pearl);
+    margin-top: 4px;
   }
 
   /* ─── COMPLETION STATE ──────────────────────────────────────── */
@@ -1019,19 +998,20 @@
   }
 
   .completion-icon {
-    width: 48px;
-    height: 48px;
-    background: rgba(200,16,46,0.08);
-    border: 1px solid rgba(200,16,46,0.25);
+    width: 52px;
+    height: 52px;
+    background: #000000;
+    border: none;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 16px;
+    margin: 0 auto 20px;
   }
 
   .completion-icon svg {
-    stroke: var(--red);
+    stroke: #ffffff;
+    stroke-width: 2.5;
   }
 
   .completion-title {
@@ -1275,8 +1255,8 @@
     .hero-content { padding: 56px 56px 56px 56px; }
     #content { padding: 0 56px 80px 64px; }
     #sidebar { padding: 40px 28px 40px 40px; }
-    .progress-circle { width: 60px; height: 60px; }
-    .progress-circle-pct { font-size: 15px; }
+    .progress-circle { width: 72px; height: 72px; }
+    .progress-circle-pct { font-size: 19px; }
   }
 
   /* Tablet: 768–1000px → 40px padding, sidebar 240px */
@@ -1504,9 +1484,9 @@
 
   /* ─── QUICK READS ───────────────────────────────────────────── */
   #quick-reads {
-    background: #ffffff;
-    border-top: 1px solid var(--pearl);
-    padding: 48px 64px;
+    background: #F5F5F5;
+    border-top: none;
+    padding: 56px 64px;
     overflow: hidden;
   }
 
@@ -1580,8 +1560,8 @@
     flex-direction: column;
     justify-content: space-between;
     width: 220px;
-    background: var(--white);
-    border: 1px solid var(--pearl);
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
     border-radius: var(--radius-lg);
     padding: 20px;
     text-decoration: none;
@@ -1631,21 +1611,21 @@
     transform: translateX(4px);
   }
 
-  @media (max-width: 1000px) { #quick-reads { padding: 40px 32px; } }
-  @media (max-width: 768px)  { #quick-reads { padding: 36px 20px; } .qr-card { width: 190px; } }
-  @media (max-width: 560px)  { #quick-reads { padding: 32px 20px; } }
+  @media (max-width: 1000px) { #quick-reads { padding: 48px 32px; } }
+  @media (max-width: 768px)  { #quick-reads { padding: 40px 20px; } .qr-card { width: 190px; } }
+  @media (max-width: 560px)  { #quick-reads { padding: 36px 20px; } }
 
 
   .item-priority {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--red);
-    background: none;
+    color: #ffffff;
+    background: #000000;
     border: none;
-    padding: 0;
-    border-radius: 0;
+    padding: 3px 8px;
+    border-radius: 100px;
     white-space: nowrap;
     flex-shrink: 0;
     align-self: center;
@@ -1739,9 +1719,9 @@
         <button class="reset-btn" id="reset-btn" aria-label="Reset all checklist items" style="display:none">↺ Reset</button>
       </div>
       <div class="progress-circle" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="sidebar-circle-wrap" aria-label="Overall checklist completion">
-        <svg width="72" height="72" viewBox="0 0 72 72">
-          <circle class="progress-circle-track" cx="36" cy="36" r="33"/>
-          <circle id="sidebar-circle-fill" cx="36" cy="36" r="33"/>
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <circle class="progress-circle-track" cx="40" cy="40" r="36"/>
+          <circle id="sidebar-circle-fill" cx="40" cy="40" r="36"/>
         </svg>
         <div class="progress-circle-text">
           <span class="progress-circle-pct" id="sidebar-pct">0%</span>
@@ -1775,13 +1755,6 @@
       <span class="sidebar-nav-progress" id="nav-outdoor-count">0/4</span>
     </a>
 
-    <!-- Sidebar footer spacer + branding -->
-    <div class="sidebar-footer">
-      <a href="https://shoot2sell.com" class="sidebar-brand" aria-label="Shoot2Sell home">
-        shoot<span>2</span>sell
-      </a>
-      <p class="sidebar-footer-tag">Real Estate Photography</p>
-    </div>
   </nav>
 
   <!-- CONTENT -->
@@ -2324,7 +2297,7 @@
 
 
       // Sidebar circle
-      const circumference = 207.3;
+      const circumference = 226.2;
       const offset = circumference - (pct / 100) * circumference;
       const fillEl = document.getElementById('sidebar-circle-fill');
       if (fillEl) fillEl.style.setProperty('--ring-pct', pct);
