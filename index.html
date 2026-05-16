@@ -68,10 +68,21 @@
     margin: 0;
   }
 
-  /* All three lines calculated to same visual width.
-     Cost Offers = anchor. Bad Photos and This Fixes It match it. */
+  /* All three lines same font-size and weight.
+     letter-spacing tuned per line so all render the same visual width.
+     Bad Photos is naturally wider — tighter tracking compresses it to match.
+     This Fixes It is slightly narrower — slightly less compression. */
   .h1-line1 {
-    font-size: clamp(55px, 8.54vw, 109px);
+    font-size: clamp(44px, 6.875vw, 88px);
+    font-weight: 700;
+    color: #000000;
+    display: block;
+    line-height: 1.05;
+    letter-spacing: -0.06em;
+  }
+
+  .h1-line2 {
+    font-size: clamp(44px, 6.875vw, 88px);
     font-weight: 700;
     color: #000000;
     display: block;
@@ -79,22 +90,13 @@
     letter-spacing: -0.03em;
   }
 
-  .h1-line2 {
-    font-size: clamp(54px, 8.52vw, 109px);
-    font-weight: 800;
-    color: #000000;
-    display: block;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-  }
-
   .h1-line3 {
-    font-size: clamp(48px, 7.57vw, 97px);
-    font-weight: 800;
+    font-size: clamp(44px, 6.875vw, 88px);
+    font-weight: 700;
     color: var(--red);
     display: block;
     line-height: 1.05;
-    letter-spacing: 0.005em;
+    letter-spacing: -0.044em;
   }
 
   /* ── RIGHT COLUMN: eyebrow, sub, CTAs ─────────────────────────── */
@@ -304,9 +306,9 @@
       padding-top: 0;
       border-left: none;
     }
-    .h1-line1 { font-size: clamp(44px, 13.1vw, 56px); }
-    .h1-line2 { font-size: clamp(44px, 13.1vw, 56px); }
-    .h1-line3 { font-size: clamp(40px, 11.7vw, 50px); }
+    .h1-line1 { font-size: clamp(36px, 10vw, 52px); letter-spacing: -0.06em; }
+    .h1-line2 { font-size: clamp(36px, 10vw, 52px); letter-spacing: -0.03em; }
+    .h1-line3 { font-size: clamp(36px, 10vw, 52px); letter-spacing: -0.044em; }
     .hero-image-zone { height: 300px; width: 100%; margin: 0; border-radius: 8px 8px 0 0; }
     .hero-ctas { flex-direction: column; align-items: stretch; }
     .carousel-caption { font-size: 12px; max-width: 200px; }
