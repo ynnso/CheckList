@@ -44,29 +44,57 @@
     line-height: 1.6;
   }
 
-  /* ─── HERO — TIER 2: FULL-BLEED + WHITE PANEL ───────────────── */
+  /* ─── HERO — TEXT ABOVE / IMAGE BELOW ──────────────────────── */
   #hero {
-    position: relative;
-    min-height: 620px;
-    overflow: hidden;
+    background: #ffffff;
+    padding: 72px 64px 0;
   }
 
-  /* White panel — 480px (38/62 ratio), red right-edge accent */
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    width: 480px;
-    min-height: 620px;
-    padding: 72px 52px 64px 64px;
-    background: #ffffff;
+  /* ── TOP TEXT ZONE: H1 left, desc+CTAs right ─────────────────── */
+  .hero-text-zone {
+    display: grid;
+    grid-template-columns: 60fr 40fr;
+    gap: 48px;
+    align-items: center;
+    margin-bottom: 52px;
+  }
+
+  /* ── H1 LEFT COLUMN ─────────────────────────────────────────── */
+  .hero-h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: #000000;
+    letter-spacing: -0.035em;
+    line-height: 1.0;
+    margin: 0;
+  }
+
+  .h1-line1,
+  .h1-line2 {
+    font-size: clamp(44px, 6.5vw, 88px);
+    font-weight: 800;
+    color: #000000;
+    display: block;
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+  }
+
+  .h1-line3 {
+    font-size: clamp(44px, 6.5vw, 88px);
+    font-weight: 800;
+    color: var(--red);
+    display: block;
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+  }
+
+  /* ── RIGHT COLUMN: eyebrow, sub, CTAs ─────────────────────────── */
+  .hero-right-col {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    border-right: 3px solid var(--red);
-    box-shadow: 12px 0 56px rgba(0,0,0,0.14);
+    gap: 20px;
   }
 
-  /* ─── EYEBROW ───────────────────────────────────────────────── */
   .hero-eyebrow {
     font-family: var(--font-body);
     font-size: 11px;
@@ -74,158 +102,70 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--red);
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
+    margin: 0;
   }
 
   .hero-eyebrow::before {
     content: '';
     display: block;
-    width: 24px;
+    width: 20px;
     height: 1.5px;
     background: var(--red);
     flex-shrink: 0;
   }
 
-  /* ─── H1 ────────────────────────────────────────────────────── */
-  .hero-h1 {
-    font-family: var(--font-display);
-    font-weight: 800;
-    color: #000000;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .h1-line1 {
-    font-size: clamp(28px, 3vw, 40px);
-    font-weight: 800;
-    color: #000000;
-    display: block;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    white-space: nowrap;
-  }
-
-  .h1-line2 {
-    font-size: clamp(28px, 3vw, 40px);
-    font-weight: 800;
-    color: #000000;
-    display: block;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    white-space: nowrap;
-  }
-
-  /* Line 3 — red payoff, larger, no trailing punctuation */
-  .h1-line3 {
-    font-size: clamp(42px, 4.8vw, 64px);
-    font-weight: 800;
-    color: var(--red);
-    display: block;
-    line-height: 1.0;
-    letter-spacing: -0.04em;
-    margin-top: 8px;
-    white-space: nowrap;
-  }
-
-  /* ─── BODY COPY ─────────────────────────────────────────────── */
   .hero-sub {
-    font-size: 15px;
-    color: #555555;
-    line-height: 1.7;
-    margin-bottom: 0;
-    max-width: 100%;
+    font-size: 16px;
+    color: #444444;
+    line-height: 1.65;
+    margin: 0;
   }
 
-  /* ─── TRUST STAT BAR — full panel width ─────────────────────── */
-  .hero-trust-bar {
+  /* CTAs: side by side */
+  .hero-ctas {
     display: flex;
+    flex-direction: row;
+    gap: 12px;
     align-items: center;
-    gap: 0;
-    margin: 24px 0 28px;
-    padding: 18px 0;
-    border-top: 1px solid #E4E4E4;
-    border-bottom: 1px solid #E4E4E4;
-    width: 100%;
+    flex-wrap: wrap;
   }
 
-  .hero-trust-stat {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .hero-trust-stat + .hero-trust-stat {
-    padding-left: 20px;
-    border-left: 1px solid #E4E4E4;
-  }
-
-  .hero-trust-num {
-    font-family: var(--font-display);
-    font-size: 20px;
-    font-weight: 800;
-    color: #000000;
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-
-  .hero-trust-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: #888888;
-    line-height: 1.3;
-  }
-
-  /* ─── SCROLL INDICATOR ──────────────────────────────────────── */
-  .hero-scroll-hint {
+  /* Trust badge — small pill below CTAs */
+  .hero-trust-badge {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-top: 20px;
-    opacity: 0;
-    animation: fadeInScroll 0.6s ease 1.4s forwards;
-  }
-
-  @keyframes fadeInScroll {
-    to { opacity: 1; }
-  }
-
-  .hero-scroll-hint span {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #AAAAAA;
+    color: #666666;
+    padding: 8px 14px;
+    background: #F5F5F5;
+    border-radius: 100px;
+    width: fit-content;
   }
 
-  .scroll-chevron {
-    animation: bounceDown 1.8s ease-in-out 2s infinite;
+  .hero-trust-badge-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+    flex-shrink: 0;
   }
 
-  @keyframes bounceDown {
-    0%, 100% { transform: translateY(0); opacity: 0.5; }
-    50%       { transform: translateY(5px); opacity: 1; }
-  }
-
-  /* ─── IMAGE BACKGROUND ──────────────────────────────────────── */
-  .hero-visual {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
+  /* ── IMAGE ZONE — full width, rounded, below ─────────────────── */
+  .hero-image-zone {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    border-radius: 12px 12px 0 0;
     overflow: hidden;
     background: #111111;
-    margin: 0;
-    border-radius: 0;
   }
 
-  /* ─── CAROUSEL ──────────────────────────────────────────────── */
+  /* ── CAROUSEL ────────────────────────────────────────────────── */
   .carousel {
     position: absolute;
     inset: 0;
@@ -241,44 +181,70 @@
     animation: kenBurns 8s ease-in-out infinite alternate;
   }
 
-  /* Per-image position tuning */
+  /* Per-image crop tuning */
   .carousel-slide:nth-child(1) { background-position: center 30%; }
-  .carousel-slide:nth-child(2) { background-position: 40% center; }
+  .carousel-slide:nth-child(2) { background-position: center 40%; }
   .carousel-slide:nth-child(3) { background-position: center 25%; }
-  .carousel-slide:nth-child(4) { background-position: 45% 30%; }
+  .carousel-slide:nth-child(4) { background-position: center 35%; }
   .carousel-slide:nth-child(5) { background-position: center 40%; }
   .carousel-slide:nth-child(6) { background-position: center 30%; }
   .carousel-slide:nth-child(7) { background-position: center 35%; }
-  .carousel-slide:nth-child(8) { background-position: 40% 30%; }
+  .carousel-slide:nth-child(8) { background-position: center 30%; }
 
   .carousel-slide.active { opacity: 1; }
 
   @keyframes kenBurns {
-    0%   { transform: scale(1.0) translate(0, 0); }
-    100% { transform: scale(1.07) translate(-1.5%, 0.5%); }
+    0%   { transform: scale(1.0); }
+    100% { transform: scale(1.05); }
   }
 
+  /* Bottom gradient for caption legibility only */
   .carousel-overlay {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(to right, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 6%),
-      linear-gradient(to top, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.2) 22%, rgba(0,0,0,0) 50%);
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.6) 0%,
+      rgba(0,0,0,0.15) 20%,
+      rgba(0,0,0,0) 45%
+    );
     pointer-events: none;
     z-index: 1;
   }
 
-  /* Caption — 32px clearance from hero bottom */
-  .carousel-caption-wrap {
+  /* Social proof badge — top-left of image */
+  .hero-image-badge {
     position: absolute;
-    bottom: 32px;
-    right: 28px;
-    left: 480px;
-    padding: 0;
+    top: 20px;
+    left: 20px;
     z-index: 3;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 8px 14px;
+    border-radius: 100px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    color: #111111;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-image-badge-star {
+    color: var(--red);
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  /* Caption — bottom right */
+  .carousel-caption-wrap {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    z-index: 3;
   }
 
   .carousel-caption {
@@ -287,12 +253,11 @@
     font-weight: 600;
     color: #ffffff;
     line-height: 1.4;
-    letter-spacing: 0;
     display: inline-block;
     background: rgba(0,0,0,0.52);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 9px 16px;
+    padding: 8px 14px;
     border-radius: 6px;
     opacity: 0;
     transform: translateY(4px);
@@ -305,10 +270,11 @@
     transform: translateY(0);
   }
 
+  /* Dots — bottom left of image */
   .carousel-dots {
     position: absolute;
-    top: 20px;
-    right: 24px;
+    bottom: 24px;
+    left: 24px;
     display: flex;
     gap: 5px;
     z-index: 3;
@@ -318,7 +284,7 @@
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.4);
     transition: background 0.3s ease, width 0.3s ease;
     flex-shrink: 0;
   }
@@ -329,10 +295,31 @@
     border-radius: 3px;
   }
 
+  /* ── RESPONSIVE ─────────────────────────────────────────────── */
+  @media (max-width: 1000px) {
+    #hero { padding: 56px 40px 0; }
+    .hero-text-zone { gap: 32px; margin-bottom: 40px; }
+    .hero-image-zone { height: 420px; }
+  }
+
   @media (max-width: 768px) {
-    .carousel-caption { font-size: 12px; max-width: 220px; }
-    .carousel-caption-wrap { left: 0; bottom: 20px; right: 16px; }
-    .hero-scroll-hint { display: none; }
+    #hero { padding: 48px 24px 0; }
+    .hero-text-zone {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-bottom: 32px;
+    }
+    .h1-line1, .h1-line2, .h1-line3 {
+      font-size: clamp(40px, 10vw, 56px);
+    }
+    .hero-image-zone { height: 300px; border-radius: 8px 8px 0 0; }
+    .hero-ctas { flex-direction: column; align-items: stretch; }
+    .carousel-caption { font-size: 12px; max-width: 200px; }
+  }
+
+  @media (max-width: 560px) {
+    #hero { padding: 40px 20px 0; }
+    .hero-image-zone { height: 240px; }
   }
 
 
@@ -1320,49 +1307,27 @@
   }
 
   /* ─── RESPONSIVE ────────────────────────────────────────────── */
-  /* Desktop L: 1000–1200px → panel 440px */
+  /* Desktop L: 1000–1200px */
   @media (max-width: 1200px) {
     #main-layout { grid-template-columns: 280px 1fr; }
-    .hero-content { width: 440px; padding: 64px 44px 56px 52px; }
-    .carousel-caption-wrap { left: 440px; }
     #content { padding: 0 56px 80px 64px; }
     #sidebar { padding: 40px 28px 40px 40px; }
     .progress-circle { width: 72px; height: 72px; }
     .progress-circle-pct { font-size: 19px; }
   }
 
-  /* Tablet: 768–1000px → panel 360px */
+  /* Tablet: 768–1000px */
   @media (max-width: 1000px) {
     #main-layout { grid-template-columns: 240px 1fr; }
     #sidebar { padding: 32px 16px 32px 24px; }
     .sidebar-circle-wrap { display: none; }
     #content { padding: 0 32px 80px 40px; }
-    .hero-content { width: 360px; padding: 56px 32px 48px 40px; }
-    .carousel-caption-wrap { left: 360px; }
   }
 
-  /* Mobile L: hide sidebar entirely, 32px padding */
+  /* Mobile L: hide sidebar entirely */
   @media (max-width: 768px) {
     body { font-size: 16px; padding-bottom: 48px; }
     #mobile-bottom-nav { display: block; }
-    /* Hero: stack vertically on mobile */
-    #hero { min-height: auto; }
-    .hero-content {
-      position: relative;
-      width: 100%;
-      min-height: auto;
-      padding: 48px 24px 40px;
-      box-shadow: none;
-      border-bottom: 1px solid #EBEBEB;
-    }
-    .hero-visual {
-      position: relative;
-      height: 260px;
-      inset: auto;
-    }
-    .carousel-caption-wrap { left: 0; bottom: 20px; right: 16px; }
-    .hero-trust-bar { margin: 20px 0 24px; }
-    .hero-ctas { max-width: 100%; }
     #main-layout { grid-template-columns: 1fr; }
     #sidebar { display: none; }
     #content { padding: 0 24px 64px; }
@@ -1372,7 +1337,6 @@
 
   /* Mobile S: <560px → 20px padding */
   @media (max-width: 560px) {
-    .hero-content { padding: 40px 20px 36px; }
     #content { padding: 0 20px 64px; }
     .section-desc { padding-left: 44px; max-width: 100%; }
     #quick-summary { padding: 28px 20px; }
@@ -1418,14 +1382,6 @@
     }
   }
 
-  .hero-ctas {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    align-items: stretch;
-    max-width: 380px;
-  }
-
   .hero-cta-btn {
     display: inline-flex;
     align-items: center;
@@ -1456,23 +1412,26 @@
     justify-content: center;
     gap: 6px;
     font-family: var(--font-body);
-    font-size: 13px;
-    font-weight: 500;
-    color: #777777;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111111;
     text-decoration: none;
-    padding: 4px 0;
-    border: none;
+    padding: 16px 24px;
+    border: 1.5px solid #D0D0D0;
+    border-radius: 8px;
     background: none;
-    transition: color var(--transition);
+    transition: border-color var(--transition), color var(--transition);
     letter-spacing: 0.01em;
+    white-space: nowrap;
   }
 
   .hero-cta-ghost:hover {
+    border-color: #000000;
     color: #000000;
   }
 
   .hero-cta-ghost svg {
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
   /* ─── BOOKING CTA BAND ──────────────────────────────────────── */
@@ -1737,9 +1696,45 @@
 <!-- HERO -->
 <section id="hero" aria-labelledby="hero-heading">
 
-  <!-- IMAGE BACKGROUND — rendered first, sits behind -->
-  <div class="hero-visual" role="region" aria-label="Property photo examples" aria-live="polite">
-    <div class="carousel" id="hero-carousel">
+  <!-- TEXT ZONE — headline left, description + CTAs right -->
+  <div class="hero-text-zone">
+
+    <h1 class="hero-h1" id="hero-heading">
+      <span class="h1-line1">Bad photos</span>
+      <span class="h1-line2">cost offers.</span>
+      <span class="h1-line3">This fixes it.</span>
+    </h1>
+
+    <div class="hero-right-col">
+      <p class="hero-eyebrow">Shoot2Sell · Real Estate Photography</p>
+      <p class="hero-sub">Cameras see differently than eyes. This 18-step checklist is the difference between a scroll-past and a showing.</p>
+      <div class="hero-ctas">
+        <a href="#section-lights" class="hero-cta-btn">
+          Get Camera-Ready
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="CHECKLIST_MAY12.pdf" class="hero-cta-ghost" download target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 10v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2"/><polyline points="5 7 8 10 11 7"/><line x1="8" y1="1" x2="8" y2="10"/></svg>
+          Download PDF
+        </a>
+      </div>
+      <div class="hero-trust-badge">
+        <span class="hero-trust-badge-dot"></span>
+        10,000+ shoots prepared · DFW · Houston · Austin · San Antonio
+      </div>
+    </div>
+
+  </div>
+
+  <!-- IMAGE ZONE — full width, rounded top, below text -->
+  <div class="hero-image-zone" role="region" aria-label="Property photo examples">
+
+    <div class="hero-image-badge" aria-hidden="true">
+      <span class="hero-image-badge-star">★</span>
+      4.9 · 10K+ Shoots
+    </div>
+
+    <div class="carousel" id="hero-carousel" aria-live="polite">
       <div class="carousel-slide active" style="background-image:url('hero-1-kitchen.jpg')" aria-label="Slide 1 of 8"></div>
       <div class="carousel-slide" style="background-image:url('hero-2-car.jpg')" aria-label="Slide 2 of 8"></div>
       <div class="carousel-slide" style="background-image:url('hero-3-office.jpg')" aria-label="Slide 3 of 8"></div>
@@ -1749,10 +1744,9 @@
       <div class="carousel-slide" style="background-image:url('hero-7-backyard.jpg')" aria-label="Slide 7 of 8"></div>
       <div class="carousel-slide" style="background-image:url('hero-8-dog.jpg')" aria-label="Slide 8 of 8"></div>
     </div>
+
     <div class="carousel-overlay"></div>
-    <div class="carousel-caption-wrap">
-      <p class="carousel-caption" id="carousel-caption">Clear the island. Let the kitchen speak.</p>
-    </div>
+
     <div class="carousel-dots" aria-hidden="true">
       <span class="carousel-dot active"></span>
       <span class="carousel-dot"></span>
@@ -1763,47 +1757,11 @@
       <span class="carousel-dot"></span>
       <span class="carousel-dot"></span>
     </div>
-  </div>
 
-  <!-- WHITE PANEL — foreground, z-index: 2 -->
-  <div class="hero-content">
-    <p class="hero-eyebrow">Real estate photography · DFW · Houston · Austin · San Antonio</p>
-    <h1 class="hero-h1" id="hero-heading">
-      <span class="h1-line1">From &#8216;Almost</span>
-      <span class="h1-line2">Ready&#8217; to</span>
-      <span class="h1-line3">Camera-Ready</span>
-    </h1>
-    <p class="hero-sub">Cameras see differently than eyes. This 18-point checklist bridges the gap between a good photo and a great listing.</p>
-    <div class="hero-trust-bar" aria-label="Trust statistics">
-      <div class="hero-trust-stat">
-        <span class="hero-trust-num">10K+</span>
-        <span class="hero-trust-label">Shoots Prepared</span>
-      </div>
-      <div class="hero-trust-stat">
-        <span class="hero-trust-num">18</span>
-        <span class="hero-trust-label">Step System</span>
-      </div>
-      <div class="hero-trust-stat">
-        <span class="hero-trust-num">4</span>
-        <span class="hero-trust-label">TX Markets</span>
-      </div>
+    <div class="carousel-caption-wrap">
+      <p class="carousel-caption" id="carousel-caption">Clear the island. Let the kitchen speak.</p>
     </div>
-    <div class="hero-ctas">
-      <a href="#section-lights" class="hero-cta-btn">
-        Get Camera-Ready
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a href="CHECKLIST_MAY12.pdf" class="hero-cta-ghost" download target="_blank" rel="noopener">
-        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 10v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2"/><polyline points="5 7 8 10 11 7"/><line x1="8" y1="1" x2="8" y2="10"/></svg>
-        Download PDF
-      </a>
-    </div>
-    <div class="hero-scroll-hint" aria-hidden="true">
-      <span>Scroll to start</span>
-      <span class="scroll-chevron">
-        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" stroke="#AAAAAA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,1 7,7 13,1"/></svg>
-      </span>
-    </div>
+
   </div>
 
 </section>
