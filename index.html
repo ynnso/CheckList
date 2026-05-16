@@ -55,16 +55,16 @@
     display: grid;
     grid-template-columns: 60fr 40fr;
     gap: 48px;
-    align-items: center;
-    margin-bottom: 52px;
+    align-items: start;
+    margin-bottom: 64px;
   }
 
   /* ── H1 LEFT COLUMN ─────────────────────────────────────────── */
   .hero-h1 {
     font-family: var(--font-display);
-    font-weight: 800;
+    font-weight: 700;
     color: #000000;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.03em;
     line-height: 1.0;
     margin: 0;
   }
@@ -72,20 +72,20 @@
   .h1-line1,
   .h1-line2 {
     font-size: clamp(44px, 6.5vw, 88px);
-    font-weight: 800;
+    font-weight: 700;
     color: #000000;
     display: block;
-    line-height: 1.0;
-    letter-spacing: -0.035em;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
   }
 
   .h1-line3 {
     font-size: clamp(44px, 6.5vw, 88px);
-    font-weight: 800;
+    font-weight: 700;
     color: var(--red);
     display: block;
-    line-height: 1.0;
-    letter-spacing: -0.035em;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
   }
 
   /* ── RIGHT COLUMN: eyebrow, sub, CTAs ─────────────────────────── */
@@ -93,6 +93,9 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding-left: 32px;
+    padding-top: 8px;
+    border-left: 1px solid #EBEBEB;
   }
 
   .hero-eyebrow {
@@ -155,10 +158,11 @@
     flex-shrink: 0;
   }
 
-  /* ── IMAGE ZONE — full width, rounded, below ─────────────────── */
+  /* ── IMAGE ZONE — inset, rounded top, below ─────────────────── */
   .hero-image-zone {
     position: relative;
-    width: 100%;
+    width: calc(100% - 48px);
+    margin: 0 24px;
     height: 520px;
     border-radius: 12px 12px 0 0;
     overflow: hidden;
@@ -298,8 +302,9 @@
   /* ── RESPONSIVE ─────────────────────────────────────────────── */
   @media (max-width: 1000px) {
     #hero { padding: 56px 40px 0; }
-    .hero-text-zone { gap: 32px; margin-bottom: 40px; }
-    .hero-image-zone { height: 420px; }
+    .hero-text-zone { gap: 32px; margin-bottom: 48px; }
+    .hero-right-col { padding-left: 24px; }
+    .hero-image-zone { height: 420px; width: calc(100% - 32px); margin: 0 16px; }
   }
 
   @media (max-width: 768px) {
@@ -309,10 +314,15 @@
       gap: 28px;
       margin-bottom: 32px;
     }
+    .hero-right-col {
+      padding-left: 0;
+      padding-top: 0;
+      border-left: none;
+    }
     .h1-line1, .h1-line2, .h1-line3 {
       font-size: clamp(40px, 10vw, 56px);
     }
-    .hero-image-zone { height: 300px; border-radius: 8px 8px 0 0; }
+    .hero-image-zone { height: 300px; width: 100%; margin: 0; border-radius: 8px 8px 0 0; }
     .hero-ctas { flex-direction: column; align-items: stretch; }
     .carousel-caption { font-size: 12px; max-width: 200px; }
   }
@@ -1393,11 +1403,12 @@
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.01em;
-    padding: 16px 32px;
-    border-radius: 8px;
+    padding: 15px 28px;
+    border-radius: 100px;
     border: none;
     text-decoration: none;
     transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    white-space: nowrap;
   }
 
   .hero-cta-btn:hover {
@@ -1416,9 +1427,9 @@
     font-weight: 600;
     color: #111111;
     text-decoration: none;
-    padding: 16px 24px;
-    border: 1.5px solid #D0D0D0;
-    border-radius: 8px;
+    padding: 15px 24px;
+    border: 1.5px solid #C8C8C8;
+    border-radius: 100px;
     background: none;
     transition: border-color var(--transition), color var(--transition);
     letter-spacing: 0.01em;
