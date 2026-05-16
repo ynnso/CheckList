@@ -64,14 +64,26 @@
     font-family: var(--font-display);
     font-weight: 700;
     color: #000000;
-    letter-spacing: -0.03em;
     line-height: 1.0;
     margin: 0;
   }
 
-  .h1-line1,
+  /* Each line sized to flush-fill the same column width.
+     "This Fixes It." is the widest — it anchors at 88px max.
+     Lines 1+2 scale proportionally larger to match its width. */
+  .h1-line1 {
+    /* "Bad Photos" — shortest string, needs largest font */
+    font-size: clamp(48px, 7.02vw, 95px);
+    font-weight: 700;
+    color: #000000;
+    display: block;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
   .h1-line2 {
-    font-size: clamp(44px, 6.5vw, 88px);
+    /* "Cost Offers." — mid-length */
+    font-size: clamp(47px, 6.91vw, 94px);
     font-weight: 700;
     color: #000000;
     display: block;
@@ -80,6 +92,7 @@
   }
 
   .h1-line3 {
+    /* "This Fixes It." — widest, anchor size */
     font-size: clamp(44px, 6.5vw, 88px);
     font-weight: 700;
     color: var(--red);
@@ -295,9 +308,9 @@
       padding-top: 0;
       border-left: none;
     }
-    .h1-line1, .h1-line2, .h1-line3 {
-      font-size: clamp(40px, 10vw, 56px);
-    }
+    .h1-line1 { font-size: clamp(44px, 10.8vw, 56px); }
+    .h1-line2 { font-size: clamp(43px, 10.6vw, 55px); }
+    .h1-line3 { font-size: clamp(40px, 10vw, 52px); }
     .hero-image-zone { height: 300px; width: 100%; margin: 0; border-radius: 8px 8px 0 0; }
     .hero-ctas { flex-direction: column; align-items: stretch; }
     .carousel-caption { font-size: 12px; max-width: 200px; }
