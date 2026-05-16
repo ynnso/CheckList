@@ -44,30 +44,36 @@
     line-height: 1.6;
   }
 
-  /* ─── HERO ──────────────────────────────────────────────────── */
+  /* ─── HERO — TIER 2: FULL-BLEED + WHITE PANEL ───────────────── */
   #hero {
-    background: var(--white);
-    display: grid;
-    grid-template-columns: 55fr 45fr;
-    min-height: 560px;
+    position: relative;
+    min-height: 620px;
     overflow: hidden;
   }
 
+  /* White panel — opaque, anchored left, fixed width */
   .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 520px;
+    min-height: 620px;
     padding: 72px 56px 64px 64px;
+    background: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-shadow: 8px 0 48px rgba(0,0,0,0.12);
   }
 
+  /* ─── EYEBROW ───────────────────────────────────────────────── */
   .hero-eyebrow {
     font-family: var(--font-body);
     font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--red);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -77,60 +83,62 @@
     content: '';
     display: block;
     width: 24px;
-    height: 1px;
+    height: 1.5px;
     background: var(--red);
     flex-shrink: 0;
   }
 
+  /* ─── H1 ────────────────────────────────────────────────────── */
   .hero-h1 {
     font-family: var(--font-display);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.03em;
+    font-weight: 800;
     color: #000000;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     gap: 0;
   }
 
-  /* Line 1 — black, sets up tension */
+  /* Lines 1+2 — black setup, same size */
   .h1-line1 {
-    font-size: clamp(36px, 5.8vw, 62px);
+    font-size: clamp(30px, 3.2vw, 44px);
     font-weight: 800;
     color: #000000;
     display: block;
-    line-height: 1.05;
+    line-height: 1.1;
     letter-spacing: -0.03em;
+    white-space: nowrap;
   }
 
-  /* Line 2 — black, continues tension */
   .h1-line2 {
-    font-size: clamp(36px, 5.8vw, 62px);
+    font-size: clamp(30px, 3.2vw, 44px);
     font-weight: 800;
     color: #000000;
     display: block;
-    line-height: 1.05;
+    line-height: 1.1;
     letter-spacing: -0.03em;
+    white-space: nowrap;
   }
 
-  /* Line 3 — red, the payoff destination */
+  /* Line 3 — red payoff, noticeably larger */
   .h1-line3 {
-    font-size: clamp(48px, 8vw, 88px);
+    font-size: clamp(44px, 5vw, 68px);
     font-weight: 800;
     color: var(--red);
     display: block;
     line-height: 1.0;
     letter-spacing: -0.04em;
-    margin-top: 4px;
+    margin-top: 8px;
+    white-space: nowrap;
   }
 
+  /* ─── BODY COPY ─────────────────────────────────────────────── */
   .hero-sub {
     font-size: 15px;
-    color: #444444;
-    max-width: 380px;
+    color: #555555;
     line-height: 1.7;
-    margin-bottom: 12px;
+    margin-bottom: 0;
+    max-width: 360px;
   }
 
   /* ─── TRUST STAT BAR ────────────────────────────────────────── */
@@ -138,18 +146,17 @@
     display: flex;
     align-items: center;
     gap: 0;
-    margin-bottom: 32px;
-    padding: 16px 0;
+    margin: 24px 0 28px;
+    padding: 18px 0;
     border-top: 1px solid #EBEBEB;
     border-bottom: 1px solid #EBEBEB;
-    max-width: 380px;
   }
 
   .hero-trust-stat {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 3px;
   }
 
   .hero-trust-stat + .hero-trust-stat {
@@ -159,7 +166,7 @@
 
   .hero-trust-num {
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 800;
     color: #000000;
     line-height: 1;
@@ -169,19 +176,22 @@
   .hero-trust-label {
     font-size: 10px;
     font-weight: 500;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
-    color: #777777;
+    color: #888888;
     line-height: 1.3;
   }
 
+  /* ─── IMAGE BACKGROUND ──────────────────────────────────────── */
+  /* hero-visual fills the entire hero behind the white panel */
   .hero-visual {
-    position: relative;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     overflow: hidden;
-    background: #0a0002;
-    /* Breathing room: image floats off top and right edges */
-    margin: 20px 20px 0 0;
-    border-radius: 12px 0 0 0;
+    background: #111111;
+    margin: 0;
+    border-radius: 0;
   }
 
   /* ─── CAROUSEL ──────────────────────────────────────────────── */
@@ -196,9 +206,8 @@
     background-size: cover;
     background-position: center 30%;
     opacity: 0;
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Ken Burns: slow cinematic zoom — masks crop, adds life */
-    animation: kenBurns 6s ease-in-out infinite alternate;
+    transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: kenBurns 8s ease-in-out infinite alternate;
   }
 
   .carousel-slide.active {
@@ -207,49 +216,54 @@
 
   @keyframes kenBurns {
     0%   { transform: scale(1.0) translate(0, 0); }
-    100% { transform: scale(1.06) translate(-1%, 0.5%); }
+    100% { transform: scale(1.07) translate(-1.5%, 0.5%); }
   }
 
+  /* Overlay: dark at bottom for caption legibility */
   .carousel-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
       to top,
-      rgba(0,0,0,0.82) 0%,
-      rgba(0,0,0,0.38) 30%,
-      rgba(0,0,0,0.08) 60%,
-      rgba(0,0,0,0.02) 100%
+      rgba(0,0,0,0.72) 0%,
+      rgba(0,0,0,0.28) 25%,
+      rgba(0,0,0,0.04) 55%,
+      rgba(0,0,0,0) 100%
     );
     pointer-events: none;
     z-index: 1;
   }
 
+  /* Caption — bottom-right of the visible image area */
   .carousel-caption-wrap {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 28px 28px 32px;
-    z-index: 2;
+    bottom: 28px;
+    right: 28px;
+    left: 520px;
+    padding: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
   }
 
   .carousel-caption {
     font-family: var(--font-display);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     color: #ffffff;
     line-height: 1.35;
     letter-spacing: -0.01em;
-    /* Caption: frosted pill for legibility on any image */
     display: inline-block;
-    background: rgba(0,0,0,0.42);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 8px 14px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 9px 16px;
     border-radius: 6px;
     opacity: 0;
     transform: translateY(4px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    max-width: 300px;
   }
 
   .carousel-caption.caption-visible {
@@ -257,10 +271,11 @@
     transform: translateY(0);
   }
 
+  /* Dots — top-right of image area, clear of the panel */
   .carousel-dots {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 20px;
+    right: 24px;
     display: flex;
     gap: 5px;
     z-index: 3;
@@ -270,7 +285,7 @@
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.4);
     transition: background 0.3s ease, width 0.3s ease;
     flex-shrink: 0;
   }
@@ -282,8 +297,8 @@
   }
 
   @media (max-width: 768px) {
-    .carousel-caption { font-size: 13px; }
-    .carousel-caption-wrap { padding: 16px 20px 24px; }
+    .carousel-caption { font-size: 13px; max-width: 240px; }
+    .carousel-caption-wrap { left: 0; bottom: 20px; right: 16px; }
   }
 
 
@@ -1271,44 +1286,59 @@
   }
 
   /* ─── RESPONSIVE ────────────────────────────────────────────── */
-  /* Desktop L: 1000–1200px → 56px padding, sidebar 280px */
+  /* Desktop L: 1000–1200px → sidebar 280px, panel narrows */
   @media (max-width: 1200px) {
     #main-layout { grid-template-columns: 280px 1fr; }
-    .hero-content { padding: 56px 56px 56px 56px; }
+    .hero-content { width: 460px; padding: 64px 48px 56px 56px; }
+    .carousel-caption-wrap { left: 460px; }
     #content { padding: 0 56px 80px 64px; }
     #sidebar { padding: 40px 28px 40px 40px; }
     .progress-circle { width: 72px; height: 72px; }
     .progress-circle-pct { font-size: 19px; }
   }
 
-  /* Tablet: 768–1000px → 40px padding, sidebar 240px */
+  /* Tablet: 768–1000px → sidebar 240px, panel narrows further */
   @media (max-width: 1000px) {
     #main-layout { grid-template-columns: 240px 1fr; }
     #sidebar { padding: 32px 16px 32px 24px; }
     .sidebar-circle-wrap { display: none; }
     #content { padding: 0 32px 80px 40px; }
-    .hero-content { padding: 48px 32px; }
+    .hero-content { width: 380px; padding: 56px 36px 48px 40px; }
+    .carousel-caption-wrap { left: 380px; }
   }
 
   /* Mobile L: hide sidebar entirely, 32px padding */
   @media (max-width: 768px) {
     body { font-size: 16px; padding-bottom: 48px; }
     #mobile-bottom-nav { display: block; }
-    #hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-visual { height: 240px; margin: 0; border-radius: 0; }
-    .hero-trust-bar { max-width: 100%; }
+    /* Hero: stack vertically on mobile */
+    #hero { min-height: auto; }
+    .hero-content {
+      position: relative;
+      width: 100%;
+      min-height: auto;
+      padding: 48px 24px 40px;
+      box-shadow: none;
+      border-bottom: 1px solid #EBEBEB;
+    }
+    .hero-visual {
+      position: relative;
+      height: 260px;
+      inset: auto;
+    }
+    .carousel-caption-wrap { left: 0; bottom: 20px; right: 16px; }
+    .hero-trust-bar { margin: 20px 0 24px; }
     .hero-ctas { max-width: 100%; }
-    .hero-content { padding: 48px 32px 40px; }
     #main-layout { grid-template-columns: 1fr; }
     #sidebar { display: none; }
-    #content { padding: 0 32px 64px; }
+    #content { padding: 0 24px 64px; }
     .checklist-section { padding: 36px 0 16px; }
     .summary-list { grid-template-columns: 1fr; }
   }
 
   /* Mobile S: <560px → 20px padding */
   @media (max-width: 560px) {
-    .hero-content { padding: 36px 20px 32px; }
+    .hero-content { padding: 40px 20px 36px; }
     #content { padding: 0 20px 64px; }
     .section-desc { padding-left: 44px; max-width: 100%; }
     #quick-summary { padding: 28px 20px; }
@@ -1672,6 +1702,36 @@
 
 <!-- HERO -->
 <section id="hero" aria-labelledby="hero-heading">
+
+  <!-- IMAGE BACKGROUND — rendered first, sits behind -->
+  <div class="hero-visual" role="region" aria-label="Property photo examples" aria-live="polite">
+    <div class="carousel" id="hero-carousel">
+      <div class="carousel-slide active" style="background-image:url('hero-1-kitchen.jpg')" aria-label="Slide 1 of 8"></div>
+      <div class="carousel-slide" style="background-image:url('hero-2-car.jpg')" aria-label="Slide 2 of 8"></div>
+      <div class="carousel-slide" style="background-image:url('hero-3-office.jpg')" aria-label="Slide 3 of 8"></div>
+      <div class="carousel-slide" style="background-image:url('hero-4-living-x.jpg')" aria-label="Slide 4 of 8"></div>
+      <div class="carousel-slide" style="background-image:url('hero-5-pool.jpg')" aria-label="Slide 5 of 8"></div>
+      <div class="carousel-slide" style="background-image:url('hero-6-dark-kitchen.jpg')" aria-label="Slide 6 of 8"></div>
+      <div class="carousel-slide" style="background-image:url('hero-7-backyard.jpg')" aria-label="Slide 7 of 8"></div>
+      <div class="carousel-slide" style="background-image:url('hero-8-dog.jpg')" aria-label="Slide 8 of 8"></div>
+    </div>
+    <div class="carousel-overlay"></div>
+    <div class="carousel-caption-wrap">
+      <p class="carousel-caption" id="carousel-caption">Clear the island. Let the kitchen speak.</p>
+    </div>
+    <div class="carousel-dots" aria-hidden="true">
+      <span class="carousel-dot active"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+      <span class="carousel-dot"></span>
+    </div>
+  </div>
+
+  <!-- WHITE PANEL — foreground, z-index: 2 -->
   <div class="hero-content">
     <p class="hero-eyebrow">Shoot2Sell · Photoshoot Checklist</p>
     <h1 class="hero-h1" id="hero-heading">
@@ -1705,32 +1765,7 @@
       </a>
     </div>
   </div>
-  <div class="hero-visual" role="region" aria-label="Property photo examples" aria-live="polite">
-    <div class="carousel" id="hero-carousel">
-      <div class="carousel-slide active" style="background-image:url('hero-1-kitchen.jpg')" aria-label="Slide 1 of 8"></div>
-      <div class="carousel-slide" style="background-image:url('hero-2-car.jpg')" aria-label="Slide 2 of 8"></div>
-      <div class="carousel-slide" style="background-image:url('hero-3-office.jpg')" aria-label="Slide 3 of 8"></div>
-      <div class="carousel-slide" style="background-image:url('hero-4-living-x.jpg')" aria-label="Slide 4 of 8"></div>
-      <div class="carousel-slide" style="background-image:url('hero-5-pool.jpg')" aria-label="Slide 5 of 8"></div>
-      <div class="carousel-slide" style="background-image:url('hero-6-dark-kitchen.jpg')" aria-label="Slide 6 of 8"></div>
-      <div class="carousel-slide" style="background-image:url('hero-7-backyard.jpg')" aria-label="Slide 7 of 8"></div>
-      <div class="carousel-slide" style="background-image:url('hero-8-dog.jpg')" aria-label="Slide 8 of 8"></div>
-    </div>
-    <div class="carousel-overlay"></div>
-    <div class="carousel-caption-wrap">
-      <p class="carousel-caption" id="carousel-caption">Clear the island. Let the kitchen speak.</p>
-    </div>
-    <div class="carousel-dots" aria-hidden="true">
-      <span class="carousel-dot active"></span>
-      <span class="carousel-dot"></span>
-      <span class="carousel-dot"></span>
-      <span class="carousel-dot"></span>
-      <span class="carousel-dot"></span>
-      <span class="carousel-dot"></span>
-      <span class="carousel-dot"></span>
-      <span class="carousel-dot"></span>
-    </div>
-  </div>
+
 </section>
 
 <!-- INTRO COPY -->
