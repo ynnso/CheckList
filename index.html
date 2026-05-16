@@ -169,12 +169,14 @@
     background-position: center 35%;
     opacity: 0;
     transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity;
   }
 
   /* Ken Burns only on active — inactive slides stay still, no shake */
   .carousel-slide.active {
     opacity: 1;
     animation: kenBurns 8s ease-in-out infinite alternate;
+    will-change: transform;
   }
 
   @keyframes kenBurns {
@@ -223,13 +225,20 @@
     line-height: 1;
   }
 
-  /* Caption — flush bottom-left, fixed width = longest caption so layout never shifts */
+  /* Caption — fixed container, never resizes between slides */
   .carousel-caption-wrap {
     position: absolute;
     bottom: 0;
     left: 0;
     z-index: 3;
-    width: max-content;
+    /* Fixed width = longest caption at 14px weight 600 — box never moves */
+    width: 420px;
+    background: rgba(0,0,0,0.56);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 0 8px 0 0;
+    padding: 12px 18px;
+    box-sizing: border-box;
   }
 
   .carousel-caption {
@@ -237,17 +246,11 @@
     font-size: 14px;
     font-weight: 600;
     color: #ffffff;
-    line-height: 1;
-    white-space: nowrap;
+    line-height: 1.3;
     display: block;
-    background: rgba(0,0,0,0.56);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 12px 18px;
-    border-radius: 0 8px 0 0;
     opacity: 0;
-    /* No transform — prevents layout shift on change */
     transition: opacity 0.3s ease;
+    margin: 0;
   }
 
   .carousel-caption.caption-visible {
@@ -304,8 +307,10 @@
     .h1-line3 { font-size: clamp(36px, 10vw, 52px); letter-spacing: -0.044em; }
     .hero-image-zone { height: 300px; width: 100%; margin: 0; border-radius: 8px 8px 0 0; }
     .hero-ctas { flex-direction: column; align-items: stretch; }
-    .carousel-slide.active { animation: none; }
-    .carousel-caption { font-size: 12px; max-width: 200px; }
+    /* Caption: full width on mobile so text wraps cleanly */
+    .carousel-caption-wrap { width: 100%; border-radius: 0; }
+    /* Trust badge: smaller on mobile */
+    .hero-image-badge { font-size: 11px; padding: 6px 10px; }
   }
 
   @media (max-width: 560px) {
