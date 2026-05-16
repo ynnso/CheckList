@@ -68,9 +68,10 @@
     margin: 0;
   }
 
-  /* "Bad Photos" is widest — anchor at 88px. */
+  /* Cost Offers = visual anchor. Bad Photos and This Fixes It scale to match. */
   .h1-line1 {
-    font-size: clamp(44px, 6.5vw, 88px);
+    /* "Bad Photos" — scale up ~8% to match Cost Offers width */
+    font-size: clamp(50px, 7.30vw, 99px);
     font-weight: 700;
     color: #000000;
     display: block;
@@ -79,7 +80,7 @@
   }
 
   .h1-line2 {
-    /* "Cost Offers" — tighter tracking expands to match Bad Photos width */
+    /* "Cost Offers" — visual anchor */
     font-size: clamp(46px, 6.72vw, 91px);
     font-weight: 700;
     color: #000000;
@@ -89,8 +90,8 @@
   }
 
   .h1-line3 {
-    /* "This Fixes It" — heavier weight + neutral tracking to widen narrow chars */
-    font-size: clamp(44px, 6.55vw, 89px);
+    /* "This Fixes It" — scale up ~5% + weight 800 to close the gap */
+    font-size: clamp(48px, 7.07vw, 96px);
     font-weight: 800;
     color: var(--red);
     display: block;
@@ -306,8 +307,8 @@
       border-left: none;
     }
     .h1-line1 { font-size: clamp(40px, 10vw, 52px); }
-    .h1-line2 { font-size: clamp(41px, 10.3vw, 54px); }
-    .h1-line3 { font-size: clamp(40px, 10.1vw, 53px); }
+    .h1-line2 { font-size: clamp(40px, 10vw, 52px); }
+    .h1-line3 { font-size: clamp(47px, 11.6vw, 61px); }
     .hero-image-zone { height: 300px; width: 100%; margin: 0; border-radius: 8px 8px 0 0; }
     .hero-ctas { flex-direction: column; align-items: stretch; }
     .carousel-caption { font-size: 12px; max-width: 200px; }
