@@ -368,9 +368,18 @@
   }
 
   .sidebar-nav-item.active {
-    background: var(--red-light);
-    border-left-color: var(--red);
+    background: #000000;
+    border-left-color: #000000;
     padding-left: 10px;
+  }
+
+  .sidebar-nav-item.active .sidebar-nav-text {
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .sidebar-nav-item.active .sidebar-nav-progress {
+    color: #ffffff;
   }
 
   /* Icon tile */
@@ -378,8 +387,8 @@
     width: 32px;
     height: 32px;
     border-radius: 7px;
-    background: var(--pearl);
-    color: var(--ash);
+    background: #000000;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -509,23 +518,14 @@
 
   .progress-circle-pct {
     font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: 800;
     color: #000000;
     line-height: 1;
   }
 
-  .progress-circle-fraction {
-    font-family: var(--font-body);
-    font-size: 10px;
-    font-weight: 500;
-    color: #555555;
-    line-height: 1.2;
-    margin-top: 1px;
-  }
-
   .progress-circle-label {
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -921,7 +921,7 @@
   /* ─── QUICK SUMMARY ─────────────────────────────────────────── */
   #quick-summary {
     margin: 56px 0 0;
-    background: var(--white);
+    background: #ffffff;
     border: 1px solid var(--pearl);
     border-radius: var(--radius-lg);
     padding: 48px 52px;
@@ -981,15 +981,21 @@
     content: '✓';
     color: var(--red);
     flex-shrink: 0;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
+  }
+
+  .summary-list li:nth-child(6) {
+    grid-column: 1 / -1;
+    font-weight: 600;
+    color: #000000;
   }
 
   /* ─── COMPLETION STATE ──────────────────────────────────────── */
   #completion-banner {
     display: none;
     margin: 32px 0 0;
-    background: var(--off-white);
+    background: #ffffff;
     border: 1px solid var(--pearl);
     border-radius: var(--radius-lg);
     padding: 48px 40px;
@@ -1498,7 +1504,7 @@
 
   /* ─── QUICK READS ───────────────────────────────────────────── */
   #quick-reads {
-    background: var(--off-white);
+    background: #ffffff;
     border-top: 1px solid var(--pearl);
     padding: 48px 64px;
     overflow: hidden;
@@ -1636,10 +1642,10 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--red);
-    background: var(--red-light);
-    border: 1px solid rgba(200,16,46,0.2);
-    padding: 2px 8px;
-    border-radius: 100px;
+    background: none;
+    border: none;
+    padding: 0;
+    border-radius: 0;
     white-space: nowrap;
     flex-shrink: 0;
     align-self: center;
@@ -1739,7 +1745,6 @@
         </svg>
         <div class="progress-circle-text">
           <span class="progress-circle-pct" id="sidebar-pct">0%</span>
-          <span class="progress-circle-fraction" id="sidebar-fraction">0/18</span>
           <span class="progress-circle-label">done</span>
         </div>
       </div>
@@ -2327,10 +2332,6 @@
       circleWrapEl.setAttribute('aria-valuenow', pct);
       circleWrapEl.setAttribute('aria-label', 'Overall progress, ' + totalChecked + ' of ' + TOTAL + ' items complete');
       document.getElementById('sidebar-pct').textContent = pct + '%';
-      
-      // Add fraction display
-      const fractionEl = document.getElementById('sidebar-fraction');
-      if (fractionEl) fractionEl.textContent = totalChecked + '/' + TOTAL;
 
       // Mobile status tab percentage
       const mobProgressPct = document.getElementById('mob-progress-pct');
