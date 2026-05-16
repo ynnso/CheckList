@@ -68,10 +68,10 @@
     margin: 0;
   }
 
-  /* Cost Offers = visual anchor. Bad Photos and This Fixes It scale to match. */
+  /* "This Fixes It" = visual anchor. Bad Photos and Cost Offers scale up to match. */
   .h1-line1 {
-    /* "Bad Photos" — scale up ~8% to match Cost Offers width */
-    font-size: clamp(50px, 7.30vw, 99px);
+    /* "Bad Photos" — ~95% of anchor, scale up */
+    font-size: clamp(46px, 7.44vw, 101px);
     font-weight: 700;
     color: #000000;
     display: block;
@@ -80,18 +80,18 @@
   }
 
   .h1-line2 {
-    /* "Cost Offers" — visual anchor */
-    font-size: clamp(46px, 6.72vw, 91px);
-    font-weight: 700;
+    /* "Cost Offers" — shortest, needs most growth + weight 800 to match stroke weight */
+    font-size: clamp(50px, 8.03vw, 109px);
+    font-weight: 800;
     color: #000000;
     display: block;
     line-height: 1.05;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.03em;
   }
 
   .h1-line3 {
-    /* "This Fixes It" — scale up ~5% + weight 800 to close the gap */
-    font-size: clamp(48px, 7.07vw, 96px);
+    /* "This Fixes It" — anchor */
+    font-size: clamp(44px, 7.07vw, 96px);
     font-weight: 800;
     color: var(--red);
     display: block;
