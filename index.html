@@ -169,14 +169,19 @@
     background-position: center 35%;
     opacity: 0;
     transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: opacity;
+    animation: kenBurns 8s ease-in-out infinite alternate;
+    animation-play-state: paused;
   }
 
-  /* Ken Burns only on active — inactive slides stay still, no shake */
   .carousel-slide.active {
     opacity: 1;
-    animation: kenBurns 8s ease-in-out infinite alternate;
-    will-change: transform;
+    animation-play-state: running;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-slide {
+      animation: none;
+    }
   }
 
   @keyframes kenBurns {
@@ -225,19 +230,18 @@
     line-height: 1;
   }
 
-  /* Caption — fixed container, never resizes between slides */
+  /* Caption — fixed container sized to longest caption, never resizes */
   .carousel-caption-wrap {
     position: absolute;
     bottom: 0;
     left: 0;
     z-index: 3;
-    /* Fixed width = longest caption at 14px weight 600 — box never moves */
-    width: 420px;
+    width: 400px;
     background: rgba(0,0,0,0.56);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 0 8px 0 0;
-    padding: 12px 18px;
+    padding: 11px 16px;
     box-sizing: border-box;
   }
 
