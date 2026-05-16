@@ -154,6 +154,9 @@
     border-radius: 10px 10px 0 0;
     overflow: hidden;
     background: #111111;
+    /* iOS Safari: force GPU layer so overflow:hidden clips animated children */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    transform: translateZ(0);
   }
 
   /* ── CAROUSEL ────────────────────────────────────────────────── */
@@ -203,24 +206,24 @@
     z-index: 1;
   }
 
-  /* Social proof badge — top-left of image */
+  /* Trust badge — flush top-left, same style as caption box */
   .hero-image-badge {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 0;
+    left: 0;
     z-index: 3;
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 8px 14px;
-    border-radius: 100px;
+    gap: 7px;
+    background: rgba(0,0,0,0.56);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 11px 16px;
+    border-radius: 0 0 8px 0;
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
-    color: #111111;
+    color: #ffffff;
     letter-spacing: 0.01em;
   }
 
@@ -236,7 +239,7 @@
     bottom: 0;
     left: 0;
     z-index: 3;
-    width: 400px;
+    width: 380px;
     background: rgba(0,0,0,0.56);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -314,7 +317,8 @@
     /* Caption: full width on mobile so text wraps cleanly */
     .carousel-caption-wrap { width: 100%; border-radius: 0; }
     /* Trust badge: smaller on mobile */
-    .hero-image-badge { font-size: 11px; padding: 6px 10px; }
+    .hero-image-badge { font-size: 10px; padding: 7px 10px; gap: 5px; }
+    .hero-image-badge-star { font-size: 10px; }
   }
 
   @media (max-width: 560px) {
