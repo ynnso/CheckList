@@ -94,7 +94,7 @@
     flex-direction: column;
     gap: 24px;
     padding-left: 32px;
-    padding-top: 24px;
+    padding-top: 0;
     border-left: 1px solid #EBEBEB;
   }
 
@@ -140,7 +140,7 @@
     position: relative;
     width: 100%;
     height: 520px;
-    border-radius: 12px 12px 0 0;
+    border-radius: 10px 10px 0 0;
     overflow: hidden;
     background: #111111;
   }
@@ -219,11 +219,11 @@
     line-height: 1;
   }
 
-  /* Caption — bottom right, single line always */
+  /* Caption — flush bottom-left corner */
   .carousel-caption-wrap {
     position: absolute;
-    bottom: 24px;
-    right: 24px;
+    bottom: 0;
+    left: 0;
     z-index: 3;
   }
 
@@ -235,11 +235,11 @@
     line-height: 1;
     white-space: nowrap;
     display: inline-block;
-    background: rgba(0,0,0,0.52);
+    background: rgba(0,0,0,0.56);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 10px 16px;
-    border-radius: 6px;
+    padding: 12px 18px;
+    border-radius: 0 8px 0 0;
     opacity: 0;
     transform: translateY(4px);
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -250,11 +250,11 @@
     transform: translateY(0);
   }
 
-  /* Dots — bottom left of image */
+  /* Dots — bottom right */
   .carousel-dots {
     position: absolute;
-    bottom: 24px;
-    left: 24px;
+    bottom: 18px;
+    right: 20px;
     display: flex;
     gap: 5px;
     z-index: 3;
@@ -646,13 +646,14 @@
 
   .intro-h2 {
     font-family: var(--font-display);
-    font-size: clamp(22px, 3.5vw, 36px);
+    font-size: clamp(20px, 2.8vw, 34px);
     font-weight: 700;
     color: #000000;
     letter-spacing: -0.025em;
     line-height: 1.2;
     margin-bottom: 28px;
-    max-width: 640px;
+    max-width: none;
+    white-space: nowrap;
   }
 
   .intro-body {
@@ -685,7 +686,7 @@
     #intro-copy { padding: 36px 24px; }
     .intro-body { grid-template-columns: 1fr; gap: 20px 0; }
     .intro-body p:last-child { grid-column: auto; margin-top: 0; }
-    .intro-h2 { font-size: clamp(20px, 6vw, 28px); }
+    .intro-h2 { font-size: clamp(20px, 6vw, 28px); white-space: normal; }
   }
 
   /* ─── SECTION EYEBROW ────────────────────────────────────────── */
@@ -1380,7 +1381,7 @@
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.01em;
-    padding: 15px 20px;
+    padding: 12px 20px;
     border-radius: 6px;
     border: 1.5px solid var(--red);
     text-decoration: none;
@@ -1406,7 +1407,7 @@
     font-weight: 600;
     color: #111111;
     text-decoration: none;
-    padding: 15px 20px;
+    padding: 12px 20px;
     border: 1.5px solid #000000;
     border-radius: 6px;
     background: none;
@@ -1754,7 +1755,7 @@
 
 <!-- INTRO COPY -->
 <section id="intro-copy" aria-labelledby="intro-heading">
-  <h2 class="intro-h2" id="intro-heading">90% of Staging Works.<br>The Other 10% Is This.</h2>
+  <h2 class="intro-h2" id="intro-heading"><span style="color:var(--red)">90%</span> of Staging Works. The Other <span style="color:var(--red)">10%</span> Is This.</h2>
   <div class="intro-body">
     <p><strong>Stagers and photographers share the same goal</strong> — make the home look its absolute best. There's about a 90% overlap in what works for both. The other 10% is where photography requires a completely different approach.</p>
     <p><strong>What feels warm and inviting in person often reads as clutter on camera.</strong> Decorative touches that stagers love are exactly what the lens turns into visual noise. The human eye and a wide-angle lens are not the same thing.</p>
