@@ -169,20 +169,13 @@
     background-position: center 35%;
     opacity: 0;
     transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: kenBurns 8s ease-in-out infinite alternate;
   }
 
-  /* Per-image crop tuning */
-  .carousel-slide:nth-child(1) { background-position: center 30%; }
-  .carousel-slide:nth-child(2) { background-position: center 40%; }
-  .carousel-slide:nth-child(3) { background-position: center 25%; }
-  .carousel-slide:nth-child(4) { background-position: center 35%; }
-  .carousel-slide:nth-child(5) { background-position: center 40%; }
-  .carousel-slide:nth-child(6) { background-position: center 30%; }
-  .carousel-slide:nth-child(7) { background-position: center 35%; }
-  .carousel-slide:nth-child(8) { background-position: center 30%; }
-
-  .carousel-slide.active { opacity: 1; }
+  /* Ken Burns only on active — inactive slides stay still, no shake */
+  .carousel-slide.active {
+    opacity: 1;
+    animation: kenBurns 8s ease-in-out infinite alternate;
+  }
 
   @keyframes kenBurns {
     0%   { transform: scale(1.0); }
@@ -230,12 +223,13 @@
     line-height: 1;
   }
 
-  /* Caption — flush bottom-left corner */
+  /* Caption — flush bottom-left, fixed width = longest caption so layout never shifts */
   .carousel-caption-wrap {
     position: absolute;
     bottom: 0;
     left: 0;
     z-index: 3;
+    width: max-content;
   }
 
   .carousel-caption {
@@ -245,20 +239,19 @@
     color: #ffffff;
     line-height: 1;
     white-space: nowrap;
-    display: inline-block;
+    display: block;
     background: rgba(0,0,0,0.56);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 12px 18px;
     border-radius: 0 8px 0 0;
     opacity: 0;
-    transform: translateY(4px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* No transform — prevents layout shift on change */
+    transition: opacity 0.3s ease;
   }
 
   .carousel-caption.caption-visible {
     opacity: 1;
-    transform: translateY(0);
   }
 
   /* Dots — bottom right */
@@ -311,6 +304,7 @@
     .h1-line3 { font-size: clamp(36px, 10vw, 52px); letter-spacing: -0.044em; }
     .hero-image-zone { height: 300px; width: 100%; margin: 0; border-radius: 8px 8px 0 0; }
     .hero-ctas { flex-direction: column; align-items: stretch; }
+    .carousel-slide.active { animation: none; }
     .carousel-caption { font-size: 12px; max-width: 200px; }
   }
 
