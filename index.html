@@ -51,18 +51,19 @@
     overflow: hidden;
   }
 
-  /* White panel — opaque, anchored left, fixed width */
+  /* White panel — 480px (38/62 ratio), red right-edge accent */
   .hero-content {
     position: relative;
     z-index: 2;
-    width: 520px;
+    width: 480px;
     min-height: 620px;
-    padding: 72px 56px 64px 64px;
+    padding: 72px 52px 64px 64px;
     background: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 8px 0 48px rgba(0,0,0,0.12);
+    border-right: 3px solid var(--red);
+    box-shadow: 12px 0 56px rgba(0,0,0,0.14);
   }
 
   /* ─── EYEBROW ───────────────────────────────────────────────── */
@@ -99,9 +100,8 @@
     gap: 0;
   }
 
-  /* Lines 1+2 — black setup, same size */
   .h1-line1 {
-    font-size: clamp(30px, 3.2vw, 44px);
+    font-size: clamp(28px, 3vw, 40px);
     font-weight: 800;
     color: #000000;
     display: block;
@@ -111,7 +111,7 @@
   }
 
   .h1-line2 {
-    font-size: clamp(30px, 3.2vw, 44px);
+    font-size: clamp(28px, 3vw, 40px);
     font-weight: 800;
     color: #000000;
     display: block;
@@ -120,9 +120,9 @@
     white-space: nowrap;
   }
 
-  /* Line 3 — red payoff, noticeably larger */
+  /* Line 3 — red payoff, larger, no trailing punctuation */
   .h1-line3 {
-    font-size: clamp(44px, 5vw, 68px);
+    font-size: clamp(42px, 4.8vw, 64px);
     font-weight: 800;
     color: var(--red);
     display: block;
@@ -138,18 +138,19 @@
     color: #555555;
     line-height: 1.7;
     margin-bottom: 0;
-    max-width: 360px;
+    max-width: 100%;
   }
 
-  /* ─── TRUST STAT BAR ────────────────────────────────────────── */
+  /* ─── TRUST STAT BAR — full panel width ─────────────────────── */
   .hero-trust-bar {
     display: flex;
     align-items: center;
     gap: 0;
     margin: 24px 0 28px;
     padding: 18px 0;
-    border-top: 1px solid #EBEBEB;
-    border-bottom: 1px solid #EBEBEB;
+    border-top: 1px solid #E4E4E4;
+    border-bottom: 1px solid #E4E4E4;
+    width: 100%;
   }
 
   .hero-trust-stat {
@@ -161,7 +162,7 @@
 
   .hero-trust-stat + .hero-trust-stat {
     padding-left: 20px;
-    border-left: 1px solid #EBEBEB;
+    border-left: 1px solid #E4E4E4;
   }
 
   .hero-trust-num {
@@ -182,8 +183,38 @@
     line-height: 1.3;
   }
 
+  /* ─── SCROLL INDICATOR ──────────────────────────────────────── */
+  .hero-scroll-hint {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeInScroll 0.6s ease 1.4s forwards;
+  }
+
+  @keyframes fadeInScroll {
+    to { opacity: 1; }
+  }
+
+  .hero-scroll-hint span {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #AAAAAA;
+  }
+
+  .scroll-chevron {
+    animation: bounceDown 1.8s ease-in-out 2s infinite;
+  }
+
+  @keyframes bounceDown {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50%       { transform: translateY(5px); opacity: 1; }
+  }
+
   /* ─── IMAGE BACKGROUND ──────────────────────────────────────── */
-  /* hero-visual fills the entire hero behind the white panel */
   .hero-visual {
     position: absolute;
     inset: 0;
@@ -204,42 +235,45 @@
     position: absolute;
     inset: 0;
     background-size: cover;
-    background-position: center 30%;
+    background-position: center 35%;
     opacity: 0;
     transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
     animation: kenBurns 8s ease-in-out infinite alternate;
   }
 
-  .carousel-slide.active {
-    opacity: 1;
-  }
+  /* Per-image position tuning */
+  .carousel-slide:nth-child(1) { background-position: center 30%; }
+  .carousel-slide:nth-child(2) { background-position: 40% center; }
+  .carousel-slide:nth-child(3) { background-position: center 25%; }
+  .carousel-slide:nth-child(4) { background-position: 45% 30%; }
+  .carousel-slide:nth-child(5) { background-position: center 40%; }
+  .carousel-slide:nth-child(6) { background-position: center 30%; }
+  .carousel-slide:nth-child(7) { background-position: center 35%; }
+  .carousel-slide:nth-child(8) { background-position: 40% 30%; }
+
+  .carousel-slide.active { opacity: 1; }
 
   @keyframes kenBurns {
     0%   { transform: scale(1.0) translate(0, 0); }
     100% { transform: scale(1.07) translate(-1.5%, 0.5%); }
   }
 
-  /* Overlay: dark at bottom for caption legibility */
   .carousel-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to top,
-      rgba(0,0,0,0.72) 0%,
-      rgba(0,0,0,0.28) 25%,
-      rgba(0,0,0,0.04) 55%,
-      rgba(0,0,0,0) 100%
-    );
+    background:
+      linear-gradient(to right, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 6%),
+      linear-gradient(to top, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.2) 22%, rgba(0,0,0,0) 50%);
     pointer-events: none;
     z-index: 1;
   }
 
-  /* Caption — bottom-right of the visible image area */
+  /* Caption — 32px clearance from hero bottom */
   .carousel-caption-wrap {
     position: absolute;
-    bottom: 28px;
+    bottom: 32px;
     right: 28px;
-    left: 520px;
+    left: 480px;
     padding: 0;
     z-index: 3;
     display: flex;
@@ -249,13 +283,13 @@
 
   .carousel-caption {
     font-family: var(--font-display);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: #ffffff;
-    line-height: 1.35;
-    letter-spacing: -0.01em;
+    line-height: 1.4;
+    letter-spacing: 0;
     display: inline-block;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.52);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 9px 16px;
@@ -263,7 +297,7 @@
     opacity: 0;
     transform: translateY(4px);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    max-width: 300px;
+    max-width: 280px;
   }
 
   .carousel-caption.caption-visible {
@@ -271,7 +305,6 @@
     transform: translateY(0);
   }
 
-  /* Dots — top-right of image area, clear of the panel */
   .carousel-dots {
     position: absolute;
     top: 20px;
@@ -285,7 +318,7 @@
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.35);
     transition: background 0.3s ease, width 0.3s ease;
     flex-shrink: 0;
   }
@@ -297,8 +330,9 @@
   }
 
   @media (max-width: 768px) {
-    .carousel-caption { font-size: 13px; max-width: 240px; }
+    .carousel-caption { font-size: 12px; max-width: 220px; }
     .carousel-caption-wrap { left: 0; bottom: 20px; right: 16px; }
+    .hero-scroll-hint { display: none; }
   }
 
 
@@ -1286,25 +1320,25 @@
   }
 
   /* ─── RESPONSIVE ────────────────────────────────────────────── */
-  /* Desktop L: 1000–1200px → sidebar 280px, panel narrows */
+  /* Desktop L: 1000–1200px → panel 440px */
   @media (max-width: 1200px) {
     #main-layout { grid-template-columns: 280px 1fr; }
-    .hero-content { width: 460px; padding: 64px 48px 56px 56px; }
-    .carousel-caption-wrap { left: 460px; }
+    .hero-content { width: 440px; padding: 64px 44px 56px 52px; }
+    .carousel-caption-wrap { left: 440px; }
     #content { padding: 0 56px 80px 64px; }
     #sidebar { padding: 40px 28px 40px 40px; }
     .progress-circle { width: 72px; height: 72px; }
     .progress-circle-pct { font-size: 19px; }
   }
 
-  /* Tablet: 768–1000px → sidebar 240px, panel narrows further */
+  /* Tablet: 768–1000px → panel 360px */
   @media (max-width: 1000px) {
     #main-layout { grid-template-columns: 240px 1fr; }
     #sidebar { padding: 32px 16px 32px 24px; }
     .sidebar-circle-wrap { display: none; }
     #content { padding: 0 32px 80px 40px; }
-    .hero-content { width: 380px; padding: 56px 36px 48px 40px; }
-    .carousel-caption-wrap { left: 380px; }
+    .hero-content { width: 360px; padding: 56px 32px 48px 40px; }
+    .carousel-caption-wrap { left: 360px; }
   }
 
   /* Mobile L: hide sidebar entirely, 32px padding */
@@ -1404,7 +1438,7 @@
     font-weight: 700;
     letter-spacing: 0.01em;
     padding: 16px 32px;
-    border-radius: var(--radius);
+    border-radius: 8px;
     border: none;
     text-decoration: none;
     transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
@@ -1733,13 +1767,13 @@
 
   <!-- WHITE PANEL — foreground, z-index: 2 -->
   <div class="hero-content">
-    <p class="hero-eyebrow">Shoot2Sell · Photoshoot Checklist</p>
+    <p class="hero-eyebrow">Real estate photography · DFW · Houston · Austin · San Antonio</p>
     <h1 class="hero-h1" id="hero-heading">
-      <span class="h1-line1">From 'Almost</span>
-      <span class="h1-line2">Ready' to</span>
-      <span class="h1-line3">Camera-Ready.</span>
+      <span class="h1-line1">From &#8216;Almost</span>
+      <span class="h1-line2">Ready&#8217; to</span>
+      <span class="h1-line3">Camera-Ready</span>
     </h1>
-    <p class="hero-sub">Cameras see differently than eyes. This 18-point checklist is the gap between a good photo and a great listing.</p>
+    <p class="hero-sub">Cameras see differently than eyes. This 18-point checklist bridges the gap between a good photo and a great listing.</p>
     <div class="hero-trust-bar" aria-label="Trust statistics">
       <div class="hero-trust-stat">
         <span class="hero-trust-num">10K+</span>
@@ -1747,7 +1781,7 @@
       </div>
       <div class="hero-trust-stat">
         <span class="hero-trust-num">18</span>
-        <span class="hero-trust-label">Point System</span>
+        <span class="hero-trust-label">Step System</span>
       </div>
       <div class="hero-trust-stat">
         <span class="hero-trust-num">4</span>
@@ -1761,8 +1795,14 @@
       </a>
       <a href="CHECKLIST_MAY12.pdf" class="hero-cta-ghost" download target="_blank" rel="noopener">
         <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 10v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2"/><polyline points="5 7 8 10 11 7"/><line x1="8" y1="1" x2="8" y2="10"/></svg>
-        Download PDF version
+        Download PDF
       </a>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span>Scroll to start</span>
+      <span class="scroll-chevron">
+        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" stroke="#AAAAAA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,1 7,7 13,1"/></svg>
+      </span>
     </div>
   </div>
 
